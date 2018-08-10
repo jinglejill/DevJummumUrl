@@ -1,0 +1,174 @@
+2018-08-09T15:50:38+07:00 file: JMMMasterGet.php, user: (null)
+2018-08-09T15:50:38+07:00 Param=Value: modifiedDeviceToken=(null)&modifiedUser=(null)&
+2018-08-09T15:50:38+07:00 executeMultiQuery: select * from DEV_JUMMUM.setting where type != 4;
+2018-08-09T15:52:11+07:00 file: JMMLogInUserAccountInsert.php, user: jinglejill@hotmail.com
+2018-08-09T15:52:11+07:00 Param=Value: username=10157281260938273&logInID=1&status=1&modifiedDate=2018-08-09 15:52:17  0000&modifiedUser=jinglejill@hotmail.com&deviceToken=309bf46219e009b169e32314df170c49a4d5af3d36284bf86454e3e338ce52f2&userAccountID=1&lineID=&birthDate=&password=&fullName=Thidaporn Kijkamjai&nickName=&roleID=0&phoneNo=&email=jinglejill@hotmail.com&modifiedDeviceToken=309bf46219e009b169e32314df170c49a4d5af3d36284bf86454e3e338ce52f2&actionScreen=insert login and useraccount if not exist in logIn screen&
+2018-08-09T15:52:11+07:00 set auto commit to off
+2018-08-09T15:52:11+07:00 query success, sql: INSERT INTO LogIn(Username, Status, DeviceToken, ModifiedUser, ModifiedDate) VALUES ('10157281260938273', '1', '309bf46219e009b169e32314df170c49a4d5af3d36284bf86454e3e338ce52f2', 'jinglejill@hotmail.com', '2018-08-09 15:52:17  0000'), modified user: jinglejill@hotmail.com
+2018-08-09T15:52:11+07:00 query: selected row count = 0, sql: select * from useraccount where username = '10157281260938273', modified user: jinglejill@hotmail.com
+2018-08-09T15:52:11+07:00 query success, sql: INSERT INTO UserAccount(Username, Password, DeviceToken, FullName, NickName, BirthDate, Email, PhoneNo, LineID, RoleID, ModifiedUser, ModifiedDate) VALUES ('10157281260938273', '', '309bf46219e009b169e32314df170c49a4d5af3d36284bf86454e3e338ce52f2', 'Thidaporn Kijkamjai', '', '', 'jinglejill@hotmail.com', '', '', '0', 'jinglejill@hotmail.com', '2018-08-09 15:52:17  0000'), modified user: jinglejill@hotmail.com
+2018-08-09T15:52:11+07:00 query success, sql: select *, 1 IdInserted from UserAccount where username = '10157281260938273';, modified user: jinglejill@hotmail.com
+2018-08-09T15:52:11+07:00 query: selected row count = 0, sql: select * from receipt where memberID = '1' order by receipt.ReceiptDate DESC limit 10;, modified user: jinglejill@hotmail.com
+2018-08-09T15:52:11+07:00 multiQueryArray: select *, 1 IdInserted from UserAccount where username = '10157281260938273';select * from Receipt where 0;select * from Branch where 0;select * from OrderTaking where 0;select * from Menu where 0;select * from MenuType where 0;select * from OrderNote where 0;select * from Note where 0;select * from NoteType where 0;
+2018-08-09T15:52:11+07:00 query commit, file: JMMLogInUserAccountInsert.php, user: jinglejill@hotmail.com
+2018-08-09T15:52:26+07:00 file: JMMUserAccountUpdate.php, user: jinglejill@hotmail.com
+2018-08-09T15:52:26+07:00 Param=Value: modifiedUser=jinglejill@hotmail.com&userAccountID=1&lineID=&birthDate=1984-02-05 00:00:00  0000&deviceToken=309bf46219e009b169e32314df170c49a4d5af3d36284bf86454e3e338ce52f2&password=&fullName=Thidaporn Kijkamjai&nickName=&roleID=0&username=10157281260938273&phoneNo=0813072993&modifiedDate=2018-08-09 15:52:31  0000&email=jinglejill@hotmail.com&modifiedDeviceToken=309bf46219e009b169e32314df170c49a4d5af3d36284bf86454e3e338ce52f2&actionScreen=update userAccount login via facebook&
+2018-08-09T15:52:26+07:00 set auto commit to off
+2018-08-09T15:52:26+07:00 query success, sql: update UserAccount set Username = '10157281260938273', Password = '', DeviceToken = '309bf46219e009b169e32314df170c49a4d5af3d36284bf86454e3e338ce52f2', FullName = 'Thidaporn Kijkamjai', NickName = '', BirthDate = '1984-02-05 00:00:00  0000', Email = 'jinglejill@hotmail.com', PhoneNo = '0813072993', LineID = '', RoleID = '0', ModifiedUser = 'jinglejill@hotmail.com', ModifiedDate = '2018-08-09 15:52:31  0000' where UserAccountID = '1', modified user: jinglejill@hotmail.com
+2018-08-09T15:52:26+07:00 query commit, file: JMMUserAccountUpdate.php, user: jinglejill@hotmail.com
+2018-08-09T15:52:26+07:00 file: HtmlTermsOfService.php, user: 
+2018-08-09T15:52:56+07:00 file: JMMBranchSearchGetList.php, user: jinglejill@hotmail.com
+2018-08-09T15:52:56+07:00 Param=Value: searchText=J&modifiedDeviceToken=309bf46219e009b169e32314df170c49a4d5af3d36284bf86454e3e338ce52f2&modifiedUser=jinglejill@hotmail.com&
+2018-08-09T15:52:56+07:00 executeMultiQuery: SELECT * FROM DEV_JUMMUM_OM.Branch where status = 1 and customerApp = 1 and name like '%J%' order by name limit 10;
+2018-08-09T15:52:56+07:00 file: downloadImage.php, user: jinglejill@hotmail.com
+2018-08-09T15:52:56+07:00 Param=Value: imageFileName=jummum.jpg&modifiedDeviceToken=309bf46219e009b169e32314df170c49a4d5af3d36284bf86454e3e338ce52f2&modifiedUser=jinglejill@hotmail.com&type=2&branchID=1&
+2018-08-09T15:52:56+07:00 query success, sql: select * from DEV_JUMMUM_OM.branch where branchID = '1', modified user: jinglejill@hotmail.com
+2018-08-09T15:52:56+07:00 file: downloadImage.php, user: jinglejill@hotmail.com
+2018-08-09T15:52:56+07:00 Param=Value: imageFileName=jummum6.jpg&modifiedDeviceToken=309bf46219e009b169e32314df170c49a4d5af3d36284bf86454e3e338ce52f2&modifiedUser=jinglejill@hotmail.com&type=2&branchID=6&
+2018-08-09T15:52:56+07:00 query success, sql: select * from DEV_JUMMUM_OM.branch where branchID = '6', modified user: jinglejill@hotmail.com
+2018-08-09T15:52:56+07:00 file: downloadImage.php, user: jinglejill@hotmail.com
+2018-08-09T15:52:56+07:00 Param=Value: imageFileName=jummum5.jpg&modifiedDeviceToken=309bf46219e009b169e32314df170c49a4d5af3d36284bf86454e3e338ce52f2&modifiedUser=jinglejill@hotmail.com&type=2&branchID=5&
+2018-08-09T15:52:56+07:00 query success, sql: select * from DEV_JUMMUM_OM.branch where branchID = '5', modified user: jinglejill@hotmail.com
+2018-08-09T15:52:56+07:00 file: JMMBranchSearchMoreGetList.php, user: jinglejill@hotmail.com
+2018-08-09T15:52:56+07:00 file: downloadImage.php, user: jinglejill@hotmail.com
+2018-08-09T15:52:56+07:00 Param=Value: imageFileName=jummum2.jpg&modifiedDeviceToken=309bf46219e009b169e32314df170c49a4d5af3d36284bf86454e3e338ce52f2&modifiedUser=jinglejill@hotmail.com&type=2&branchID=2&
+2018-08-09T15:52:56+07:00 file: downloadImage.php, user: jinglejill@hotmail.com
+2018-08-09T15:52:56+07:00 Param=Value: imageFileName=jummum3.jpg&modifiedDeviceToken=309bf46219e009b169e32314df170c49a4d5af3d36284bf86454e3e338ce52f2&modifiedUser=jinglejill@hotmail.com&type=2&branchID=3&
+2018-08-09T15:52:56+07:00 Param=Value: searchText=J&name=JUMMUM6&modifiedDeviceToken=309bf46219e009b169e32314df170c49a4d5af3d36284bf86454e3e338ce52f2&modifiedUser=jinglejill@hotmail.com&
+2018-08-09T15:52:56+07:00 query success, sql: select * from DEV_JUMMUM_OM.branch where branchID = '3', modified user: jinglejill@hotmail.com
+2018-08-09T15:52:56+07:00 executeMultiQuery: SELECT * FROM DEV_JUMMUM_OM.Branch where status = 1 and customerApp = 1 and name like '%J%' and name > 'JUMMUM6' order by name limit 10;
+2018-08-09T15:52:56+07:00 query success, sql: select * from DEV_JUMMUM_OM.branch where branchID = '2', modified user: jinglejill@hotmail.com
+2018-08-09T15:52:57+07:00 file: downloadImage.php, user: jinglejill@hotmail.com
+2018-08-09T15:52:57+07:00 Param=Value: imageFileName=jummum5.jpg&modifiedDeviceToken=309bf46219e009b169e32314df170c49a4d5af3d36284bf86454e3e338ce52f2&modifiedUser=jinglejill@hotmail.com&type=2&branchID=5&
+2018-08-09T15:52:57+07:00 file: downloadImage.php, user: jinglejill@hotmail.com
+2018-08-09T15:52:57+07:00 Param=Value: imageFileName=jummum.jpg&modifiedDeviceToken=309bf46219e009b169e32314df170c49a4d5af3d36284bf86454e3e338ce52f2&modifiedUser=jinglejill@hotmail.com&type=2&branchID=1&
+2018-08-09T15:52:57+07:00 query success, sql: select * from DEV_JUMMUM_OM.branch where branchID = '5', modified user: jinglejill@hotmail.com
+2018-08-09T15:52:57+07:00 query success, sql: select * from DEV_JUMMUM_OM.branch where branchID = '1', modified user: jinglejill@hotmail.com
+2018-08-09T15:52:57+07:00 file: downloadImage.php, user: jinglejill@hotmail.com
+2018-08-09T15:52:57+07:00 Param=Value: imageFileName=jummum6.jpg&modifiedDeviceToken=309bf46219e009b169e32314df170c49a4d5af3d36284bf86454e3e338ce52f2&modifiedUser=jinglejill@hotmail.com&type=2&branchID=6&
+2018-08-09T15:52:57+07:00 file: downloadImage.php, user: jinglejill@hotmail.com
+2018-08-09T15:52:57+07:00 file: downloadImage.php, user: jinglejill@hotmail.com
+2018-08-09T15:52:57+07:00 Param=Value: imageFileName=jummum2.jpg&modifiedDeviceToken=309bf46219e009b169e32314df170c49a4d5af3d36284bf86454e3e338ce52f2&modifiedUser=jinglejill@hotmail.com&type=2&branchID=2&
+2018-08-09T15:52:57+07:00 Param=Value: imageFileName=jummum3.jpg&modifiedDeviceToken=309bf46219e009b169e32314df170c49a4d5af3d36284bf86454e3e338ce52f2&modifiedUser=jinglejill@hotmail.com&type=2&branchID=3&
+2018-08-09T15:52:57+07:00 query success, sql: select * from DEV_JUMMUM_OM.branch where branchID = '6', modified user: jinglejill@hotmail.com
+2018-08-09T15:52:57+07:00 query success, sql: select * from DEV_JUMMUM_OM.branch where branchID = '2', modified user: jinglejill@hotmail.com
+2018-08-09T15:52:57+07:00 query success, sql: select * from DEV_JUMMUM_OM.branch where branchID = '3', modified user: jinglejill@hotmail.com
+2018-08-09T15:52:57+07:00 file: JMMCustomerTableGetList.php, user: jinglejill@hotmail.com
+2018-08-09T15:52:57+07:00 Param=Value: branchID=1&modifiedDeviceToken=309bf46219e009b169e32314df170c49a4d5af3d36284bf86454e3e338ce52f2&modifiedUser=jinglejill@hotmail.com&
+2018-08-09T15:52:57+07:00 query success, sql: SELECT * FROM DEV_JUMMUM_OM.Branch where branchID = '1';, modified user: jinglejill@hotmail.com
+2018-08-09T15:52:57+07:00 executeMultiQuery: select 1 BranchID, DEV_JUMMUM_OM_MAMARIN7.CustomerTable.* from DEV_JUMMUM_OM_MAMARIN7.CustomerTable where status = 1
+2018-08-09T15:52:58+07:00 file: JMMMenuGetList.php, user: jinglejill@hotmail.com
+2018-08-09T15:52:58+07:00 Param=Value: branchID=1&modifiedDeviceToken=309bf46219e009b169e32314df170c49a4d5af3d36284bf86454e3e338ce52f2&modifiedUser=jinglejill@hotmail.com&
+2018-08-09T15:52:58+07:00 query success, sql: select * from DEV_JUMMUM_OM.branch where BranchID = '1', modified user: jinglejill@hotmail.com
+2018-08-09T15:52:58+07:00 query success, sql: select * from DEV_JUMMUM_OM_MAMARIN7.Setting where keyName = 'customerOrderStatus', modified user: jinglejill@hotmail.com
+2018-08-09T15:52:58+07:00 query success, sql: select * from DEV_JUMMUM_OM.branch where branchID = '1', modified user: jinglejill@hotmail.com
+2018-08-09T15:52:58+07:00 sql = select 1 as Text;select '1' BranchID, DEV_JUMMUM_OM_MAMARIN7.menu.* from DEV_JUMMUM_OM_MAMARIN7.menu where Status = 1;select '1' BranchID, DEV_JUMMUM_OM_MAMARIN7.menuType.* from DEV_JUMMUM_OM_MAMARIN7.menuType where Status = 1;select '1' BranchID, DEV_JUMMUM_OM_MAMARIN7.note.* from DEV_JUMMUM_OM_MAMARIN7.note where Status = 1;select '1' BranchID, '1' BranchID, DEV_JUMMUM_OM_MAMARIN7.notetype.* from DEV_JUMMUM_OM_MAMARIN7.notetype where Status = 1;select '1' BranchID, DEV_JUMMUM_OM_MAMARIN7.specialPriceProgram.* from DEV_JUMMUM_OM_MAMARIN7.specialPriceProgram where date_format(now(),'%Y-%m-%d') between date_format(startDate,'%Y-%m-%d') and date_format(endDate,'%Y-%m-%d');
+2018-08-09T15:52:58+07:00 executeMultiQuery: select 1 as Text;select '1' BranchID, DEV_JUMMUM_OM_MAMARIN7.menu.* from DEV_JUMMUM_OM_MAMARIN7.menu where Status = 1;select '1' BranchID, DEV_JUMMUM_OM_MAMARIN7.menuType.* from DEV_JUMMUM_OM_MAMARIN7.menuType where Status = 1;select '1' BranchID, DEV_JUMMUM_OM_MAMARIN7.note.* from DEV_JUMMUM_OM_MAMARIN7.note where Status = 1;select '1' BranchID, '1' BranchID, DEV_JUMMUM_OM_MAMARIN7.notetype.* from DEV_JUMMUM_OM_MAMARIN7.notetype where Status = 1;select '1' BranchID, DEV_JUMMUM_OM_MAMARIN7.specialPriceProgram.* from DEV_JUMMUM_OM_MAMARIN7.specialPriceProgram where date_format(now(),'%Y-%m-%d') between date_format(startDate,'%Y-%m-%d') and date_format(endDate,'%Y-%m-%d');
+2018-08-09T15:52:58+07:00 file: downloadImage.php, user: jinglejill@hotmail.com
+2018-08-09T15:52:58+07:00 Param=Value: imageFileName=pizzaHamMushroom.jpg&modifiedDeviceToken=309bf46219e009b169e32314df170c49a4d5af3d36284bf86454e3e338ce52f2&modifiedUser=jinglejill@hotmail.com&type=1&branchID=1&
+2018-08-09T15:52:58+07:00 file: downloadImage.php, user: jinglejill@hotmail.com
+2018-08-09T15:52:58+07:00 query success, sql: select * from DEV_JUMMUM_OM.branch where branchID = '1', modified user: jinglejill@hotmail.com
+2018-08-09T15:52:58+07:00 file: downloadImage.php, user: jinglejill@hotmail.com
+2018-08-09T15:52:58+07:00 Param=Value: imageFileName=shrimpChilli.jpg&modifiedDeviceToken=309bf46219e009b169e32314df170c49a4d5af3d36284bf86454e3e338ce52f2&modifiedUser=jinglejill@hotmail.com&type=1&branchID=1&
+2018-08-09T15:52:58+07:00 Param=Value: imageFileName=salmonSashimi.jpg&modifiedDeviceToken=309bf46219e009b169e32314df170c49a4d5af3d36284bf86454e3e338ce52f2&modifiedUser=jinglejill@hotmail.com&type=1&branchID=1&
+2018-08-09T15:52:58+07:00 query success, sql: select * from DEV_JUMMUM_OM.branch where branchID = '1', modified user: jinglejill@hotmail.com
+2018-08-09T15:52:58+07:00 query success, sql: select * from DEV_JUMMUM_OM.branch where branchID = '1', modified user: jinglejill@hotmail.com
+2018-08-09T15:52:58+07:00 file: downloadImage.php, user: jinglejill@hotmail.com
+2018-08-09T15:52:58+07:00 file: downloadImage.php, user: jinglejill@hotmail.com
+2018-08-09T15:52:58+07:00 Param=Value: imageFileName=yentafo.jpg&modifiedDeviceToken=309bf46219e009b169e32314df170c49a4d5af3d36284bf86454e3e338ce52f2&modifiedUser=jinglejill@hotmail.com&type=1&branchID=1&
+2018-08-09T15:52:58+07:00 Param=Value: imageFileName=pancake.jpg&modifiedDeviceToken=309bf46219e009b169e32314df170c49a4d5af3d36284bf86454e3e338ce52f2&modifiedUser=jinglejill@hotmail.com&type=1&branchID=1&
+2018-08-09T15:52:58+07:00 query success, sql: select * from DEV_JUMMUM_OM.branch where branchID = '1', modified user: jinglejill@hotmail.com
+2018-08-09T15:52:58+07:00 query success, sql: select * from DEV_JUMMUM_OM.branch where branchID = '1', modified user: jinglejill@hotmail.com
+2018-08-09T15:53:25+07:00 file: OmiseCheckOut.php, user: jinglejill@hotmail.com
+2018-08-09T15:53:25+07:00 Param=Value: omiseToken=tokn_test_5cvit417733wl1d439l&amount=29425&type=1&promoCodeID=0&countOtOrderTaking=1&countOnOrderNote=0&priceIncludeVat=0&status=2&discountValue=0&serviceChargeValue=25&servingPerson=0&discountType=0&mergeReceiptID=0&memberID=1&creditCardNo=4242424242424242&receiptNoTaxID=&discountAmount=0&transferDate=1900-01-01 00:00:00  0000&receiptDate=2018-08-09 15:53:31  0000&discountReason=&serviceChargePercent=10&vatPercent=7&branchID=1&transferAmount=0&vatValue=19.25&modifiedDate=2018-08-09 15:53:31  0000&modifiedUser=jinglejill@hotmail.com&customerTableID=1&statusRoute=&customerType=4&receiptNoID=&cashReceive=0&receiptID=-1&creditCardType=5&creditCardAmount=294.25&remark=&cashAmount=0&openTableDate=2018-08-09 15:53:31  0000&prReceiptID=0&prUserPromotionUsedID=-1&prModifiedUser=jinglejill@hotmail.com&prModifiedDate=2018-08-09 15:53:31  0000&prPromotionID=0&prUserAccountID=1&otMenuID00=99&otMenuOrderNo00=1&otMenuTypeOrderNo00=0&otBranchID00=1&otOrderNo00=0&otModifiedDate00=2018-08-09 15:53:31  0000&otOrderTakingID00=-1&otStatus00=0&otTakeAway00=0&otCustomerTableID00=1&otReceiptID00=0&otSpecialPrice00=250&otPrice00=250&otQuantity00=1&otModifiedUser00=jinglejill@hotmail.com&otSubMenuOrderNo00=0&otNoteIDListInText00=&modifiedDeviceToken=309bf46219e009b169e32314df170c49a4d5af3d36284bf86454e3e338ce52f2&actionScreen=call omise checkout at server&
+2018-08-09T15:53:25+07:00 token : tokn_test_5cvit417733wl1d439l
+2018-08-09T15:53:25+07:00 amount : 29425
+2018-08-09T15:53:25+07:00 query success, sql: select * from DEV_JUMMUM_OM.branch where branchID = '1', modified user: jinglejill@hotmail.com
+2018-08-09T15:53:25+07:00 query success, sql: select * from DEV_JUMMUM_OM_MAMARIN7.Setting where keyName = 'customerOrderStatus', modified user: jinglejill@hotmail.com
+2018-08-09T15:53:25+07:00 query success, sql: select * from Setting where keyName = 'PublicKey', modified user: jinglejill@hotmail.com
+2018-08-09T15:53:25+07:00 query success, sql: select * from Setting where keyName = 'SecretKey', modified user: jinglejill@hotmail.com
+2018-08-09T15:53:26+07:00 set auto commit to off
+2018-08-09T15:53:26+07:00 query success, sql: INSERT INTO Receipt(BranchID, CustomerTableID, MemberID, ServingPerson, CustomerType, OpenTableDate, CashAmount, CashReceive, CreditCardType, CreditCardNo, CreditCardAmount, TransferDate, TransferAmount, Remark, DiscountType, DiscountAmount, DiscountValue, DiscountReason, ServiceChargePercent, ServiceChargeValue, PriceIncludeVat, VatPercent, VatValue, Status, StatusRoute, ReceiptNoID, ReceiptNoTaxID, ReceiptDate, MergeReceiptID, ModifiedUser, ModifiedDate) VALUES ('1', '1', '1', '0', '4', '2018-08-09 15:53:31  0000', '0', '0', '5', '4242424242424242', '294.25', '1900-01-01 00:00:00  0000', '0', '', '0', '0', '0', '', '10', '25', '0', '7', '19.25', '2', '2', '', '', '2018-08-09 15:53:31  0000', '0', 'jinglejill@hotmail.com', '2018-08-09 15:53:31  0000'), modified user: jinglejill@hotmail.com
+2018-08-09T15:53:26+07:00 query success, sql: update Receipt set ReceiptNoID = '00000123' where ReceiptID = '1', modified user: jinglejill@hotmail.com
+2018-08-09T15:53:26+07:00 query success, sql: INSERT INTO OrderTaking(BranchID, CustomerTableID, MenuID, Quantity, SpecialPrice, Price, TakeAway, NoteIDListInText, OrderNo, Status, ReceiptID, ModifiedUser, ModifiedDate) VALUES ('1', '1', '99', '1', '250', '250', '0', '', '0', '0', '1', 'jinglejill@hotmail.com', '2018-08-09 15:53:31  0000'), modified user: jinglejill@hotmail.com
+2018-08-09T15:53:26+07:00 multiQueryArray: select * from Receipt where ReceiptID = '1';select * from OrderTaking where OrderTakingID in ('1');
+2018-08-09T15:53:26+07:00 query success, sql: SELECT * FROM `rewardprogram` WHERE StartDate <= now() and EndDate >= now() and type = 1 order by modifiedDate desc, modified user: jinglejill@hotmail.com
+2018-08-09T15:53:26+07:00 query success, sql: INSERT INTO RewardPoint(MemberID, ReceiptID, Point, Status, PromoCodeID, ModifiedUser, ModifiedDate) VALUES ('1', '1', '58.85', '1', '0', 'jinglejill@hotmail.com', '2018-08-09 15:53:31  0000'), modified user: jinglejill@hotmail.com
+2018-08-09T15:53:26+07:00 query success, sql: select * from DEV_JUMMUM_OM.device left join DEV_JUMMUM_OM.Branch on DEV_JUMMUM_OM.device.DbName = DEV_JUMMUM_OM.Branch.DbName where branchID = '1';, modified user: jinglejill@hotmail.com
+2018-08-09T15:53:26+07:00 send push to device: f808ebc97fff8d2d54209aab7d4cf5e8fe10f43f978346c1c02066bfc1408da0, body: {"alert":"New order coming!! receipt No:00000123","sound":"default","category":"printKitchenBill","content-available":1,"receiptID":1}
+2018-08-09T15:53:28+07:00 push notification: success, device token : f808ebc97fff8d2d54209aab7d4cf5e8fe10f43f978346c1c02066bfc1408da0, payload: {"alert":"New order coming!! receipt No:00000123","sound":"default","category":"printKitchenBill","content-available":1,"receiptID":1}
+2018-08-09T15:53:28+07:00 query success, sql: update DEV_JUMMUM_OM.Branch set LedStatus = '1', ModifiedUser = 'jinglejill@hotmail.com', ModifiedDate = '2018-08-09 15:53:31  0000' where branchID = '1';, modified user: jinglejill@hotmail.com
+2018-08-09T15:53:28+07:00 query commit, file: OmiseCheckOut.php, user: jinglejill@hotmail.com
+2018-08-09T15:53:31+07:00 file: JMMHotDealGetList.php, user: jinglejill@hotmail.com
+2018-08-09T15:53:31+07:00 Param=Value: memberID=1&promotionListCount=0&modifiedDeviceToken=309bf46219e009b169e32314df170c49a4d5af3d36284bf86454e3e338ce52f2&modifiedUser=jinglejill@hotmail.com&
+2018-08-09T15:53:31+07:00 executeMultiQuery: select * from (select @rownum := @rownum + 1 AS rank, c.* from (select sum(a.Frequency) Frequency,sum(b.Sales) Sales, promotion.PromotionID, promotion.MainBranchID,promotion.Type,promotion.Header,promotion.SubTitle,promotion.TermsConditions,promotion.ImageUrl,promotion.OrderNo from promotion left join promotionbranch ON promotion.PromotionID = promotionbranch.PromotionID left join (select branchID,count(*) as Frequency from receipt where memberID = '1' GROUP BY branchID) a on promotionbranch.BranchID = a.branchID left join (select branchID,SUM(CashAmount+CreditCardAmount+TransferAmount) Sales from receipt where memberID = '1' GROUP BY branchID) b on promotionbranch.BranchID = b.branchID where promotion.status = 1 and date_format(now(),'%Y-%m-%d') between date_format(promotion.startDate,'%Y-%m-%d') and date_format(promotion.endDate,'%Y-%m-%d') and promotionbranch.BranchID in (select distinct branchID from receipt where memberID = '1') GROUP BY promotion.PromotionID, promotion.MainBranchID,promotion.Type,promotion.Header,promotion.SubTitle,promotion.TermsConditions,promotion.ImageUrl,promotion.OrderNo order by promotion.Type,sum(a.Frequency)desc,sum(b.Sales)desc,promotion.OrderNo) c,(SELECT @rownum := 0) r)d where rank between '1' and '10';
+2018-08-09T15:53:31+07:00 file: downloadImage.php, user: jinglejill@hotmail.com
+2018-08-09T15:53:31+07:00 Param=Value: imageFileName=promoBanner.jpg&modifiedDeviceToken=309bf46219e009b169e32314df170c49a4d5af3d36284bf86454e3e338ce52f2&modifiedUser=jinglejill@hotmail.com&type=3&branchID=0&
+2018-08-09T15:53:31+07:00 query: selected row count = 0, sql: select * from DEV_JUMMUM_OM.branch where branchID = '0', modified user: jinglejill@hotmail.com
+2018-08-09T15:53:31+07:00 query: selected row count = 0, sql: select * from DEV_JUMMUM_OM.branch where branchID = '', modified user: jinglejill@hotmail.com
+2018-08-09T15:53:31+07:00 file: downloadImage.php, user: jinglejill@hotmail.com
+2018-08-09T15:53:31+07:00 Param=Value: imageFileName=promoBanner.jpg&modifiedDeviceToken=309bf46219e009b169e32314df170c49a4d5af3d36284bf86454e3e338ce52f2&modifiedUser=jinglejill@hotmail.com&type=3&branchID=0&
+2018-08-09T15:53:31+07:00 query: selected row count = 0, sql: select * from DEV_JUMMUM_OM.branch where branchID = '0', modified user: jinglejill@hotmail.com
+2018-08-09T15:53:31+07:00 query: selected row count = 0, sql: select * from DEV_JUMMUM_OM.branch where branchID = '', modified user: jinglejill@hotmail.com
+2018-08-09T15:53:31+07:00 file: downloadImage.php, user: jinglejill@hotmail.com
+2018-08-09T15:53:31+07:00 Param=Value: imageFileName=promoBanner.jpg&modifiedDeviceToken=309bf46219e009b169e32314df170c49a4d5af3d36284bf86454e3e338ce52f2&modifiedUser=jinglejill@hotmail.com&type=3&branchID=0&
+2018-08-09T15:53:31+07:00 query: selected row count = 0, sql: select * from DEV_JUMMUM_OM.branch where branchID = '0', modified user: jinglejill@hotmail.com
+2018-08-09T15:53:31+07:00 query: selected row count = 0, sql: select * from DEV_JUMMUM_OM.branch where branchID = '', modified user: jinglejill@hotmail.com
+2018-08-09T15:53:31+07:00 file: downloadImage.php, user: jinglejill@hotmail.com
+2018-08-09T15:53:31+07:00 Param=Value: imageFileName=promoBanner.jpg&modifiedDeviceToken=309bf46219e009b169e32314df170c49a4d5af3d36284bf86454e3e338ce52f2&modifiedUser=jinglejill@hotmail.com&type=3&branchID=0&
+2018-08-09T15:53:31+07:00 query: selected row count = 0, sql: select * from DEV_JUMMUM_OM.branch where branchID = '0', modified user: jinglejill@hotmail.com
+2018-08-09T15:53:31+07:00 file: downloadImage.php, user: jinglejill@hotmail.com
+2018-08-09T15:53:31+07:00 Param=Value: imageFileName=promoBanner.jpg&modifiedDeviceToken=309bf46219e009b169e32314df170c49a4d5af3d36284bf86454e3e338ce52f2&modifiedUser=jinglejill@hotmail.com&type=3&branchID=0&
+2018-08-09T15:53:31+07:00 query: selected row count = 0, sql: select * from DEV_JUMMUM_OM.branch where branchID = '0', modified user: jinglejill@hotmail.com
+2018-08-09T15:53:31+07:00 query: selected row count = 0, sql: select * from DEV_JUMMUM_OM.branch where branchID = '', modified user: jinglejill@hotmail.com
+2018-08-09T15:53:31+07:00 query: selected row count = 0, sql: select * from DEV_JUMMUM_OM.branch where branchID = '', modified user: jinglejill@hotmail.com
+2018-08-09T15:53:31+07:00 file: downloadImage.php, user: jinglejill@hotmail.com
+2018-08-09T15:53:31+07:00 Param=Value: imageFileName=promoBanner.jpg&modifiedDeviceToken=309bf46219e009b169e32314df170c49a4d5af3d36284bf86454e3e338ce52f2&modifiedUser=jinglejill@hotmail.com&type=3&branchID=0&
+2018-08-09T15:53:31+07:00 query: selected row count = 0, sql: select * from DEV_JUMMUM_OM.branch where branchID = '0', modified user: jinglejill@hotmail.com
+2018-08-09T15:53:31+07:00 file: downloadImage.php, user: jinglejill@hotmail.com
+2018-08-09T15:53:31+07:00 file: downloadImage.php, user: jinglejill@hotmail.com
+2018-08-09T15:53:31+07:00 Param=Value: imageFileName=promoBanner.jpg&modifiedDeviceToken=309bf46219e009b169e32314df170c49a4d5af3d36284bf86454e3e338ce52f2&modifiedUser=jinglejill@hotmail.com&type=3&branchID=0&
+2018-08-09T15:53:31+07:00 Param=Value: imageFileName=promoBanner.jpg&modifiedDeviceToken=309bf46219e009b169e32314df170c49a4d5af3d36284bf86454e3e338ce52f2&modifiedUser=jinglejill@hotmail.com&type=3&branchID=0&
+2018-08-09T15:53:31+07:00 query: selected row count = 0, sql: select * from DEV_JUMMUM_OM.branch where branchID = '0', modified user: jinglejill@hotmail.com
+2018-08-09T15:53:31+07:00 query: selected row count = 0, sql: select * from DEV_JUMMUM_OM.branch where branchID = '', modified user: jinglejill@hotmail.com
+2018-08-09T15:53:31+07:00 query: selected row count = 0, sql: select * from DEV_JUMMUM_OM.branch where branchID = '', modified user: jinglejill@hotmail.com
+2018-08-09T15:53:31+07:00 file: downloadImage.php, user: jinglejill@hotmail.com
+2018-08-09T15:53:31+07:00 Param=Value: imageFileName=promoBanner.jpg&modifiedDeviceToken=309bf46219e009b169e32314df170c49a4d5af3d36284bf86454e3e338ce52f2&modifiedUser=jinglejill@hotmail.com&type=3&branchID=0&
+2018-08-09T15:53:31+07:00 file: downloadImage.php, user: jinglejill@hotmail.com
+2018-08-09T15:53:31+07:00 Param=Value: imageFileName=promoBanner.jpg&modifiedDeviceToken=309bf46219e009b169e32314df170c49a4d5af3d36284bf86454e3e338ce52f2&modifiedUser=jinglejill@hotmail.com&type=3&branchID=0&
+2018-08-09T15:53:31+07:00 query: selected row count = 0, sql: select * from DEV_JUMMUM_OM.branch where branchID = '0', modified user: jinglejill@hotmail.com
+2018-08-09T15:53:31+07:00 query: selected row count = 0, sql: select * from DEV_JUMMUM_OM.branch where branchID = '0', modified user: jinglejill@hotmail.com
+2018-08-09T15:53:31+07:00 query: selected row count = 0, sql: select * from DEV_JUMMUM_OM.branch where branchID = '0', modified user: jinglejill@hotmail.com
+2018-08-09T15:53:31+07:00 query: selected row count = 0, sql: select * from DEV_JUMMUM_OM.branch where branchID = '', modified user: jinglejill@hotmail.com
+2018-08-09T15:53:31+07:00 query: selected row count = 0, sql: select * from DEV_JUMMUM_OM.branch where branchID = '', modified user: jinglejill@hotmail.com
+2018-08-09T15:53:31+07:00 query: selected row count = 0, sql: select * from DEV_JUMMUM_OM.branch where branchID = '', modified user: jinglejill@hotmail.com
+2018-08-09T15:53:31+07:00 file: JMMHotDealWithBranchIDGetList.php, user: jinglejill@hotmail.com
+2018-08-09T15:53:31+07:00 Param=Value: memberID=1&branchID=1&promotionListCount=10&modifiedDeviceToken=309bf46219e009b169e32314df170c49a4d5af3d36284bf86454e3e338ce52f2&modifiedUser=jinglejill@hotmail.com&
+2018-08-09T15:53:31+07:00 executeMultiQuery: select * from (select @rownum := @rownum + 1 AS rank, c.* from (select sum(a.Frequency) Frequency,sum(b.Sales) Sales, promotion.PromotionID, promotion.MainBranchID,promotion.Type,promotion.Header,promotion.SubTitle,promotion.TermsConditions,promotion.ImageUrl,promotion.OrderNo from promotion left join promotionbranch ON promotion.PromotionID = promotionbranch.PromotionID left join (select branchID,count(*) as Frequency from receipt where memberID = '1' GROUP BY branchID) a on promotionbranch.BranchID = a.branchID left join (select branchID,SUM(CashAmount+CreditCardAmount+TransferAmount) Sales from receipt where memberID = '1' GROUP BY branchID) b on promotionbranch.BranchID = b.branchID where promotion.status = 1 and date_format(now(),'%Y-%m-%d') between date_format(promotion.startDate,'%Y-%m-%d') and date_format(promotion.endDate,'%Y-%m-%d') and promotionbranch.BranchID in (select distinct branchID from receipt where memberID = '1') GROUP BY promotion.PromotionID, promotion.MainBranchID,promotion.Type,promotion.Header,promotion.SubTitle,promotion.TermsConditions,promotion.ImageUrl,promotion.OrderNo order by promotion.Type,sum(a.Frequency)desc,sum(b.Sales)desc,promotion.OrderNo) c,(SELECT @rownum := 0) r)d where rank between '1' and '10' and promotionID in (select promotionID from promotionBranch where branchID = '1');
+2018-08-09T15:53:31+07:00 file: downloadImage.php, user: jinglejill@hotmail.com
+2018-08-09T15:53:31+07:00 Param=Value: imageFileName=promoBanner.jpg&modifiedDeviceToken=309bf46219e009b169e32314df170c49a4d5af3d36284bf86454e3e338ce52f2&modifiedUser=jinglejill@hotmail.com&type=3&branchID=0&
+2018-08-09T15:53:31+07:00 query: selected row count = 0, sql: select * from DEV_JUMMUM_OM.branch where branchID = '0', modified user: jinglejill@hotmail.com
+2018-08-09T15:53:31+07:00 query: selected row count = 0, sql: select * from DEV_JUMMUM_OM.branch where branchID = '', modified user: jinglejill@hotmail.com
+2018-08-09T15:53:31+07:00 file: downloadImage.php, user: jinglejill@hotmail.com
+2018-08-09T15:53:31+07:00 Param=Value: imageFileName=promoBanner.jpg&modifiedDeviceToken=309bf46219e009b169e32314df170c49a4d5af3d36284bf86454e3e338ce52f2&modifiedUser=jinglejill@hotmail.com&type=3&branchID=0&
+2018-08-09T15:53:31+07:00 query: selected row count = 0, sql: select * from DEV_JUMMUM_OM.branch where branchID = '0', modified user: jinglejill@hotmail.com
+2018-08-09T15:53:31+07:00 query: selected row count = 0, sql: select * from DEV_JUMMUM_OM.branch where branchID = '', modified user: jinglejill@hotmail.com
+2018-08-09T15:56:44+07:00 apple push notification: success, device token : 309bf46219e009b169e32314df170c49a4d5af3d36284bf86454e3e338ce52f2, payload: {"alert":"test","sound":"default","category":"Print"}
+2018-08-09T15:57:54+07:00 file: JMMMasterGet.php, user: (null)
+2018-08-09T15:57:54+07:00 Param=Value: modifiedDeviceToken=(null)&modifiedUser=(null)&
+2018-08-09T15:57:54+07:00 executeMultiQuery: select * from DEV_JUMMUM.setting where type != 4;
+2018-08-09T15:58:50+07:00 file: JMMLogInUserAccountInsert.php, user: jinglejill@hotmail.com
+2018-08-09T15:58:50+07:00 Param=Value: username=10157281260938273&logInID=1&status=1&modifiedDate=2018-08-09 15:58:55  0000&modifiedUser=jinglejill@hotmail.com&deviceToken=be3cb5648ceab83c718df034364e03d91d5e81cb6c606ba3e859055700fe7147&userAccountID=1&lineID=&birthDate=&password=&fullName=Thidaporn Kijkamjai&nickName=&roleID=0&phoneNo=&email=jinglejill@hotmail.com&modifiedDeviceToken=be3cb5648ceab83c718df034364e03d91d5e81cb6c606ba3e859055700fe7147&actionScreen=insert login and useraccount if not exist in logIn screen&
+2018-08-09T15:58:50+07:00 set auto commit to off
+2018-08-09T15:58:50+07:00 query success, sql: INSERT INTO LogIn(Username, Status, DeviceToken, ModifiedUser, ModifiedDate) VALUES ('10157281260938273', '1', 'be3cb5648ceab83c718df034364e03d91d5e81cb6c606ba3e859055700fe7147', 'jinglejill@hotmail.com', '2018-08-09 15:58:55  0000'), modified user: jinglejill@hotmail.com
+2018-08-09T15:58:50+07:00 query success, sql: select * from useraccount where username = '10157281260938273', modified user: jinglejill@hotmail.com
+2018-08-09T15:58:50+07:00 query success, sql: select *, 1 IdInserted from UserAccount where username = '10157281260938273';, modified user: jinglejill@hotmail.com
+2018-08-09T15:58:50+07:00 query success, sql: select * from receipt where memberID = '1' order by receipt.ReceiptDate DESC limit 10;, modified user: jinglejill@hotmail.com
+2018-08-09T15:58:50+07:00 query success, sql: select distinct BranchID from receipt where memberID = '1' order by receipt.ReceiptDate DESC limit 10;, modified user: jinglejill@hotmail.com
+2018-08-09T15:58:50+07:00 query success, sql: select * from DEV_JUMMUM_OM.branch where branchID in (1);, modified user: jinglejill@hotmail.com
+2018-08-09T15:58:50+07:00 query success, sql: select * from OrderTaking where receiptID in (1);, modified user: jinglejill@hotmail.com
+2018-08-09T15:58:50+07:00 query success, sql: select * from DEV_JUMMUM_OM.branch where branchID = '1', modified user: jinglejill@hotmail.com
+2018-08-09T15:58:50+07:00 query: selected row count = 0, sql: select OrderNote.*,OrderTaking.BranchID from OrderNote left join OrderTaking on OrderNote.orderTakingID = OrderTaking.orderTakingID where OrderNote.orderTakingID in (select orderTakingID from OrderTaking where receiptID in (1));, modified user: jinglejill@hotmail.com
+2018-08-09T15:58:50+07:00 multiQueryArray: select *, 1 IdInserted from UserAccount where username = '10157281260938273';select * from receipt where memberID = '1' order by receipt.ReceiptDate DESC limit 10;select * from DEV_JUMMUM_OM.branch where branchID in (1);select * from OrderTaking where receiptID in (1);select '1' BranchID, Menu.* from DEV_JUMMUM_OM_MAMARIN7.Menu left join DEV_JUMMUM_OM_MAMARIN7.menutype ON menu.MenuTypeID = menutype.MenuTypeID where menuID = '99';select '1' BranchID, MenuType.* from DEV_JUMMUM_OM_MAMARIN7.Menu left join DEV_JUMMUM_OM_MAMARIN7.menutype ON menu.MenuTypeID = menutype.MenuTypeID where menuID = '99';select OrderNote.*,OrderTaking.BranchID from OrderNote left join OrderTaking on OrderNote.orderTakingID = OrderTaking.orderTakingID where OrderNote.orderTakingID in (select orderTakingID from OrderTaking where receiptID in (1));
+2018-08-09T15:58:50+07:00 query commit, file: JMMLogInUserAccountInsert.php, user: jinglejill@hotmail.com
+2018-08-09T15:58:50+07:00 file: HtmlTermsOfService.php, user: 

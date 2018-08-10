@@ -17,6 +17,244 @@
 		EF33D6BD211D41F200560C69 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EF33D6BC211D41F200560C69 /* main.m */; };
 		EF33D6C7211D41F200560C69 /* DevJummumUrlTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EF33D6C6211D41F200560C69 /* DevJummumUrlTests.m */; };
 		EF33D6D2211D41F200560C69 /* DevJummumUrlUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = EF33D6D1211D41F200560C69 /* DevJummumUrlUITests.m */; };
+		EF33D7F9211D422A00560C69 /* JMMUserAccountUpdate.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D6E0211D422A00560C69 /* JMMUserAccountUpdate.php */; };
+		EF33D7FA211D422A00560C69 /* JMMBranchSearchGetList.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D6E1211D422A00560C69 /* JMMBranchSearchGetList.php */; };
+		EF33D7FB211D422A00560C69 /* JMMReceiptDisputeRatingAllAfterReceiptGet.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D6E2211D422A00560C69 /* JMMReceiptDisputeRatingAllAfterReceiptGet.php */; };
+		EF33D7FC211D422A00560C69 /* ResetPasswordTimeOut.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D6E3211D422A00560C69 /* ResetPasswordTimeOut.php */; };
+		EF33D7FD211D422A00560C69 /* JMMWriteLog.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D6E4211D422A00560C69 /* JMMWriteLog.php */; };
+		EF33D7FE211D422A00560C69 /* JMMRewardPointSpentExpiredGetList.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D6E5211D422A00560C69 /* JMMRewardPointSpentExpiredGetList.php */; };
+		EF33D7FF211D422A00560C69 /* JMMMenuNoteGetList.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D6E6211D422A00560C69 /* JMMMenuNoteGetList.php */; };
+		EF33D800211D422A00560C69 /* JMMReceiptGet.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D6E7211D422A00560C69 /* JMMReceiptGet.php */; };
+		EF33D801211D422A00560C69 /* JMMUserAccountInsert.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D6E8211D422A00560C69 /* JMMUserAccountInsert.php */; };
+		EF33D802211D422A00560C69 /* JMMHotDealWithBranchIDGetList.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D6E9211D422A00560C69 /* JMMHotDealWithBranchIDGetList.php */; };
+		EF33D803211D422A00560C69 /* HtmlPrivacyPolicy.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D6EA211D422A00560C69 /* HtmlPrivacyPolicy.php */; };
+		EF33D804211D422A00560C69 /* HtmlContactUs.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D6EB211D422A00560C69 /* HtmlContactUs.php */; };
+		EF33D805211D422A00560C69 /* JMMBranchGetList.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D6EC211D422A00560C69 /* JMMBranchGetList.php */; };
+		EF33D806211D422A00560C69 /* JMMLogOutInsert.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D6ED211D422A00560C69 /* JMMLogOutInsert.php */; };
+		EF33D807211D422A00560C69 /* JMMOpeningTimeGet.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D6EE211D422A00560C69 /* JMMOpeningTimeGet.php */; };
+		EF33D808211D422A00560C69 /* JMMReceiptSummaryGetList.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D6EF211D422A00560C69 /* JMMReceiptSummaryGetList.php */; };
+		EF33D809211D422A00560C69 /* JMMRewardPointSpentGetList.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D6F0211D422A00560C69 /* JMMRewardPointSpentGetList.php */; };
+		EF33D80A211D422A00560C69 /* JMMRewardPointInsert.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D6F1211D422A00560C69 /* JMMRewardPointInsert.php */; };
+		EF33D80B211D422A00560C69 /* JMMLogInUserAccountInsert.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D6F2211D422A00560C69 /* JMMLogInUserAccountInsert.php */; };
+		EF33D80C211D422A00560C69 /* ck.pem in Resources */ = {isa = PBXBuildFile; fileRef = EF33D6F3211D422A00560C69 /* ck.pem */; };
+		EF33D80D211D422A00560C69 /* JMMRewardPointSpentExpiredMoreGetList.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D6F4211D422A00560C69 /* JMMRewardPointSpentExpiredMoreGetList.php */; };
+		EF33D80E211D422A00560C69 /* urlinsertlistprefix.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D6F5211D422A00560C69 /* urlinsertlistprefix.php */; };
+		EF33D80F211D422A00560C69 /* phpunit.xml in Resources */ = {isa = PBXBuildFile; fileRef = EF33D6F7211D422A00560C69 /* phpunit.xml */; };
+		EF33D810211D422A00560C69 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = EF33D6F8211D422A00560C69 /* LICENSE */; };
+		EF33D811211D422A00560C69 /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = EF33D6F9211D422A00560C69 /* CHANGELOG.md */; };
+		EF33D812211D422A00560C69 /* TestConfig.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D6FC211D422A00560C69 /* TestConfig.php */; };
+		EF33D813211D422A00560C69 /* RefundTest.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D6FD211D422A00560C69 /* RefundTest.php */; };
+		EF33D814211D422A00560C69 /* LinkTest.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D6FE211D422A00560C69 /* LinkTest.php */; };
+		EF33D815211D422A00560C69 /* OmiseObjectTest.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D701211D422A00560C69 /* OmiseObjectTest.php */; };
+		EF33D816211D422A00560C69 /* ForexTest.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D702211D422A00560C69 /* ForexTest.php */; };
+		EF33D817211D422A00560C69 /* RecipientTest.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D703211D422A00560C69 /* RecipientTest.php */; };
+		EF33D818211D422A00560C69 /* SchedulerTest.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D704211D422A00560C69 /* SchedulerTest.php */; };
+		EF33D819211D422A00560C69 /* ScheduleTest.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D705211D422A00560C69 /* ScheduleTest.php */; };
+		EF33D81A211D422A00560C69 /* TransferTest.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D706211D422A00560C69 /* TransferTest.php */; };
+		EF33D81B211D422A00560C69 /* EventTest.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D707211D422A00560C69 /* EventTest.php */; };
+		EF33D81C211D422A00560C69 /* OccurrenceTest.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D708211D422A00560C69 /* OccurrenceTest.php */; };
+		EF33D81D211D422A00560C69 /* TransactionTest.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D709211D422A00560C69 /* TransactionTest.php */; };
+		EF33D81E211D422A00560C69 /* SourceTest.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D70A211D422A00560C69 /* SourceTest.php */; };
+		EF33D81F211D422A00560C69 /* CardTest.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D70B211D422A00560C69 /* CardTest.php */; };
+		EF33D820211D422A00560C69 /* CustomerTest.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D70C211D422A00560C69 /* CustomerTest.php */; };
+		EF33D821211D422A00560C69 /* SearchTest.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D70D211D422A00560C69 /* SearchTest.php */; };
+		EF33D822211D422A00560C69 /* ChargeTest.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D70E211D422A00560C69 /* ChargeTest.php */; };
+		EF33D823211D422A00560C69 /* DisputeTest.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D70F211D422A00560C69 /* DisputeTest.php */; };
+		EF33D824211D422A00560C69 /* TokenTest.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D710211D422A00560C69 /* TokenTest.php */; };
+		EF33D825211D422A00560C69 /* BalanceTest.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D711211D422A00560C69 /* BalanceTest.php */; };
+		EF33D826211D422A00560C69 /* OmiseExceptionTest.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D713211D422A00560C69 /* OmiseExceptionTest.php */; };
+		EF33D827211D422A00560C69 /* ClassExistsTest.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D714211D422A00560C69 /* ClassExistsTest.php */; };
+		EF33D828211D422A00560C69 /* AccountTest.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D715211D422A00560C69 /* AccountTest.php */; };
+		EF33D829211D422A00560C69 /* tokens-post.json in Resources */ = {isa = PBXBuildFile; fileRef = EF33D718211D422A00560C69 /* tokens-post.json */; };
+		EF33D82A211D422A00560C69 /* tokn_test_4zmrjhuk2rndz24a6x0-get.json in Resources */ = {isa = PBXBuildFile; fileRef = EF33D71A211D422A00560C69 /* tokn_test_4zmrjhuk2rndz24a6x0-get.json */; };
+		EF33D82B211D422A00560C69 /* cards-bGltaXQ9MQ-get.json in Resources */ = {isa = PBXBuildFile; fileRef = EF33D71E211D422A00560C69 /* cards-bGltaXQ9MQ-get.json */; };
+		EF33D82C211D422A00560C69 /* schedules-get.json in Resources */ = {isa = PBXBuildFile; fileRef = EF33D71F211D422A00560C69 /* schedules-get.json */; };
+		EF33D82D211D422A00560C69 /* card_test_4zmrjfzf0spz3mh63cs-get.json in Resources */ = {isa = PBXBuildFile; fileRef = EF33D722211D422A00560C69 /* card_test_4zmrjfzf0spz3mh63cs-get.json */; };
+		EF33D82E211D422A00560C69 /* card_test_4zmrjfzf0spz3mh63cs-delete.json in Resources */ = {isa = PBXBuildFile; fileRef = EF33D723211D422A00560C69 /* card_test_4zmrjfzf0spz3mh63cs-delete.json */; };
+		EF33D82F211D422A00560C69 /* card_test_4zmrjfzf0spz3mh63cs-patch.json in Resources */ = {isa = PBXBuildFile; fileRef = EF33D724211D422A00560C69 /* card_test_4zmrjfzf0spz3mh63cs-patch.json */; };
+		EF33D830211D422A00560C69 /* cust_test_4zmrjg2hct06ybwobqc-get.json in Resources */ = {isa = PBXBuildFile; fileRef = EF33D725211D422A00560C69 /* cust_test_4zmrjg2hct06ybwobqc-get.json */; };
+		EF33D831211D422A00560C69 /* cust_test_5234fzk37pi2mz0cen3-get.json in Resources */ = {isa = PBXBuildFile; fileRef = EF33D726211D422A00560C69 /* cust_test_5234fzk37pi2mz0cen3-get.json */; };
+		EF33D832211D422A00560C69 /* cust_test_4zmrjg2hct06ybwobqc-delete.json in Resources */ = {isa = PBXBuildFile; fileRef = EF33D727211D422A00560C69 /* cust_test_4zmrjg2hct06ybwobqc-delete.json */; };
+		EF33D833211D422A00560C69 /* cust_test_4zmrjg2hct06ybwobqc-patch.json in Resources */ = {isa = PBXBuildFile; fileRef = EF33D728211D422A00560C69 /* cust_test_4zmrjg2hct06ybwobqc-patch.json */; };
+		EF33D834211D422A00560C69 /* recipients-post.json in Resources */ = {isa = PBXBuildFile; fileRef = EF33D729211D422A00560C69 /* recipients-post.json */; };
+		EF33D835211D422A00560C69 /* occu_test_58dt3strf4m1y7bqii8-get.json in Resources */ = {isa = PBXBuildFile; fileRef = EF33D72B211D422A00560C69 /* occu_test_58dt3strf4m1y7bqii8-get.json */; };
+		EF33D836211D422A00560C69 /* charges-post.json in Resources */ = {isa = PBXBuildFile; fileRef = EF33D72C211D422A00560C69 /* charges-post.json */; };
+		EF33D837211D422A00560C69 /* transfers-get.json in Resources */ = {isa = PBXBuildFile; fileRef = EF33D72D211D422A00560C69 /* transfers-get.json */; };
+		EF33D838211D422A00560C69 /* search-c2NvcGU9Y2hhcmdl-get.json in Resources */ = {isa = PBXBuildFile; fileRef = EF33D72E211D422A00560C69 /* search-c2NvcGU9Y2hhcmdl-get.json */; };
+		EF33D839211D422A00560C69 /* customers-post.json in Resources */ = {isa = PBXBuildFile; fileRef = EF33D72F211D422A00560C69 /* customers-post.json */; };
+		EF33D83A211D422A00560C69 /* recipients-get.json in Resources */ = {isa = PBXBuildFile; fileRef = EF33D730211D422A00560C69 /* recipients-get.json */; };
+		EF33D83B211D422A00560C69 /* transactions-get.json in Resources */ = {isa = PBXBuildFile; fileRef = EF33D731211D422A00560C69 /* transactions-get.json */; };
+		EF33D83C211D422A00560C69 /* search-c2NvcGU9Y2hhcmdlJnF1ZXJ5PWRlbW8-get.json in Resources */ = {isa = PBXBuildFile; fileRef = EF33D732211D422A00560C69 /* search-c2NvcGU9Y2hhcmdlJnF1ZXJ5PWRlbW8-get.json */; };
+		EF33D83D211D422A00560C69 /* events-get.json in Resources */ = {isa = PBXBuildFile; fileRef = EF33D733211D422A00560C69 /* events-get.json */; };
+		EF33D83E211D422A00560C69 /* account-get.json in Resources */ = {isa = PBXBuildFile; fileRef = EF33D734211D422A00560C69 /* account-get.json */; };
+		EF33D83F211D422A00560C69 /* search-c2NvcGU9Y2hhcmdlJnF1ZXJ5PWRlbW8mZmlsdGVycyU1QmNhcHR1cmVkJTVEPXRydWUmcGFnZT0yJm9yZGVyPXJldmVyc2VfY2hyb25vbG9naWNhbA-get.json in Resources */ = {isa = PBXBuildFile; fileRef = EF33D735211D422A00560C69 /* search-c2NvcGU9Y2hhcmdlJnF1ZXJ5PWRlbW8mZmlsdGVycyU1QmNhcHR1cmVkJTVEPXRydWUmcGFnZT0yJm9yZGVyPXJldmVyc2VfY2hyb25vbG9naWNhbA-get.json */; };
+		EF33D840211D422A00560C69 /* schedules-get.json in Resources */ = {isa = PBXBuildFile; fileRef = EF33D737211D422A00560C69 /* schedules-get.json */; };
+		EF33D841211D422A00560C69 /* refunds-post.json in Resources */ = {isa = PBXBuildFile; fileRef = EF33D739211D422A00560C69 /* refunds-post.json */; };
+		EF33D842211D422A00560C69 /* refunds-get.json in Resources */ = {isa = PBXBuildFile; fileRef = EF33D73A211D422A00560C69 /* refunds-get.json */; };
+		EF33D843211D422A00560C69 /* rfnd_test_4zmrjhlbqy587sw6fwt-get.json in Resources */ = {isa = PBXBuildFile; fileRef = EF33D73C211D422A00560C69 /* rfnd_test_4zmrjhlbqy587sw6fwt-get.json */; };
+		EF33D844211D422A00560C69 /* capture-post.json in Resources */ = {isa = PBXBuildFile; fileRef = EF33D73D211D422A00560C69 /* capture-post.json */; };
+		EF33D845211D422A00560C69 /* chrg_test_4zmrjgxdh4ycj2qncoj-get.json in Resources */ = {isa = PBXBuildFile; fileRef = EF33D73E211D422A00560C69 /* chrg_test_4zmrjgxdh4ycj2qncoj-get.json */; };
+		EF33D846211D422A00560C69 /* chrg_test_4zmrjgxdh4ycj2qncoj-patch.json in Resources */ = {isa = PBXBuildFile; fileRef = EF33D73F211D422A00560C69 /* chrg_test_4zmrjgxdh4ycj2qncoj-patch.json */; };
+		EF33D847211D422B00560C69 /* chrg_test_53z5zoeovi39e1erbj0-get.json in Resources */ = {isa = PBXBuildFile; fileRef = EF33D740211D422A00560C69 /* chrg_test_53z5zoeovi39e1erbj0-get.json */; };
+		EF33D848211D422B00560C69 /* reverse-post.json in Resources */ = {isa = PBXBuildFile; fileRef = EF33D742211D422A00560C69 /* reverse-post.json */; };
+		EF33D849211D422B00560C69 /* search-c2NvcGU9cmVmdW5kJnF1ZXJ5PSZmaWx0ZXJzJTVCdm9pZGVkJTVEPXRydWU-get.json in Resources */ = {isa = PBXBuildFile; fileRef = EF33D743211D422A00560C69 /* search-c2NvcGU9cmVmdW5kJnF1ZXJ5PSZmaWx0ZXJzJTVCdm9pZGVkJTVEPXRydWU-get.json */; };
+		EF33D84A211D422B00560C69 /* open-get.json in Resources */ = {isa = PBXBuildFile; fileRef = EF33D745211D422A00560C69 /* open-get.json */; };
+		EF33D84B211D422B00560C69 /* dspt_test_4zgf15h89w8t775kcm8-patch.json in Resources */ = {isa = PBXBuildFile; fileRef = EF33D746211D422A00560C69 /* dspt_test_4zgf15h89w8t775kcm8-patch.json */; };
+		EF33D84C211D422B00560C69 /* pending-get.json in Resources */ = {isa = PBXBuildFile; fileRef = EF33D747211D422A00560C69 /* pending-get.json */; };
+		EF33D84D211D422B00560C69 /* closed-get.json in Resources */ = {isa = PBXBuildFile; fileRef = EF33D748211D422A00560C69 /* closed-get.json */; };
+		EF33D84E211D422B00560C69 /* dspt_test_4zgf15h89w8t775kcm8-get.json in Resources */ = {isa = PBXBuildFile; fileRef = EF33D749211D422A00560C69 /* dspt_test_4zgf15h89w8t775kcm8-get.json */; };
+		EF33D84F211D422B00560C69 /* usd-get.json in Resources */ = {isa = PBXBuildFile; fileRef = EF33D74B211D422A00560C69 /* usd-get.json */; };
+		EF33D850211D422B00560C69 /* charges-get.json in Resources */ = {isa = PBXBuildFile; fileRef = EF33D74C211D422A00560C69 /* charges-get.json */; };
+		EF33D851211D422B00560C69 /* schd_test_585t7iomh2dte3ejxh5-delete.json in Resources */ = {isa = PBXBuildFile; fileRef = EF33D74E211D422A00560C69 /* schd_test_585t7iomh2dte3ejxh5-delete.json */; };
+		EF33D852211D422B00560C69 /* schd_test_585t7iomh2dte3ejxh5-get.json in Resources */ = {isa = PBXBuildFile; fileRef = EF33D74F211D422A00560C69 /* schd_test_585t7iomh2dte3ejxh5-get.json */; };
+		EF33D853211D422B00560C69 /* occurrences-get.json in Resources */ = {isa = PBXBuildFile; fileRef = EF33D751211D422A00560C69 /* occurrences-get.json */; };
+		EF33D854211D422B00560C69 /* trsf_test_4zmrjicrvw7j6uhv1l4-get.json in Resources */ = {isa = PBXBuildFile; fileRef = EF33D753211D422A00560C69 /* trsf_test_4zmrjicrvw7j6uhv1l4-get.json */; };
+		EF33D855211D422B00560C69 /* schedules-get.json in Resources */ = {isa = PBXBuildFile; fileRef = EF33D754211D422A00560C69 /* schedules-get.json */; };
+		EF33D856211D422B00560C69 /* trsf_test_4zmrjicrvw7j6uhv1l4-patch.json in Resources */ = {isa = PBXBuildFile; fileRef = EF33D755211D422A00560C69 /* trsf_test_4zmrjicrvw7j6uhv1l4-patch.json */; };
+		EF33D857211D422B00560C69 /* trsf_test_4zmrjicrvw7j6uhv1l4-delete.json in Resources */ = {isa = PBXBuildFile; fileRef = EF33D756211D422A00560C69 /* trsf_test_4zmrjicrvw7j6uhv1l4-delete.json */; };
+		EF33D858211D422B00560C69 /* recp_test_508a9dytz793gxv9m77-get.json in Resources */ = {isa = PBXBuildFile; fileRef = EF33D758211D422A00560C69 /* recp_test_508a9dytz793gxv9m77-get.json */; };
+		EF33D859211D422B00560C69 /* recp_test_508a9dytz793gxv9m77-patch.json in Resources */ = {isa = PBXBuildFile; fileRef = EF33D759211D422A00560C69 /* recp_test_508a9dytz793gxv9m77-patch.json */; };
+		EF33D85A211D422B00560C69 /* schedules-get.json in Resources */ = {isa = PBXBuildFile; fileRef = EF33D75B211D422A00560C69 /* schedules-get.json */; };
+		EF33D85B211D422B00560C69 /* recp_test_508a9dytz793gxv9m77-delete.json in Resources */ = {isa = PBXBuildFile; fileRef = EF33D75C211D422A00560C69 /* recp_test_508a9dytz793gxv9m77-delete.json */; };
+		EF33D85C211D422B00560C69 /* schedules-get.json in Resources */ = {isa = PBXBuildFile; fileRef = EF33D75D211D422A00560C69 /* schedules-get.json */; };
+		EF33D85D211D422B00560C69 /* balance-get.json in Resources */ = {isa = PBXBuildFile; fileRef = EF33D75E211D422A00560C69 /* balance-get.json */; };
+		EF33D85E211D422B00560C69 /* search-c2NvcGU9Y2hhcmdlJnF1ZXJ5PWRlbW8mZmlsdGVycyU1QmNhcHR1cmVkJTVEPXRydWU-get.json in Resources */ = {isa = PBXBuildFile; fileRef = EF33D75F211D422A00560C69 /* search-c2NvcGU9Y2hhcmdlJnF1ZXJ5PWRlbW8mZmlsdGVycyU1QmNhcHR1cmVkJTVEPXRydWU-get.json */; };
+		EF33D85F211D422B00560C69 /* search-c2NvcGU9cmVjaXBpZW50JnF1ZXJ5PWRlbW8mZmlsdGVycyU1QmFjdGl2ZSU1RD10cnVl-get.json in Resources */ = {isa = PBXBuildFile; fileRef = EF33D760211D422A00560C69 /* search-c2NvcGU9cmVjaXBpZW50JnF1ZXJ5PWRlbW8mZmlsdGVycyU1QmFjdGl2ZSU1RD10cnVl-get.json */; };
+		EF33D860211D422B00560C69 /* search-c2NvcGU9Y3VzdG9tZXImcXVlcnk9ZG9lJmZpbHRlcnMlNUJjcmVhdGVkJTVEPTIwMTctMDEtMDEuLjIwMTctMDgtMzA-get.json in Resources */ = {isa = PBXBuildFile; fileRef = EF33D761211D422A00560C69 /* search-c2NvcGU9Y3VzdG9tZXImcXVlcnk9ZG9lJmZpbHRlcnMlNUJjcmVhdGVkJTVEPTIwMTctMDEtMDEuLjIwMTctMDgtMzA-get.json */; };
+		EF33D861211D422B00560C69 /* trxn_test_4zmrjhlflnz6id6q0bo-get.json in Resources */ = {isa = PBXBuildFile; fileRef = EF33D763211D422A00560C69 /* trxn_test_4zmrjhlflnz6id6q0bo-get.json */; };
+		EF33D862211D422B00560C69 /* search-c2NvcGU9ZGlzcHV0ZSZxdWVyeT1kZW1vJmZpbHRlcnMlNUJjYXJkX2xhc3RfZGlnaXRzJTVEPTU0NTQ-get.json in Resources */ = {isa = PBXBuildFile; fileRef = EF33D764211D422A00560C69 /* search-c2NvcGU9ZGlzcHV0ZSZxdWVyeT1kZW1vJmZpbHRlcnMlNUJjYXJkX2xhc3RfZGlnaXRzJTVEPTU0NTQ-get.json */; };
+		EF33D863211D422B00560C69 /* sources-post.json in Resources */ = {isa = PBXBuildFile; fileRef = EF33D765211D422A00560C69 /* sources-post.json */; };
+		EF33D864211D422B00560C69 /* link_test_56bsanpa365jnlbc7rt-get.json in Resources */ = {isa = PBXBuildFile; fileRef = EF33D767211D422A00560C69 /* link_test_56bsanpa365jnlbc7rt-get.json */; };
+		EF33D865211D422B00560C69 /* customers-get.json in Resources */ = {isa = PBXBuildFile; fileRef = EF33D768211D422A00560C69 /* customers-get.json */; };
+		EF33D866211D422B00560C69 /* search-c2NvcGU9Y2hhcmdlJnF1ZXJ5PW9yZGVyJmZpbHRlcnMlNUJjYXB0dXJlZCU1RD10cnVlJnBhZ2U9MiZvcmRlcj1yZXZlcnNlX2Nocm9ub2xvZ2ljYWw-get.json in Resources */ = {isa = PBXBuildFile; fileRef = EF33D769211D422A00560C69 /* search-c2NvcGU9Y2hhcmdlJnF1ZXJ5PW9yZGVyJmZpbHRlcnMlNUJjYXB0dXJlZCU1RD10cnVlJnBhZ2U9MiZvcmRlcj1yZXZlcnNlX2Nocm9ub2xvZ2ljYWw-get.json */; };
+		EF33D867211D422B00560C69 /* search-c2NvcGU9Y2hhcmdlJnF1ZXJ5PWRlbW8mZmlsdGVycyU1QmNhcHR1cmVkJTVEPXRydWUmcGFnZT0xJm9yZGVyPXJldmVyc2VfY2hyb25vbG9naWNhbA-get.json in Resources */ = {isa = PBXBuildFile; fileRef = EF33D76A211D422A00560C69 /* search-c2NvcGU9Y2hhcmdlJnF1ZXJ5PWRlbW8mZmlsdGVycyU1QmNhcHR1cmVkJTVEPXRydWUmcGFnZT0xJm9yZGVyPXJldmVyc2VfY2hyb25vbG9naWNhbA-get.json */; };
+		EF33D868211D422B00560C69 /* disputes-get.json in Resources */ = {isa = PBXBuildFile; fileRef = EF33D76B211D422A00560C69 /* disputes-get.json */; };
+		EF33D869211D422B00560C69 /* evnt_test_531zv1nto0a5pimuiza-get.json in Resources */ = {isa = PBXBuildFile; fileRef = EF33D76D211D422A00560C69 /* evnt_test_531zv1nto0a5pimuiza-get.json */; };
+		EF33D86A211D422B00560C69 /* transfers-post.json in Resources */ = {isa = PBXBuildFile; fileRef = EF33D76E211D422A00560C69 /* transfers-post.json */; };
+		EF33D86B211D422B00560C69 /* search-c2NvcGU9Y2hhcmdlJnF1ZXJ5PW9yZGVyJmZpbHRlcnMlNUJjYXB0dXJlZCU1RD10cnVlJnBhZ2U9MSZvcmRlcj1yZXZlcnNlX2Nocm9ub2xvZ2ljYWw-get.json in Resources */ = {isa = PBXBuildFile; fileRef = EF33D76F211D422A00560C69 /* search-c2NvcGU9Y2hhcmdlJnF1ZXJ5PW9yZGVyJmZpbHRlcnMlNUJjYXB0dXJlZCU1RD10cnVlJnBhZ2U9MSZvcmRlcj1yZXZlcnNlX2Nocm9ub2xvZ2ljYWw-get.json */; };
+		EF33D86C211D422B00560C69 /* schedules-post.json in Resources */ = {isa = PBXBuildFile; fileRef = EF33D770211D422A00560C69 /* schedules-post.json */; };
+		EF33D86D211D422B00560C69 /* links-post.json in Resources */ = {isa = PBXBuildFile; fileRef = EF33D771211D422A00560C69 /* links-post.json */; };
+		EF33D86E211D422B00560C69 /* search-c2NvcGU9dHJhbnNmZXImcXVlcnk9ZGVtbyU0MG9taXNlLmNvJmZpbHRlcnMlNUJjdXJyZW5jeSU1RD10aGI-get.json in Resources */ = {isa = PBXBuildFile; fileRef = EF33D772211D422A00560C69 /* search-c2NvcGU9dHJhbnNmZXImcXVlcnk9ZGVtbyU0MG9taXNlLmNvJmZpbHRlcnMlNUJjdXJyZW5jeSU1RD10aGI-get.json */; };
+		EF33D86F211D422B00560C69 /* search-c2NvcGU9bGluayZxdWVyeT1kZW1vJmZpbHRlcnMlNUJ1c2VkJTVEPXRydWUmb3JkZXI9cmV2ZXJzZV9jaHJvbm9sb2dpY2Fs-get.json in Resources */ = {isa = PBXBuildFile; fileRef = EF33D773211D422A00560C69 /* search-c2NvcGU9bGluayZxdWVyeT1kZW1vJmZpbHRlcnMlNUJ1c2VkJTVEPXRydWUmb3JkZXI9cmV2ZXJzZV9jaHJvbm9sb2dpY2Fs-get.json */; };
+		EF33D870211D422B00560C69 /* search-c2NvcGU9Y2hhcmdlJnF1ZXJ5PWRlbW8mZmlsdGVycyU1QmNhcHR1cmVkJTVEPXRydWUmcGFnZT0y-get.json in Resources */ = {isa = PBXBuildFile; fileRef = EF33D774211D422A00560C69 /* search-c2NvcGU9Y2hhcmdlJnF1ZXJ5PWRlbW8mZmlsdGVycyU1QmNhcHR1cmVkJTVEPXRydWUmcGFnZT0y-get.json */; };
+		EF33D871211D422B00560C69 /* links-get.json in Resources */ = {isa = PBXBuildFile; fileRef = EF33D775211D422A00560C69 /* links-get.json */; };
+		EF33D872211D422B00560C69 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = EF33D776211D422A00560C69 /* README.md */; };
+		EF33D873211D422B00560C69 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = EF33D777211D422A00560C69 /* .gitignore */; };
+		EF33D874211D422B00560C69 /* circle.yml in Resources */ = {isa = PBXBuildFile; fileRef = EF33D778211D422A00560C69 /* circle.yml */; };
+		EF33D875211D422B00560C69 /* OmiseForex.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D77B211D422A00560C69 /* OmiseForex.php */; };
+		EF33D876211D422B00560C69 /* OmiseSource.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D77C211D422A00560C69 /* OmiseSource.php */; };
+		EF33D877211D422B00560C69 /* OmiseTest.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D77D211D422A00560C69 /* OmiseTest.php */; };
+		EF33D878211D422B00560C69 /* OmiseApiResource.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D77F211D422A00560C69 /* OmiseApiResource.php */; };
+		EF33D879211D422B00560C69 /* OmiseObject.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D781211D422A00560C69 /* OmiseObject.php */; };
+		EF33D87A211D422B00560C69 /* OmiseVaultResource.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D782211D422A00560C69 /* OmiseVaultResource.php */; };
+		EF33D87B211D422B00560C69 /* OmiseRefundList.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D783211D422A00560C69 /* OmiseRefundList.php */; };
+		EF33D87C211D422B00560C69 /* OmiseTransaction.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D784211D422A00560C69 /* OmiseTransaction.php */; };
+		EF33D87D211D422B00560C69 /* OmiseOccurrence.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D785211D422A00560C69 /* OmiseOccurrence.php */; };
+		EF33D87E211D422B00560C69 /* OmiseCustomer.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D786211D422A00560C69 /* OmiseCustomer.php */; };
+		EF33D87F211D422B00560C69 /* OmiseBalance.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D787211D422A00560C69 /* OmiseBalance.php */; };
+		EF33D880211D422B00560C69 /* OmiseScheduleList.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D788211D422A00560C69 /* OmiseScheduleList.php */; };
+		EF33D881211D422B00560C69 /* OmiseSchedule.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D789211D422A00560C69 /* OmiseSchedule.php */; };
+		EF33D882211D422B00560C69 /* OmiseRecipient.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D78A211D422A00560C69 /* OmiseRecipient.php */; };
+		EF33D883211D422B00560C69 /* OmiseToken.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D78B211D422A00560C69 /* OmiseToken.php */; };
+		EF33D884211D422B00560C69 /* OmiseOccurrenceList.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D78C211D422A00560C69 /* OmiseOccurrenceList.php */; };
+		EF33D885211D422B00560C69 /* OmiseCard.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D78D211D422A00560C69 /* OmiseCard.php */; };
+		EF33D886211D422B00560C69 /* OmiseSearch.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D78E211D422A00560C69 /* OmiseSearch.php */; };
+		EF33D887211D422B00560C69 /* OmiseAccount.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D78F211D422A00560C69 /* OmiseAccount.php */; };
+		EF33D888211D422B00560C69 /* OmiseCardList.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D790211D422A00560C69 /* OmiseCardList.php */; };
+		EF33D889211D422B00560C69 /* OmiseDispute.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D791211D422A00560C69 /* OmiseDispute.php */; };
+		EF33D88A211D422B00560C69 /* OmiseTransfer.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D792211D422A00560C69 /* OmiseTransfer.php */; };
+		EF33D88B211D422B00560C69 /* OmiseLink.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D793211D422A00560C69 /* OmiseLink.php */; };
+		EF33D88C211D422B00560C69 /* OmiseEvent.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D794211D422A00560C69 /* OmiseEvent.php */; };
+		EF33D88D211D422B00560C69 /* OmiseRefund.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D795211D422A00560C69 /* OmiseRefund.php */; };
+		EF33D88E211D422B00560C69 /* OmiseScheduler.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D796211D422A00560C69 /* OmiseScheduler.php */; };
+		EF33D88F211D422B00560C69 /* OmiseCharge.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D797211D422A00560C69 /* OmiseCharge.php */; };
+		EF33D890211D422B00560C69 /* OmiseExceptions.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D799211D422A00560C69 /* OmiseExceptions.php */; };
+		EF33D891211D422B00560C69 /* Omise.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D79A211D422A00560C69 /* Omise.php */; };
+		EF33D892211D422B00560C69 /* ca_certificates.pem in Resources */ = {isa = PBXBuildFile; fileRef = EF33D79C211D422A00560C69 /* ca_certificates.pem */; };
+		EF33D893211D422B00560C69 /* composer.json in Resources */ = {isa = PBXBuildFile; fileRef = EF33D79D211D422A00560C69 /* composer.json */; };
+		EF33D894211D422B00560C69 /* JMMRewardPointSpentUsedGetList.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D79E211D422A00560C69 /* JMMRewardPointSpentUsedGetList.php */; };
+		EF33D895211D422B00560C69 /* JMMHotDealGetList.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D79F211D422A00560C69 /* JMMHotDealGetList.php */; };
+		EF33D896211D422B00560C69 /* JMMDisputeCancelInsert.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D7A0211D422A00560C69 /* JMMDisputeCancelInsert.php */; };
+		EF33D897211D422B00560C69 /* aps_development.cer in Resources */ = {isa = PBXBuildFile; fileRef = EF33D7A2211D422A00560C69 /* aps_development.cer */; };
+		EF33D898211D422B00560C69 /* CertificateSigningRequest.certSigningRequest in Resources */ = {isa = PBXBuildFile; fileRef = EF33D7A3211D422A00560C69 /* CertificateSigningRequest.certSigningRequest */; };
+		EF33D899211D422B00560C69 /* ck.pem in Resources */ = {isa = PBXBuildFile; fileRef = EF33D7A4211D422A00560C69 /* ck.pem */; };
+		EF33D89A211D422B00560C69 /* Certificates.p12 in Resources */ = {isa = PBXBuildFile; fileRef = EF33D7A5211D422A00560C69 /* Certificates.p12 */; };
+		EF33D89B211D422B00560C69 /* PushCert.pem in Resources */ = {isa = PBXBuildFile; fileRef = EF33D7A6211D422A00560C69 /* PushCert.pem */; };
+		EF33D89C211D422B00560C69 /* PushKey.pem in Resources */ = {isa = PBXBuildFile; fileRef = EF33D7A7211D422A00560C69 /* PushKey.pem */; };
+		EF33D89D211D422B00560C69 /* testpush.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D7A8211D422A00560C69 /* testpush.php */; };
+		EF33D89E211D422B00560C69 /* JMMUserAccountValidate.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D7A9211D422A00560C69 /* JMMUserAccountValidate.php */; };
+		EF33D89F211D422B00560C69 /* JMMReceiptDisputeRatingGet.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D7AA211D422A00560C69 /* JMMReceiptDisputeRatingGet.php */; };
+		EF33D8A0211D422B00560C69 /* JMMMasterGet.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D7AB211D422A00560C69 /* JMMMasterGet.php */; };
+		EF33D8A1211D422B00560C69 /* JMMDisputeGetList.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D7AC211D422A00560C69 /* JMMDisputeGetList.php */; };
+		EF33D8A2211D422B00560C69 /* promoBanner.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EF33D7AF211D422A00560C69 /* promoBanner.jpg */; };
+		EF33D8A3211D422B00560C69 /* promoThumbNail.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EF33D7B0211D422A00560C69 /* promoThumbNail.jpg */; };
+		EF33D8A4211D422B00560C69 /* jummumLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = EF33D7B1211D422A00560C69 /* jummumLogo.png */; };
+		EF33D8A5211D422B00560C69 /* tubtim.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EF33D7B3211D422A00560C69 /* tubtim.jpg */; };
+		EF33D8A6211D422B00560C69 /* NoImage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EF33D7B4211D422A00560C69 /* NoImage.jpg */; };
+		EF33D8A7211D422B00560C69 /* downloadImage.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D7B5211D422A00560C69 /* downloadImage.php */; };
+		EF33D8A8211D422B00560C69 /* dbConnect.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D7B6211D422A00560C69 /* dbConnect.php */; };
+		EF33D8A9211D422B00560C69 /* JMMRewardPointSpentUsedMoreGetList.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D7B7211D422A00560C69 /* JMMRewardPointSpentUsedMoreGetList.php */; };
+		EF33D8AA211D422B00560C69 /* JMMLedStatusGet.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D7B8211D422A00560C69 /* JMMLedStatusGet.php */; };
+		EF33D8AB211D422B00560C69 /* JMMReceiptUpdate.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D7B9211D422A00560C69 /* JMMReceiptUpdate.php */; };
+		EF33D8AC211D422B00560C69 /* JMMRecommendShopInsert.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D7BA211D422A00560C69 /* JMMRecommendShopInsert.php */; };
+		EF33D8AD211D422B00560C69 /* JMMPromotionGetList.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D7BB211D422A00560C69 /* JMMPromotionGetList.php */; };
+		EF33D8AE211D422B00560C69 /* JMMDisputeInsert.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D7BC211D422A00560C69 /* JMMDisputeInsert.php */; };
+		EF33D8AF211D422B00560C69 /* JMMUserAccountForgotPasswordInsert.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D7BD211D422A00560C69 /* JMMUserAccountForgotPasswordInsert.php */; };
+		EF33D8B0211D422B00560C69 /* sushiShin.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EF33D7C1211D422A00560C69 /* sushiShin.jpg */; };
+		EF33D8B1211D422B00560C69 /* mamarin_logo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EF33D7C2211D422A00560C69 /* mamarin_logo.jpg */; };
+		EF33D8B2211D422B00560C69 /* jummumChef.png in Resources */ = {isa = PBXBuildFile; fileRef = EF33D7C3211D422A00560C69 /* jummumChef.png */; };
+		EF33D8B3211D422B00560C69 /* jummumChef_backPink.png in Resources */ = {isa = PBXBuildFile; fileRef = EF33D7C4211D422A00560C69 /* jummumChef_backPink.png */; };
+		EF33D8B4211D422B00560C69 /* jummumChef_backGreen.png in Resources */ = {isa = PBXBuildFile; fileRef = EF33D7C5211D422A00560C69 /* jummumChef_backGreen.png */; };
+		EF33D8B5211D422B00560C69 /* pizzaHam.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EF33D7C7211D422A00560C69 /* pizzaHam.jpg */; };
+		EF33D8B6211D422B00560C69 /* noodle dry original.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EF33D7C8211D422A00560C69 /* noodle dry original.jpg */; };
+		EF33D8B7211D422B00560C69 /* pizzaHamMushroom.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EF33D7C9211D422A00560C69 /* pizzaHamMushroom.jpg */; };
+		EF33D8B8211D422B00560C69 /* fried squid.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EF33D7CA211D422A00560C69 /* fried squid.jpg */; };
+		EF33D8B9211D422B00560C69 /* tubtim.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EF33D7CB211D422A00560C69 /* tubtim.jpg */; };
+		EF33D8BA211D422B00560C69 /* bakeFish.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EF33D7CC211D422A00560C69 /* bakeFish.jpg */; };
+		EF33D8BB211D422B00560C69 /* sticky rice dessert.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EF33D7CD211D422A00560C69 /* sticky rice dessert.jpg */; };
+		EF33D8BC211D422B00560C69 /* tofu.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EF33D7CE211D422A00560C69 /* tofu.jpg */; };
+		EF33D8BD211D422B00560C69 /* violet drink.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EF33D7CF211D422A00560C69 /* violet drink.jpg */; };
+		EF33D8BE211D422B00560C69 /* noodle red soup.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EF33D7D0211D422A00560C69 /* noodle red soup.jpg */; };
+		EF33D8BF211D422B00560C69 /* wonderful soup.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EF33D7D1211D422A00560C69 /* wonderful soup.jpg */; };
+		EF33D8C0211D422B00560C69 /* fried shrimp.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EF33D7D2211D422A00560C69 /* fried shrimp.jpg */; };
+		EF33D8C1211D422B00560C69 /* grillChicken.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EF33D7D3211D422A00560C69 /* grillChicken.jpg */; };
+		EF33D8C2211D422B00560C69 /* yellow drink.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EF33D7D4211D422A00560C69 /* yellow drink.jpg */; };
+		EF33D8C3211D422B00560C69 /* pancake.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EF33D7D5211D422A00560C69 /* pancake.jpg */; };
+		EF33D8C4211D422B00560C69 /* noodle soup original.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EF33D7D6211D422A00560C69 /* noodle soup original.jpg */; };
+		EF33D8C5211D422B00560C69 /* salmonSashimi.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EF33D7D7211D422A00560C69 /* salmonSashimi.jpg */; };
+		EF33D8C6211D422B00560C69 /* yentafo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EF33D7D8211D422A00560C69 /* yentafo.jpg */; };
+		EF33D8C7211D422B00560C69 /* ข้าวแห้งปลาอินทรีย์.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EF33D7D9211D422A00560C69 /* ข้าวแห้งปลาอินทรีย์.jpg */; };
+		EF33D8C8211D422B00560C69 /* noodle dry red.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EF33D7DA211D422A00560C69 /* noodle dry red.jpg */; };
+		EF33D8C9211D422B00560C69 /* clear soup.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EF33D7DB211D422A00560C69 /* clear soup.jpg */; };
+		EF33D8CA211D422B00560C69 /* red rice.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EF33D7DC211D422A00560C69 /* red rice.jpg */; };
+		EF33D8CB211D422B00560C69 /* shrimpChilli.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EF33D7DD211D422A00560C69 /* shrimpChilli.jpg */; };
+		EF33D8CC211D422B00560C69 /* NoImage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EF33D7DE211D422A00560C69 /* NoImage.jpg */; };
+		EF33D8CD211D422B00560C69 /* JMMRewardRedemptionWithBranchIDGetList.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D7DF211D422A00560C69 /* JMMRewardRedemptionWithBranchIDGetList.php */; };
+		EF33D8CE211D422B00560C69 /* JMMCommentInsert.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D7E0211D422A00560C69 /* JMMCommentInsert.php */; };
+		EF33D8CF211D422B00560C69 /* JMMLedStatusUpdate.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D7E1211D422A00560C69 /* JMMLedStatusUpdate.php */; };
+		EF33D8D0211D422B00560C69 /* ResetPassword.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D7E2211D422A00560C69 /* ResetPassword.php */; };
+		EF33D8D1211D422B00560C69 /* JMMBranchSearchMoreGetList.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D7E3211D422A00560C69 /* JMMBranchSearchMoreGetList.php */; };
+		EF33D8D2211D422B00560C69 /* JMMRewardPointGet.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D7E4211D422A00560C69 /* JMMRewardPointGet.php */; };
+		EF33D8D3211D422B00560C69 /* OmiseCheckOut.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D7E5211D422A00560C69 /* OmiseCheckOut.php */; };
+		EF33D8D4211D422B00560C69 /* urlinsertprefix.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D7E6211D422A00560C69 /* urlinsertprefix.php */; };
+		EF33D8D5211D422B00560C69 /* urlupdateprefix.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D7E7211D422A00560C69 /* urlupdateprefix.php */; };
+		EF33D8D6211D422B00560C69 /* JMMPromoCodeInsert.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D7E8211D422A00560C69 /* JMMPromoCodeInsert.php */; };
+		EF33D8D7211D422B00560C69 /* JMMBranchAndCustomerTableGet.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D7E9211D422A00560C69 /* JMMBranchAndCustomerTableGet.php */; };
+		EF33D8D8211D422B00560C69 /* JMMReceiptMaxModifiedDateGetList.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D7EA211D422A00560C69 /* JMMReceiptMaxModifiedDateGetList.php */; };
+		EF33D8D9211D422B00560C69 /* JMMBranchAndCustomerTableQRGet.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D7EB211D422A00560C69 /* JMMBranchAndCustomerTableQRGet.php */; };
+		EF33D8DA211D422B00560C69 /* JMMMenuGetList.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D7EC211D422A00560C69 /* JMMMenuGetList.php */; };
+		EF33D8DB211D422B00560C69 /* JMMRatingInsert.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D7ED211D422A00560C69 /* JMMRatingInsert.php */; };
+		EF33D8DC211D422B00560C69 /* JMMCustomerTableGetList.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D7EE211D422A00560C69 /* JMMCustomerTableGetList.php */; };
+		EF33D8DD211D422B00560C69 /* JMMRewardPointSpentMoreGetList.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D7EF211D422A00560C69 /* JMMRewardPointSpentMoreGetList.php */; };
+		EF33D8DE211D422B00560C69 /* JMMUserAccountGet.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D7F0211D422A00560C69 /* JMMUserAccountGet.php */; };
+		EF33D8DF211D422B00560C69 /* transactionLog20180809.log in Resources */ = {isa = PBXBuildFile; fileRef = EF33D7F1211D422A00560C69 /* transactionLog20180809.log */; };
+		EF33D8E0211D422B00560C69 /* modelm.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D7F2211D422A00560C69 /* modelm.php */; };
+		EF33D8E1211D422B00560C69 /* JMMRatingUpdate.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D7F3211D422A00560C69 /* JMMRatingUpdate.php */; };
+		EF33D8E2211D422B00560C69 /* modelh.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D7F4211D422A00560C69 /* modelh.php */; };
+		EF33D8E3211D422B00560C69 /* JMMUserAccountValidate new.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D7F5211D422A00560C69 /* JMMUserAccountValidate new.php */; };
+		EF33D8E4211D422B00560C69 /* JMMDisputeReasonGetList.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D7F6211D422A00560C69 /* JMMDisputeReasonGetList.php */; };
+		EF33D8E5211D422B00560C69 /* HtmlTermsOfService.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D7F7211D422A00560C69 /* HtmlTermsOfService.php */; };
+		EF33D8E6211D422B00560C69 /* HtmlEmailTemplateForgotPassword.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D7F8211D422A00560C69 /* HtmlEmailTemplateForgotPassword.php */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +295,244 @@
 		EF33D6CD211D41F200560C69 /* DevJummumUrlUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DevJummumUrlUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF33D6D1211D41F200560C69 /* DevJummumUrlUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DevJummumUrlUITests.m; sourceTree = "<group>"; };
 		EF33D6D3211D41F200560C69 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EF33D6E0211D422A00560C69 /* JMMUserAccountUpdate.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = JMMUserAccountUpdate.php; sourceTree = "<group>"; };
+		EF33D6E1211D422A00560C69 /* JMMBranchSearchGetList.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = JMMBranchSearchGetList.php; sourceTree = "<group>"; };
+		EF33D6E2211D422A00560C69 /* JMMReceiptDisputeRatingAllAfterReceiptGet.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = JMMReceiptDisputeRatingAllAfterReceiptGet.php; sourceTree = "<group>"; };
+		EF33D6E3211D422A00560C69 /* ResetPasswordTimeOut.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = ResetPasswordTimeOut.php; sourceTree = "<group>"; };
+		EF33D6E4211D422A00560C69 /* JMMWriteLog.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = JMMWriteLog.php; sourceTree = "<group>"; };
+		EF33D6E5211D422A00560C69 /* JMMRewardPointSpentExpiredGetList.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = JMMRewardPointSpentExpiredGetList.php; sourceTree = "<group>"; };
+		EF33D6E6211D422A00560C69 /* JMMMenuNoteGetList.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = JMMMenuNoteGetList.php; sourceTree = "<group>"; };
+		EF33D6E7211D422A00560C69 /* JMMReceiptGet.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = JMMReceiptGet.php; sourceTree = "<group>"; };
+		EF33D6E8211D422A00560C69 /* JMMUserAccountInsert.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = JMMUserAccountInsert.php; sourceTree = "<group>"; };
+		EF33D6E9211D422A00560C69 /* JMMHotDealWithBranchIDGetList.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = JMMHotDealWithBranchIDGetList.php; sourceTree = "<group>"; };
+		EF33D6EA211D422A00560C69 /* HtmlPrivacyPolicy.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = HtmlPrivacyPolicy.php; sourceTree = "<group>"; };
+		EF33D6EB211D422A00560C69 /* HtmlContactUs.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = HtmlContactUs.php; sourceTree = "<group>"; };
+		EF33D6EC211D422A00560C69 /* JMMBranchGetList.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = JMMBranchGetList.php; sourceTree = "<group>"; };
+		EF33D6ED211D422A00560C69 /* JMMLogOutInsert.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = JMMLogOutInsert.php; sourceTree = "<group>"; };
+		EF33D6EE211D422A00560C69 /* JMMOpeningTimeGet.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = JMMOpeningTimeGet.php; sourceTree = "<group>"; };
+		EF33D6EF211D422A00560C69 /* JMMReceiptSummaryGetList.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = JMMReceiptSummaryGetList.php; sourceTree = "<group>"; };
+		EF33D6F0211D422A00560C69 /* JMMRewardPointSpentGetList.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = JMMRewardPointSpentGetList.php; sourceTree = "<group>"; };
+		EF33D6F1211D422A00560C69 /* JMMRewardPointInsert.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = JMMRewardPointInsert.php; sourceTree = "<group>"; };
+		EF33D6F2211D422A00560C69 /* JMMLogInUserAccountInsert.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = JMMLogInUserAccountInsert.php; sourceTree = "<group>"; };
+		EF33D6F3211D422A00560C69 /* ck.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ck.pem; sourceTree = "<group>"; };
+		EF33D6F4211D422A00560C69 /* JMMRewardPointSpentExpiredMoreGetList.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = JMMRewardPointSpentExpiredMoreGetList.php; sourceTree = "<group>"; };
+		EF33D6F5211D422A00560C69 /* urlinsertlistprefix.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = urlinsertlistprefix.php; sourceTree = "<group>"; };
+		EF33D6F7211D422A00560C69 /* phpunit.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = phpunit.xml; sourceTree = "<group>"; };
+		EF33D6F8211D422A00560C69 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		EF33D6F9211D422A00560C69 /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
+		EF33D6FC211D422A00560C69 /* TestConfig.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = TestConfig.php; sourceTree = "<group>"; };
+		EF33D6FD211D422A00560C69 /* RefundTest.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = RefundTest.php; sourceTree = "<group>"; };
+		EF33D6FE211D422A00560C69 /* LinkTest.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = LinkTest.php; sourceTree = "<group>"; };
+		EF33D701211D422A00560C69 /* OmiseObjectTest.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = OmiseObjectTest.php; sourceTree = "<group>"; };
+		EF33D702211D422A00560C69 /* ForexTest.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = ForexTest.php; sourceTree = "<group>"; };
+		EF33D703211D422A00560C69 /* RecipientTest.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = RecipientTest.php; sourceTree = "<group>"; };
+		EF33D704211D422A00560C69 /* SchedulerTest.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = SchedulerTest.php; sourceTree = "<group>"; };
+		EF33D705211D422A00560C69 /* ScheduleTest.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = ScheduleTest.php; sourceTree = "<group>"; };
+		EF33D706211D422A00560C69 /* TransferTest.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = TransferTest.php; sourceTree = "<group>"; };
+		EF33D707211D422A00560C69 /* EventTest.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = EventTest.php; sourceTree = "<group>"; };
+		EF33D708211D422A00560C69 /* OccurrenceTest.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = OccurrenceTest.php; sourceTree = "<group>"; };
+		EF33D709211D422A00560C69 /* TransactionTest.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = TransactionTest.php; sourceTree = "<group>"; };
+		EF33D70A211D422A00560C69 /* SourceTest.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = SourceTest.php; sourceTree = "<group>"; };
+		EF33D70B211D422A00560C69 /* CardTest.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = CardTest.php; sourceTree = "<group>"; };
+		EF33D70C211D422A00560C69 /* CustomerTest.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = CustomerTest.php; sourceTree = "<group>"; };
+		EF33D70D211D422A00560C69 /* SearchTest.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = SearchTest.php; sourceTree = "<group>"; };
+		EF33D70E211D422A00560C69 /* ChargeTest.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = ChargeTest.php; sourceTree = "<group>"; };
+		EF33D70F211D422A00560C69 /* DisputeTest.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = DisputeTest.php; sourceTree = "<group>"; };
+		EF33D710211D422A00560C69 /* TokenTest.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = TokenTest.php; sourceTree = "<group>"; };
+		EF33D711211D422A00560C69 /* BalanceTest.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = BalanceTest.php; sourceTree = "<group>"; };
+		EF33D713211D422A00560C69 /* OmiseExceptionTest.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = OmiseExceptionTest.php; sourceTree = "<group>"; };
+		EF33D714211D422A00560C69 /* ClassExistsTest.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = ClassExistsTest.php; sourceTree = "<group>"; };
+		EF33D715211D422A00560C69 /* AccountTest.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = AccountTest.php; sourceTree = "<group>"; };
+		EF33D718211D422A00560C69 /* tokens-post.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "tokens-post.json"; sourceTree = "<group>"; };
+		EF33D71A211D422A00560C69 /* tokn_test_4zmrjhuk2rndz24a6x0-get.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "tokn_test_4zmrjhuk2rndz24a6x0-get.json"; sourceTree = "<group>"; };
+		EF33D71E211D422A00560C69 /* cards-bGltaXQ9MQ-get.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "cards-bGltaXQ9MQ-get.json"; sourceTree = "<group>"; };
+		EF33D71F211D422A00560C69 /* schedules-get.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "schedules-get.json"; sourceTree = "<group>"; };
+		EF33D722211D422A00560C69 /* card_test_4zmrjfzf0spz3mh63cs-get.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "card_test_4zmrjfzf0spz3mh63cs-get.json"; sourceTree = "<group>"; };
+		EF33D723211D422A00560C69 /* card_test_4zmrjfzf0spz3mh63cs-delete.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "card_test_4zmrjfzf0spz3mh63cs-delete.json"; sourceTree = "<group>"; };
+		EF33D724211D422A00560C69 /* card_test_4zmrjfzf0spz3mh63cs-patch.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "card_test_4zmrjfzf0spz3mh63cs-patch.json"; sourceTree = "<group>"; };
+		EF33D725211D422A00560C69 /* cust_test_4zmrjg2hct06ybwobqc-get.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "cust_test_4zmrjg2hct06ybwobqc-get.json"; sourceTree = "<group>"; };
+		EF33D726211D422A00560C69 /* cust_test_5234fzk37pi2mz0cen3-get.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "cust_test_5234fzk37pi2mz0cen3-get.json"; sourceTree = "<group>"; };
+		EF33D727211D422A00560C69 /* cust_test_4zmrjg2hct06ybwobqc-delete.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "cust_test_4zmrjg2hct06ybwobqc-delete.json"; sourceTree = "<group>"; };
+		EF33D728211D422A00560C69 /* cust_test_4zmrjg2hct06ybwobqc-patch.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "cust_test_4zmrjg2hct06ybwobqc-patch.json"; sourceTree = "<group>"; };
+		EF33D729211D422A00560C69 /* recipients-post.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "recipients-post.json"; sourceTree = "<group>"; };
+		EF33D72B211D422A00560C69 /* occu_test_58dt3strf4m1y7bqii8-get.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "occu_test_58dt3strf4m1y7bqii8-get.json"; sourceTree = "<group>"; };
+		EF33D72C211D422A00560C69 /* charges-post.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "charges-post.json"; sourceTree = "<group>"; };
+		EF33D72D211D422A00560C69 /* transfers-get.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "transfers-get.json"; sourceTree = "<group>"; };
+		EF33D72E211D422A00560C69 /* search-c2NvcGU9Y2hhcmdl-get.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "search-c2NvcGU9Y2hhcmdl-get.json"; sourceTree = "<group>"; };
+		EF33D72F211D422A00560C69 /* customers-post.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "customers-post.json"; sourceTree = "<group>"; };
+		EF33D730211D422A00560C69 /* recipients-get.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "recipients-get.json"; sourceTree = "<group>"; };
+		EF33D731211D422A00560C69 /* transactions-get.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "transactions-get.json"; sourceTree = "<group>"; };
+		EF33D732211D422A00560C69 /* search-c2NvcGU9Y2hhcmdlJnF1ZXJ5PWRlbW8-get.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "search-c2NvcGU9Y2hhcmdlJnF1ZXJ5PWRlbW8-get.json"; sourceTree = "<group>"; };
+		EF33D733211D422A00560C69 /* events-get.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "events-get.json"; sourceTree = "<group>"; };
+		EF33D734211D422A00560C69 /* account-get.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "account-get.json"; sourceTree = "<group>"; };
+		EF33D735211D422A00560C69 /* search-c2NvcGU9Y2hhcmdlJnF1ZXJ5PWRlbW8mZmlsdGVycyU1QmNhcHR1cmVkJTVEPXRydWUmcGFnZT0yJm9yZGVyPXJldmVyc2VfY2hyb25vbG9naWNhbA-get.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "search-c2NvcGU9Y2hhcmdlJnF1ZXJ5PWRlbW8mZmlsdGVycyU1QmNhcHR1cmVkJTVEPXRydWUmcGFnZT0yJm9yZGVyPXJldmVyc2VfY2hyb25vbG9naWNhbA-get.json"; sourceTree = "<group>"; };
+		EF33D737211D422A00560C69 /* schedules-get.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "schedules-get.json"; sourceTree = "<group>"; };
+		EF33D739211D422A00560C69 /* refunds-post.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "refunds-post.json"; sourceTree = "<group>"; };
+		EF33D73A211D422A00560C69 /* refunds-get.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "refunds-get.json"; sourceTree = "<group>"; };
+		EF33D73C211D422A00560C69 /* rfnd_test_4zmrjhlbqy587sw6fwt-get.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "rfnd_test_4zmrjhlbqy587sw6fwt-get.json"; sourceTree = "<group>"; };
+		EF33D73D211D422A00560C69 /* capture-post.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "capture-post.json"; sourceTree = "<group>"; };
+		EF33D73E211D422A00560C69 /* chrg_test_4zmrjgxdh4ycj2qncoj-get.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "chrg_test_4zmrjgxdh4ycj2qncoj-get.json"; sourceTree = "<group>"; };
+		EF33D73F211D422A00560C69 /* chrg_test_4zmrjgxdh4ycj2qncoj-patch.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "chrg_test_4zmrjgxdh4ycj2qncoj-patch.json"; sourceTree = "<group>"; };
+		EF33D740211D422A00560C69 /* chrg_test_53z5zoeovi39e1erbj0-get.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "chrg_test_53z5zoeovi39e1erbj0-get.json"; sourceTree = "<group>"; };
+		EF33D742211D422A00560C69 /* reverse-post.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "reverse-post.json"; sourceTree = "<group>"; };
+		EF33D743211D422A00560C69 /* search-c2NvcGU9cmVmdW5kJnF1ZXJ5PSZmaWx0ZXJzJTVCdm9pZGVkJTVEPXRydWU-get.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "search-c2NvcGU9cmVmdW5kJnF1ZXJ5PSZmaWx0ZXJzJTVCdm9pZGVkJTVEPXRydWU-get.json"; sourceTree = "<group>"; };
+		EF33D745211D422A00560C69 /* open-get.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "open-get.json"; sourceTree = "<group>"; };
+		EF33D746211D422A00560C69 /* dspt_test_4zgf15h89w8t775kcm8-patch.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "dspt_test_4zgf15h89w8t775kcm8-patch.json"; sourceTree = "<group>"; };
+		EF33D747211D422A00560C69 /* pending-get.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "pending-get.json"; sourceTree = "<group>"; };
+		EF33D748211D422A00560C69 /* closed-get.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "closed-get.json"; sourceTree = "<group>"; };
+		EF33D749211D422A00560C69 /* dspt_test_4zgf15h89w8t775kcm8-get.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "dspt_test_4zgf15h89w8t775kcm8-get.json"; sourceTree = "<group>"; };
+		EF33D74B211D422A00560C69 /* usd-get.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "usd-get.json"; sourceTree = "<group>"; };
+		EF33D74C211D422A00560C69 /* charges-get.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "charges-get.json"; sourceTree = "<group>"; };
+		EF33D74E211D422A00560C69 /* schd_test_585t7iomh2dte3ejxh5-delete.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "schd_test_585t7iomh2dte3ejxh5-delete.json"; sourceTree = "<group>"; };
+		EF33D74F211D422A00560C69 /* schd_test_585t7iomh2dte3ejxh5-get.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "schd_test_585t7iomh2dte3ejxh5-get.json"; sourceTree = "<group>"; };
+		EF33D751211D422A00560C69 /* occurrences-get.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "occurrences-get.json"; sourceTree = "<group>"; };
+		EF33D753211D422A00560C69 /* trsf_test_4zmrjicrvw7j6uhv1l4-get.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "trsf_test_4zmrjicrvw7j6uhv1l4-get.json"; sourceTree = "<group>"; };
+		EF33D754211D422A00560C69 /* schedules-get.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "schedules-get.json"; sourceTree = "<group>"; };
+		EF33D755211D422A00560C69 /* trsf_test_4zmrjicrvw7j6uhv1l4-patch.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "trsf_test_4zmrjicrvw7j6uhv1l4-patch.json"; sourceTree = "<group>"; };
+		EF33D756211D422A00560C69 /* trsf_test_4zmrjicrvw7j6uhv1l4-delete.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "trsf_test_4zmrjicrvw7j6uhv1l4-delete.json"; sourceTree = "<group>"; };
+		EF33D758211D422A00560C69 /* recp_test_508a9dytz793gxv9m77-get.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "recp_test_508a9dytz793gxv9m77-get.json"; sourceTree = "<group>"; };
+		EF33D759211D422A00560C69 /* recp_test_508a9dytz793gxv9m77-patch.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "recp_test_508a9dytz793gxv9m77-patch.json"; sourceTree = "<group>"; };
+		EF33D75B211D422A00560C69 /* schedules-get.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "schedules-get.json"; sourceTree = "<group>"; };
+		EF33D75C211D422A00560C69 /* recp_test_508a9dytz793gxv9m77-delete.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "recp_test_508a9dytz793gxv9m77-delete.json"; sourceTree = "<group>"; };
+		EF33D75D211D422A00560C69 /* schedules-get.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "schedules-get.json"; sourceTree = "<group>"; };
+		EF33D75E211D422A00560C69 /* balance-get.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "balance-get.json"; sourceTree = "<group>"; };
+		EF33D75F211D422A00560C69 /* search-c2NvcGU9Y2hhcmdlJnF1ZXJ5PWRlbW8mZmlsdGVycyU1QmNhcHR1cmVkJTVEPXRydWU-get.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "search-c2NvcGU9Y2hhcmdlJnF1ZXJ5PWRlbW8mZmlsdGVycyU1QmNhcHR1cmVkJTVEPXRydWU-get.json"; sourceTree = "<group>"; };
+		EF33D760211D422A00560C69 /* search-c2NvcGU9cmVjaXBpZW50JnF1ZXJ5PWRlbW8mZmlsdGVycyU1QmFjdGl2ZSU1RD10cnVl-get.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "search-c2NvcGU9cmVjaXBpZW50JnF1ZXJ5PWRlbW8mZmlsdGVycyU1QmFjdGl2ZSU1RD10cnVl-get.json"; sourceTree = "<group>"; };
+		EF33D761211D422A00560C69 /* search-c2NvcGU9Y3VzdG9tZXImcXVlcnk9ZG9lJmZpbHRlcnMlNUJjcmVhdGVkJTVEPTIwMTctMDEtMDEuLjIwMTctMDgtMzA-get.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "search-c2NvcGU9Y3VzdG9tZXImcXVlcnk9ZG9lJmZpbHRlcnMlNUJjcmVhdGVkJTVEPTIwMTctMDEtMDEuLjIwMTctMDgtMzA-get.json"; sourceTree = "<group>"; };
+		EF33D763211D422A00560C69 /* trxn_test_4zmrjhlflnz6id6q0bo-get.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "trxn_test_4zmrjhlflnz6id6q0bo-get.json"; sourceTree = "<group>"; };
+		EF33D764211D422A00560C69 /* search-c2NvcGU9ZGlzcHV0ZSZxdWVyeT1kZW1vJmZpbHRlcnMlNUJjYXJkX2xhc3RfZGlnaXRzJTVEPTU0NTQ-get.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "search-c2NvcGU9ZGlzcHV0ZSZxdWVyeT1kZW1vJmZpbHRlcnMlNUJjYXJkX2xhc3RfZGlnaXRzJTVEPTU0NTQ-get.json"; sourceTree = "<group>"; };
+		EF33D765211D422A00560C69 /* sources-post.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "sources-post.json"; sourceTree = "<group>"; };
+		EF33D767211D422A00560C69 /* link_test_56bsanpa365jnlbc7rt-get.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "link_test_56bsanpa365jnlbc7rt-get.json"; sourceTree = "<group>"; };
+		EF33D768211D422A00560C69 /* customers-get.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "customers-get.json"; sourceTree = "<group>"; };
+		EF33D769211D422A00560C69 /* search-c2NvcGU9Y2hhcmdlJnF1ZXJ5PW9yZGVyJmZpbHRlcnMlNUJjYXB0dXJlZCU1RD10cnVlJnBhZ2U9MiZvcmRlcj1yZXZlcnNlX2Nocm9ub2xvZ2ljYWw-get.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "search-c2NvcGU9Y2hhcmdlJnF1ZXJ5PW9yZGVyJmZpbHRlcnMlNUJjYXB0dXJlZCU1RD10cnVlJnBhZ2U9MiZvcmRlcj1yZXZlcnNlX2Nocm9ub2xvZ2ljYWw-get.json"; sourceTree = "<group>"; };
+		EF33D76A211D422A00560C69 /* search-c2NvcGU9Y2hhcmdlJnF1ZXJ5PWRlbW8mZmlsdGVycyU1QmNhcHR1cmVkJTVEPXRydWUmcGFnZT0xJm9yZGVyPXJldmVyc2VfY2hyb25vbG9naWNhbA-get.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "search-c2NvcGU9Y2hhcmdlJnF1ZXJ5PWRlbW8mZmlsdGVycyU1QmNhcHR1cmVkJTVEPXRydWUmcGFnZT0xJm9yZGVyPXJldmVyc2VfY2hyb25vbG9naWNhbA-get.json"; sourceTree = "<group>"; };
+		EF33D76B211D422A00560C69 /* disputes-get.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "disputes-get.json"; sourceTree = "<group>"; };
+		EF33D76D211D422A00560C69 /* evnt_test_531zv1nto0a5pimuiza-get.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "evnt_test_531zv1nto0a5pimuiza-get.json"; sourceTree = "<group>"; };
+		EF33D76E211D422A00560C69 /* transfers-post.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "transfers-post.json"; sourceTree = "<group>"; };
+		EF33D76F211D422A00560C69 /* search-c2NvcGU9Y2hhcmdlJnF1ZXJ5PW9yZGVyJmZpbHRlcnMlNUJjYXB0dXJlZCU1RD10cnVlJnBhZ2U9MSZvcmRlcj1yZXZlcnNlX2Nocm9ub2xvZ2ljYWw-get.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "search-c2NvcGU9Y2hhcmdlJnF1ZXJ5PW9yZGVyJmZpbHRlcnMlNUJjYXB0dXJlZCU1RD10cnVlJnBhZ2U9MSZvcmRlcj1yZXZlcnNlX2Nocm9ub2xvZ2ljYWw-get.json"; sourceTree = "<group>"; };
+		EF33D770211D422A00560C69 /* schedules-post.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "schedules-post.json"; sourceTree = "<group>"; };
+		EF33D771211D422A00560C69 /* links-post.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "links-post.json"; sourceTree = "<group>"; };
+		EF33D772211D422A00560C69 /* search-c2NvcGU9dHJhbnNmZXImcXVlcnk9ZGVtbyU0MG9taXNlLmNvJmZpbHRlcnMlNUJjdXJyZW5jeSU1RD10aGI-get.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "search-c2NvcGU9dHJhbnNmZXImcXVlcnk9ZGVtbyU0MG9taXNlLmNvJmZpbHRlcnMlNUJjdXJyZW5jeSU1RD10aGI-get.json"; sourceTree = "<group>"; };
+		EF33D773211D422A00560C69 /* search-c2NvcGU9bGluayZxdWVyeT1kZW1vJmZpbHRlcnMlNUJ1c2VkJTVEPXRydWUmb3JkZXI9cmV2ZXJzZV9jaHJvbm9sb2dpY2Fs-get.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "search-c2NvcGU9bGluayZxdWVyeT1kZW1vJmZpbHRlcnMlNUJ1c2VkJTVEPXRydWUmb3JkZXI9cmV2ZXJzZV9jaHJvbm9sb2dpY2Fs-get.json"; sourceTree = "<group>"; };
+		EF33D774211D422A00560C69 /* search-c2NvcGU9Y2hhcmdlJnF1ZXJ5PWRlbW8mZmlsdGVycyU1QmNhcHR1cmVkJTVEPXRydWUmcGFnZT0y-get.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "search-c2NvcGU9Y2hhcmdlJnF1ZXJ5PWRlbW8mZmlsdGVycyU1QmNhcHR1cmVkJTVEPXRydWUmcGFnZT0y-get.json"; sourceTree = "<group>"; };
+		EF33D775211D422A00560C69 /* links-get.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "links-get.json"; sourceTree = "<group>"; };
+		EF33D776211D422A00560C69 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		EF33D777211D422A00560C69 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		EF33D778211D422A00560C69 /* circle.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = circle.yml; sourceTree = "<group>"; };
+		EF33D77B211D422A00560C69 /* OmiseForex.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = OmiseForex.php; sourceTree = "<group>"; };
+		EF33D77C211D422A00560C69 /* OmiseSource.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = OmiseSource.php; sourceTree = "<group>"; };
+		EF33D77D211D422A00560C69 /* OmiseTest.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = OmiseTest.php; sourceTree = "<group>"; };
+		EF33D77F211D422A00560C69 /* OmiseApiResource.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = OmiseApiResource.php; sourceTree = "<group>"; };
+		EF33D781211D422A00560C69 /* OmiseObject.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = OmiseObject.php; sourceTree = "<group>"; };
+		EF33D782211D422A00560C69 /* OmiseVaultResource.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = OmiseVaultResource.php; sourceTree = "<group>"; };
+		EF33D783211D422A00560C69 /* OmiseRefundList.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = OmiseRefundList.php; sourceTree = "<group>"; };
+		EF33D784211D422A00560C69 /* OmiseTransaction.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = OmiseTransaction.php; sourceTree = "<group>"; };
+		EF33D785211D422A00560C69 /* OmiseOccurrence.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = OmiseOccurrence.php; sourceTree = "<group>"; };
+		EF33D786211D422A00560C69 /* OmiseCustomer.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = OmiseCustomer.php; sourceTree = "<group>"; };
+		EF33D787211D422A00560C69 /* OmiseBalance.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = OmiseBalance.php; sourceTree = "<group>"; };
+		EF33D788211D422A00560C69 /* OmiseScheduleList.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = OmiseScheduleList.php; sourceTree = "<group>"; };
+		EF33D789211D422A00560C69 /* OmiseSchedule.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = OmiseSchedule.php; sourceTree = "<group>"; };
+		EF33D78A211D422A00560C69 /* OmiseRecipient.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = OmiseRecipient.php; sourceTree = "<group>"; };
+		EF33D78B211D422A00560C69 /* OmiseToken.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = OmiseToken.php; sourceTree = "<group>"; };
+		EF33D78C211D422A00560C69 /* OmiseOccurrenceList.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = OmiseOccurrenceList.php; sourceTree = "<group>"; };
+		EF33D78D211D422A00560C69 /* OmiseCard.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = OmiseCard.php; sourceTree = "<group>"; };
+		EF33D78E211D422A00560C69 /* OmiseSearch.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = OmiseSearch.php; sourceTree = "<group>"; };
+		EF33D78F211D422A00560C69 /* OmiseAccount.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = OmiseAccount.php; sourceTree = "<group>"; };
+		EF33D790211D422A00560C69 /* OmiseCardList.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = OmiseCardList.php; sourceTree = "<group>"; };
+		EF33D791211D422A00560C69 /* OmiseDispute.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = OmiseDispute.php; sourceTree = "<group>"; };
+		EF33D792211D422A00560C69 /* OmiseTransfer.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = OmiseTransfer.php; sourceTree = "<group>"; };
+		EF33D793211D422A00560C69 /* OmiseLink.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = OmiseLink.php; sourceTree = "<group>"; };
+		EF33D794211D422A00560C69 /* OmiseEvent.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = OmiseEvent.php; sourceTree = "<group>"; };
+		EF33D795211D422A00560C69 /* OmiseRefund.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = OmiseRefund.php; sourceTree = "<group>"; };
+		EF33D796211D422A00560C69 /* OmiseScheduler.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = OmiseScheduler.php; sourceTree = "<group>"; };
+		EF33D797211D422A00560C69 /* OmiseCharge.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = OmiseCharge.php; sourceTree = "<group>"; };
+		EF33D799211D422A00560C69 /* OmiseExceptions.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = OmiseExceptions.php; sourceTree = "<group>"; };
+		EF33D79A211D422A00560C69 /* Omise.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = Omise.php; sourceTree = "<group>"; };
+		EF33D79C211D422A00560C69 /* ca_certificates.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ca_certificates.pem; sourceTree = "<group>"; };
+		EF33D79D211D422A00560C69 /* composer.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = composer.json; sourceTree = "<group>"; };
+		EF33D79E211D422A00560C69 /* JMMRewardPointSpentUsedGetList.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = JMMRewardPointSpentUsedGetList.php; sourceTree = "<group>"; };
+		EF33D79F211D422A00560C69 /* JMMHotDealGetList.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = JMMHotDealGetList.php; sourceTree = "<group>"; };
+		EF33D7A0211D422A00560C69 /* JMMDisputeCancelInsert.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = JMMDisputeCancelInsert.php; sourceTree = "<group>"; };
+		EF33D7A2211D422A00560C69 /* aps_development.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = aps_development.cer; sourceTree = "<group>"; };
+		EF33D7A3211D422A00560C69 /* CertificateSigningRequest.certSigningRequest */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CertificateSigningRequest.certSigningRequest; sourceTree = "<group>"; };
+		EF33D7A4211D422A00560C69 /* ck.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ck.pem; sourceTree = "<group>"; };
+		EF33D7A5211D422A00560C69 /* Certificates.p12 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Certificates.p12; sourceTree = "<group>"; };
+		EF33D7A6211D422A00560C69 /* PushCert.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PushCert.pem; sourceTree = "<group>"; };
+		EF33D7A7211D422A00560C69 /* PushKey.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PushKey.pem; sourceTree = "<group>"; };
+		EF33D7A8211D422A00560C69 /* testpush.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = testpush.php; sourceTree = "<group>"; };
+		EF33D7A9211D422A00560C69 /* JMMUserAccountValidate.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = JMMUserAccountValidate.php; sourceTree = "<group>"; };
+		EF33D7AA211D422A00560C69 /* JMMReceiptDisputeRatingGet.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = JMMReceiptDisputeRatingGet.php; sourceTree = "<group>"; };
+		EF33D7AB211D422A00560C69 /* JMMMasterGet.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = JMMMasterGet.php; sourceTree = "<group>"; };
+		EF33D7AC211D422A00560C69 /* JMMDisputeGetList.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = JMMDisputeGetList.php; sourceTree = "<group>"; };
+		EF33D7AF211D422A00560C69 /* promoBanner.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = promoBanner.jpg; sourceTree = "<group>"; };
+		EF33D7B0211D422A00560C69 /* promoThumbNail.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = promoThumbNail.jpg; sourceTree = "<group>"; };
+		EF33D7B1211D422A00560C69 /* jummumLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jummumLogo.png; sourceTree = "<group>"; };
+		EF33D7B3211D422A00560C69 /* tubtim.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tubtim.jpg; sourceTree = "<group>"; };
+		EF33D7B4211D422A00560C69 /* NoImage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = NoImage.jpg; sourceTree = "<group>"; };
+		EF33D7B5211D422A00560C69 /* downloadImage.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = downloadImage.php; sourceTree = "<group>"; };
+		EF33D7B6211D422A00560C69 /* dbConnect.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = dbConnect.php; sourceTree = "<group>"; };
+		EF33D7B7211D422A00560C69 /* JMMRewardPointSpentUsedMoreGetList.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = JMMRewardPointSpentUsedMoreGetList.php; sourceTree = "<group>"; };
+		EF33D7B8211D422A00560C69 /* JMMLedStatusGet.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = JMMLedStatusGet.php; sourceTree = "<group>"; };
+		EF33D7B9211D422A00560C69 /* JMMReceiptUpdate.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = JMMReceiptUpdate.php; sourceTree = "<group>"; };
+		EF33D7BA211D422A00560C69 /* JMMRecommendShopInsert.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = JMMRecommendShopInsert.php; sourceTree = "<group>"; };
+		EF33D7BB211D422A00560C69 /* JMMPromotionGetList.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = JMMPromotionGetList.php; sourceTree = "<group>"; };
+		EF33D7BC211D422A00560C69 /* JMMDisputeInsert.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = JMMDisputeInsert.php; sourceTree = "<group>"; };
+		EF33D7BD211D422A00560C69 /* JMMUserAccountForgotPasswordInsert.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = JMMUserAccountForgotPasswordInsert.php; sourceTree = "<group>"; };
+		EF33D7C1211D422A00560C69 /* sushiShin.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sushiShin.jpg; sourceTree = "<group>"; };
+		EF33D7C2211D422A00560C69 /* mamarin_logo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mamarin_logo.jpg; sourceTree = "<group>"; };
+		EF33D7C3211D422A00560C69 /* jummumChef.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jummumChef.png; sourceTree = "<group>"; };
+		EF33D7C4211D422A00560C69 /* jummumChef_backPink.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jummumChef_backPink.png; sourceTree = "<group>"; };
+		EF33D7C5211D422A00560C69 /* jummumChef_backGreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jummumChef_backGreen.png; sourceTree = "<group>"; };
+		EF33D7C7211D422A00560C69 /* pizzaHam.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pizzaHam.jpg; sourceTree = "<group>"; };
+		EF33D7C8211D422A00560C69 /* noodle dry original.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "noodle dry original.jpg"; sourceTree = "<group>"; };
+		EF33D7C9211D422A00560C69 /* pizzaHamMushroom.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pizzaHamMushroom.jpg; sourceTree = "<group>"; };
+		EF33D7CA211D422A00560C69 /* fried squid.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "fried squid.jpg"; sourceTree = "<group>"; };
+		EF33D7CB211D422A00560C69 /* tubtim.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tubtim.jpg; sourceTree = "<group>"; };
+		EF33D7CC211D422A00560C69 /* bakeFish.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bakeFish.jpg; sourceTree = "<group>"; };
+		EF33D7CD211D422A00560C69 /* sticky rice dessert.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "sticky rice dessert.jpg"; sourceTree = "<group>"; };
+		EF33D7CE211D422A00560C69 /* tofu.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tofu.jpg; sourceTree = "<group>"; };
+		EF33D7CF211D422A00560C69 /* violet drink.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "violet drink.jpg"; sourceTree = "<group>"; };
+		EF33D7D0211D422A00560C69 /* noodle red soup.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "noodle red soup.jpg"; sourceTree = "<group>"; };
+		EF33D7D1211D422A00560C69 /* wonderful soup.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "wonderful soup.jpg"; sourceTree = "<group>"; };
+		EF33D7D2211D422A00560C69 /* fried shrimp.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "fried shrimp.jpg"; sourceTree = "<group>"; };
+		EF33D7D3211D422A00560C69 /* grillChicken.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = grillChicken.jpg; sourceTree = "<group>"; };
+		EF33D7D4211D422A00560C69 /* yellow drink.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "yellow drink.jpg"; sourceTree = "<group>"; };
+		EF33D7D5211D422A00560C69 /* pancake.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pancake.jpg; sourceTree = "<group>"; };
+		EF33D7D6211D422A00560C69 /* noodle soup original.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "noodle soup original.jpg"; sourceTree = "<group>"; };
+		EF33D7D7211D422A00560C69 /* salmonSashimi.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = salmonSashimi.jpg; sourceTree = "<group>"; };
+		EF33D7D8211D422A00560C69 /* yentafo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = yentafo.jpg; sourceTree = "<group>"; };
+		EF33D7D9211D422A00560C69 /* ข้าวแห้งปลาอินทรีย์.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "ข้าวแห้งปลาอินทรีย์.jpg"; sourceTree = "<group>"; };
+		EF33D7DA211D422A00560C69 /* noodle dry red.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "noodle dry red.jpg"; sourceTree = "<group>"; };
+		EF33D7DB211D422A00560C69 /* clear soup.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "clear soup.jpg"; sourceTree = "<group>"; };
+		EF33D7DC211D422A00560C69 /* red rice.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "red rice.jpg"; sourceTree = "<group>"; };
+		EF33D7DD211D422A00560C69 /* shrimpChilli.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = shrimpChilli.jpg; sourceTree = "<group>"; };
+		EF33D7DE211D422A00560C69 /* NoImage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = NoImage.jpg; sourceTree = "<group>"; };
+		EF33D7DF211D422A00560C69 /* JMMRewardRedemptionWithBranchIDGetList.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = JMMRewardRedemptionWithBranchIDGetList.php; sourceTree = "<group>"; };
+		EF33D7E0211D422A00560C69 /* JMMCommentInsert.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = JMMCommentInsert.php; sourceTree = "<group>"; };
+		EF33D7E1211D422A00560C69 /* JMMLedStatusUpdate.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = JMMLedStatusUpdate.php; sourceTree = "<group>"; };
+		EF33D7E2211D422A00560C69 /* ResetPassword.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = ResetPassword.php; sourceTree = "<group>"; };
+		EF33D7E3211D422A00560C69 /* JMMBranchSearchMoreGetList.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = JMMBranchSearchMoreGetList.php; sourceTree = "<group>"; };
+		EF33D7E4211D422A00560C69 /* JMMRewardPointGet.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = JMMRewardPointGet.php; sourceTree = "<group>"; };
+		EF33D7E5211D422A00560C69 /* OmiseCheckOut.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = OmiseCheckOut.php; sourceTree = "<group>"; };
+		EF33D7E6211D422A00560C69 /* urlinsertprefix.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = urlinsertprefix.php; sourceTree = "<group>"; };
+		EF33D7E7211D422A00560C69 /* urlupdateprefix.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = urlupdateprefix.php; sourceTree = "<group>"; };
+		EF33D7E8211D422A00560C69 /* JMMPromoCodeInsert.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = JMMPromoCodeInsert.php; sourceTree = "<group>"; };
+		EF33D7E9211D422A00560C69 /* JMMBranchAndCustomerTableGet.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = JMMBranchAndCustomerTableGet.php; sourceTree = "<group>"; };
+		EF33D7EA211D422A00560C69 /* JMMReceiptMaxModifiedDateGetList.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = JMMReceiptMaxModifiedDateGetList.php; sourceTree = "<group>"; };
+		EF33D7EB211D422A00560C69 /* JMMBranchAndCustomerTableQRGet.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = JMMBranchAndCustomerTableQRGet.php; sourceTree = "<group>"; };
+		EF33D7EC211D422A00560C69 /* JMMMenuGetList.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = JMMMenuGetList.php; sourceTree = "<group>"; };
+		EF33D7ED211D422A00560C69 /* JMMRatingInsert.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = JMMRatingInsert.php; sourceTree = "<group>"; };
+		EF33D7EE211D422A00560C69 /* JMMCustomerTableGetList.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = JMMCustomerTableGetList.php; sourceTree = "<group>"; };
+		EF33D7EF211D422A00560C69 /* JMMRewardPointSpentMoreGetList.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = JMMRewardPointSpentMoreGetList.php; sourceTree = "<group>"; };
+		EF33D7F0211D422A00560C69 /* JMMUserAccountGet.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = JMMUserAccountGet.php; sourceTree = "<group>"; };
+		EF33D7F1211D422A00560C69 /* transactionLog20180809.log */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = transactionLog20180809.log; sourceTree = "<group>"; };
+		EF33D7F2211D422A00560C69 /* modelm.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = modelm.php; sourceTree = "<group>"; };
+		EF33D7F3211D422A00560C69 /* JMMRatingUpdate.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = JMMRatingUpdate.php; sourceTree = "<group>"; };
+		EF33D7F4211D422A00560C69 /* modelh.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = modelh.php; sourceTree = "<group>"; };
+		EF33D7F5211D422A00560C69 /* JMMUserAccountValidate new.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = "JMMUserAccountValidate new.php"; sourceTree = "<group>"; };
+		EF33D7F6211D422A00560C69 /* JMMDisputeReasonGetList.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = JMMDisputeReasonGetList.php; sourceTree = "<group>"; };
+		EF33D7F7211D422A00560C69 /* HtmlTermsOfService.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = HtmlTermsOfService.php; sourceTree = "<group>"; };
+		EF33D7F8211D422A00560C69 /* HtmlEmailTemplateForgotPassword.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = HtmlEmailTemplateForgotPassword.php; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +563,7 @@
 		EF33D69B211D41EE00560C69 = {
 			isa = PBXGroup;
 			children = (
+				EF33D6DF211D422A00560C69 /* DevJummum Url */,
 				EF33D6A6211D41EE00560C69 /* DevJummumUrl */,
 				EF33D6C5211D41F200560C69 /* DevJummumUrlTests */,
 				EF33D6D0211D41F200560C69 /* DevJummumUrlUITests */,
@@ -140,6 +617,595 @@
 				EF33D6D3211D41F200560C69 /* Info.plist */,
 			);
 			path = DevJummumUrlUITests;
+			sourceTree = "<group>";
+		};
+		EF33D6DF211D422A00560C69 /* DevJummum Url */ = {
+			isa = PBXGroup;
+			children = (
+				EF33D6E0211D422A00560C69 /* JMMUserAccountUpdate.php */,
+				EF33D6E1211D422A00560C69 /* JMMBranchSearchGetList.php */,
+				EF33D6E2211D422A00560C69 /* JMMReceiptDisputeRatingAllAfterReceiptGet.php */,
+				EF33D6E3211D422A00560C69 /* ResetPasswordTimeOut.php */,
+				EF33D6E4211D422A00560C69 /* JMMWriteLog.php */,
+				EF33D6E5211D422A00560C69 /* JMMRewardPointSpentExpiredGetList.php */,
+				EF33D6E6211D422A00560C69 /* JMMMenuNoteGetList.php */,
+				EF33D6E7211D422A00560C69 /* JMMReceiptGet.php */,
+				EF33D6E8211D422A00560C69 /* JMMUserAccountInsert.php */,
+				EF33D6E9211D422A00560C69 /* JMMHotDealWithBranchIDGetList.php */,
+				EF33D6EA211D422A00560C69 /* HtmlPrivacyPolicy.php */,
+				EF33D6EB211D422A00560C69 /* HtmlContactUs.php */,
+				EF33D6EC211D422A00560C69 /* JMMBranchGetList.php */,
+				EF33D6ED211D422A00560C69 /* JMMLogOutInsert.php */,
+				EF33D6EE211D422A00560C69 /* JMMOpeningTimeGet.php */,
+				EF33D6EF211D422A00560C69 /* JMMReceiptSummaryGetList.php */,
+				EF33D6F0211D422A00560C69 /* JMMRewardPointSpentGetList.php */,
+				EF33D6F1211D422A00560C69 /* JMMRewardPointInsert.php */,
+				EF33D6F2211D422A00560C69 /* JMMLogInUserAccountInsert.php */,
+				EF33D6F3211D422A00560C69 /* ck.pem */,
+				EF33D6F4211D422A00560C69 /* JMMRewardPointSpentExpiredMoreGetList.php */,
+				EF33D6F5211D422A00560C69 /* urlinsertlistprefix.php */,
+				EF33D6F6211D422A00560C69 /* omise-php */,
+				EF33D79E211D422A00560C69 /* JMMRewardPointSpentUsedGetList.php */,
+				EF33D79F211D422A00560C69 /* JMMHotDealGetList.php */,
+				EF33D7A0211D422A00560C69 /* JMMDisputeCancelInsert.php */,
+				EF33D7A1211D422A00560C69 /* cer */,
+				EF33D7A8211D422A00560C69 /* testpush.php */,
+				EF33D7A9211D422A00560C69 /* JMMUserAccountValidate.php */,
+				EF33D7AA211D422A00560C69 /* JMMReceiptDisputeRatingGet.php */,
+				EF33D7AB211D422A00560C69 /* JMMMasterGet.php */,
+				EF33D7AC211D422A00560C69 /* JMMDisputeGetList.php */,
+				EF33D7AD211D422A00560C69 /* Image */,
+				EF33D7B5211D422A00560C69 /* downloadImage.php */,
+				EF33D7B6211D422A00560C69 /* dbConnect.php */,
+				EF33D7B7211D422A00560C69 /* JMMRewardPointSpentUsedMoreGetList.php */,
+				EF33D7B8211D422A00560C69 /* JMMLedStatusGet.php */,
+				EF33D7B9211D422A00560C69 /* JMMReceiptUpdate.php */,
+				EF33D7BA211D422A00560C69 /* JMMRecommendShopInsert.php */,
+				EF33D7BB211D422A00560C69 /* JMMPromotionGetList.php */,
+				EF33D7BC211D422A00560C69 /* JMMDisputeInsert.php */,
+				EF33D7BD211D422A00560C69 /* JMMUserAccountForgotPasswordInsert.php */,
+				EF33D7BE211D422A00560C69 /* JUMMUM_OM_MAMARIN7 */,
+				EF33D7DF211D422A00560C69 /* JMMRewardRedemptionWithBranchIDGetList.php */,
+				EF33D7E0211D422A00560C69 /* JMMCommentInsert.php */,
+				EF33D7E1211D422A00560C69 /* JMMLedStatusUpdate.php */,
+				EF33D7E2211D422A00560C69 /* ResetPassword.php */,
+				EF33D7E3211D422A00560C69 /* JMMBranchSearchMoreGetList.php */,
+				EF33D7E4211D422A00560C69 /* JMMRewardPointGet.php */,
+				EF33D7E5211D422A00560C69 /* OmiseCheckOut.php */,
+				EF33D7E6211D422A00560C69 /* urlinsertprefix.php */,
+				EF33D7E7211D422A00560C69 /* urlupdateprefix.php */,
+				EF33D7E8211D422A00560C69 /* JMMPromoCodeInsert.php */,
+				EF33D7E9211D422A00560C69 /* JMMBranchAndCustomerTableGet.php */,
+				EF33D7EA211D422A00560C69 /* JMMReceiptMaxModifiedDateGetList.php */,
+				EF33D7EB211D422A00560C69 /* JMMBranchAndCustomerTableQRGet.php */,
+				EF33D7EC211D422A00560C69 /* JMMMenuGetList.php */,
+				EF33D7ED211D422A00560C69 /* JMMRatingInsert.php */,
+				EF33D7EE211D422A00560C69 /* JMMCustomerTableGetList.php */,
+				EF33D7EF211D422A00560C69 /* JMMRewardPointSpentMoreGetList.php */,
+				EF33D7F0211D422A00560C69 /* JMMUserAccountGet.php */,
+				EF33D7F1211D422A00560C69 /* transactionLog20180809.log */,
+				EF33D7F2211D422A00560C69 /* modelm.php */,
+				EF33D7F3211D422A00560C69 /* JMMRatingUpdate.php */,
+				EF33D7F4211D422A00560C69 /* modelh.php */,
+				EF33D7F5211D422A00560C69 /* JMMUserAccountValidate new.php */,
+				EF33D7F6211D422A00560C69 /* JMMDisputeReasonGetList.php */,
+				EF33D7F7211D422A00560C69 /* HtmlTermsOfService.php */,
+				EF33D7F8211D422A00560C69 /* HtmlEmailTemplateForgotPassword.php */,
+			);
+			path = "DevJummum Url";
+			sourceTree = "<group>";
+		};
+		EF33D6F6211D422A00560C69 /* omise-php */ = {
+			isa = PBXGroup;
+			children = (
+				EF33D6F7211D422A00560C69 /* phpunit.xml */,
+				EF33D6F8211D422A00560C69 /* LICENSE */,
+				EF33D6F9211D422A00560C69 /* CHANGELOG.md */,
+				EF33D6FA211D422A00560C69 /* tests */,
+				EF33D776211D422A00560C69 /* README.md */,
+				EF33D777211D422A00560C69 /* .gitignore */,
+				EF33D778211D422A00560C69 /* circle.yml */,
+				EF33D779211D422A00560C69 /* lib */,
+				EF33D79B211D422A00560C69 /* data */,
+				EF33D79D211D422A00560C69 /* composer.json */,
+			);
+			path = "omise-php";
+			sourceTree = "<group>";
+		};
+		EF33D6FA211D422A00560C69 /* tests */ = {
+			isa = PBXGroup;
+			children = (
+				EF33D6FB211D422A00560C69 /* omise */,
+				EF33D716211D422A00560C69 /* fixtures */,
+			);
+			path = tests;
+			sourceTree = "<group>";
+		};
+		EF33D6FB211D422A00560C69 /* omise */ = {
+			isa = PBXGroup;
+			children = (
+				EF33D6FC211D422A00560C69 /* TestConfig.php */,
+				EF33D6FD211D422A00560C69 /* RefundTest.php */,
+				EF33D6FE211D422A00560C69 /* LinkTest.php */,
+				EF33D6FF211D422A00560C69 /* res */,
+				EF33D702211D422A00560C69 /* ForexTest.php */,
+				EF33D703211D422A00560C69 /* RecipientTest.php */,
+				EF33D704211D422A00560C69 /* SchedulerTest.php */,
+				EF33D705211D422A00560C69 /* ScheduleTest.php */,
+				EF33D706211D422A00560C69 /* TransferTest.php */,
+				EF33D707211D422A00560C69 /* EventTest.php */,
+				EF33D708211D422A00560C69 /* OccurrenceTest.php */,
+				EF33D709211D422A00560C69 /* TransactionTest.php */,
+				EF33D70A211D422A00560C69 /* SourceTest.php */,
+				EF33D70B211D422A00560C69 /* CardTest.php */,
+				EF33D70C211D422A00560C69 /* CustomerTest.php */,
+				EF33D70D211D422A00560C69 /* SearchTest.php */,
+				EF33D70E211D422A00560C69 /* ChargeTest.php */,
+				EF33D70F211D422A00560C69 /* DisputeTest.php */,
+				EF33D710211D422A00560C69 /* TokenTest.php */,
+				EF33D711211D422A00560C69 /* BalanceTest.php */,
+				EF33D712211D422A00560C69 /* exception */,
+				EF33D714211D422A00560C69 /* ClassExistsTest.php */,
+				EF33D715211D422A00560C69 /* AccountTest.php */,
+			);
+			path = omise;
+			sourceTree = "<group>";
+		};
+		EF33D6FF211D422A00560C69 /* res */ = {
+			isa = PBXGroup;
+			children = (
+				EF33D700211D422A00560C69 /* obj */,
+			);
+			path = res;
+			sourceTree = "<group>";
+		};
+		EF33D700211D422A00560C69 /* obj */ = {
+			isa = PBXGroup;
+			children = (
+				EF33D701211D422A00560C69 /* OmiseObjectTest.php */,
+			);
+			path = obj;
+			sourceTree = "<group>";
+		};
+		EF33D712211D422A00560C69 /* exception */ = {
+			isa = PBXGroup;
+			children = (
+				EF33D713211D422A00560C69 /* OmiseExceptionTest.php */,
+			);
+			path = exception;
+			sourceTree = "<group>";
+		};
+		EF33D716211D422A00560C69 /* fixtures */ = {
+			isa = PBXGroup;
+			children = (
+				EF33D717211D422A00560C69 /* vault.omise.co */,
+				EF33D71B211D422A00560C69 /* api.omise.co */,
+			);
+			path = fixtures;
+			sourceTree = "<group>";
+		};
+		EF33D717211D422A00560C69 /* vault.omise.co */ = {
+			isa = PBXGroup;
+			children = (
+				EF33D718211D422A00560C69 /* tokens-post.json */,
+				EF33D719211D422A00560C69 /* tokens */,
+			);
+			path = vault.omise.co;
+			sourceTree = "<group>";
+		};
+		EF33D719211D422A00560C69 /* tokens */ = {
+			isa = PBXGroup;
+			children = (
+				EF33D71A211D422A00560C69 /* tokn_test_4zmrjhuk2rndz24a6x0-get.json */,
+			);
+			path = tokens;
+			sourceTree = "<group>";
+		};
+		EF33D71B211D422A00560C69 /* api.omise.co */ = {
+			isa = PBXGroup;
+			children = (
+				EF33D71C211D422A00560C69 /* customers */,
+				EF33D729211D422A00560C69 /* recipients-post.json */,
+				EF33D72A211D422A00560C69 /* occurrences */,
+				EF33D72C211D422A00560C69 /* charges-post.json */,
+				EF33D72D211D422A00560C69 /* transfers-get.json */,
+				EF33D72E211D422A00560C69 /* search-c2NvcGU9Y2hhcmdl-get.json */,
+				EF33D72F211D422A00560C69 /* customers-post.json */,
+				EF33D730211D422A00560C69 /* recipients-get.json */,
+				EF33D731211D422A00560C69 /* transactions-get.json */,
+				EF33D732211D422A00560C69 /* search-c2NvcGU9Y2hhcmdlJnF1ZXJ5PWRlbW8-get.json */,
+				EF33D733211D422A00560C69 /* events-get.json */,
+				EF33D734211D422A00560C69 /* account-get.json */,
+				EF33D735211D422A00560C69 /* search-c2NvcGU9Y2hhcmdlJnF1ZXJ5PWRlbW8mZmlsdGVycyU1QmNhcHR1cmVkJTVEPXRydWUmcGFnZT0yJm9yZGVyPXJldmVyc2VfY2hyb25vbG9naWNhbA-get.json */,
+				EF33D736211D422A00560C69 /* charges */,
+				EF33D743211D422A00560C69 /* search-c2NvcGU9cmVmdW5kJnF1ZXJ5PSZmaWx0ZXJzJTVCdm9pZGVkJTVEPXRydWU-get.json */,
+				EF33D744211D422A00560C69 /* disputes */,
+				EF33D74A211D422A00560C69 /* forex */,
+				EF33D74C211D422A00560C69 /* charges-get.json */,
+				EF33D74D211D422A00560C69 /* schedules */,
+				EF33D752211D422A00560C69 /* transfers */,
+				EF33D757211D422A00560C69 /* recipients */,
+				EF33D75D211D422A00560C69 /* schedules-get.json */,
+				EF33D75E211D422A00560C69 /* balance-get.json */,
+				EF33D75F211D422A00560C69 /* search-c2NvcGU9Y2hhcmdlJnF1ZXJ5PWRlbW8mZmlsdGVycyU1QmNhcHR1cmVkJTVEPXRydWU-get.json */,
+				EF33D760211D422A00560C69 /* search-c2NvcGU9cmVjaXBpZW50JnF1ZXJ5PWRlbW8mZmlsdGVycyU1QmFjdGl2ZSU1RD10cnVl-get.json */,
+				EF33D761211D422A00560C69 /* search-c2NvcGU9Y3VzdG9tZXImcXVlcnk9ZG9lJmZpbHRlcnMlNUJjcmVhdGVkJTVEPTIwMTctMDEtMDEuLjIwMTctMDgtMzA-get.json */,
+				EF33D762211D422A00560C69 /* transactions */,
+				EF33D764211D422A00560C69 /* search-c2NvcGU9ZGlzcHV0ZSZxdWVyeT1kZW1vJmZpbHRlcnMlNUJjYXJkX2xhc3RfZGlnaXRzJTVEPTU0NTQ-get.json */,
+				EF33D765211D422A00560C69 /* sources-post.json */,
+				EF33D766211D422A00560C69 /* links */,
+				EF33D768211D422A00560C69 /* customers-get.json */,
+				EF33D769211D422A00560C69 /* search-c2NvcGU9Y2hhcmdlJnF1ZXJ5PW9yZGVyJmZpbHRlcnMlNUJjYXB0dXJlZCU1RD10cnVlJnBhZ2U9MiZvcmRlcj1yZXZlcnNlX2Nocm9ub2xvZ2ljYWw-get.json */,
+				EF33D76A211D422A00560C69 /* search-c2NvcGU9Y2hhcmdlJnF1ZXJ5PWRlbW8mZmlsdGVycyU1QmNhcHR1cmVkJTVEPXRydWUmcGFnZT0xJm9yZGVyPXJldmVyc2VfY2hyb25vbG9naWNhbA-get.json */,
+				EF33D76B211D422A00560C69 /* disputes-get.json */,
+				EF33D76C211D422A00560C69 /* events */,
+				EF33D76E211D422A00560C69 /* transfers-post.json */,
+				EF33D76F211D422A00560C69 /* search-c2NvcGU9Y2hhcmdlJnF1ZXJ5PW9yZGVyJmZpbHRlcnMlNUJjYXB0dXJlZCU1RD10cnVlJnBhZ2U9MSZvcmRlcj1yZXZlcnNlX2Nocm9ub2xvZ2ljYWw-get.json */,
+				EF33D770211D422A00560C69 /* schedules-post.json */,
+				EF33D771211D422A00560C69 /* links-post.json */,
+				EF33D772211D422A00560C69 /* search-c2NvcGU9dHJhbnNmZXImcXVlcnk9ZGVtbyU0MG9taXNlLmNvJmZpbHRlcnMlNUJjdXJyZW5jeSU1RD10aGI-get.json */,
+				EF33D773211D422A00560C69 /* search-c2NvcGU9bGluayZxdWVyeT1kZW1vJmZpbHRlcnMlNUJ1c2VkJTVEPXRydWUmb3JkZXI9cmV2ZXJzZV9jaHJvbm9sb2dpY2Fs-get.json */,
+				EF33D774211D422A00560C69 /* search-c2NvcGU9Y2hhcmdlJnF1ZXJ5PWRlbW8mZmlsdGVycyU1QmNhcHR1cmVkJTVEPXRydWUmcGFnZT0y-get.json */,
+				EF33D775211D422A00560C69 /* links-get.json */,
+			);
+			path = api.omise.co;
+			sourceTree = "<group>";
+		};
+		EF33D71C211D422A00560C69 /* customers */ = {
+			isa = PBXGroup;
+			children = (
+				EF33D71D211D422A00560C69 /* cust_test_5234fzk37pi2mz0cen3 */,
+				EF33D720211D422A00560C69 /* cust_test_4zmrjg2hct06ybwobqc */,
+				EF33D725211D422A00560C69 /* cust_test_4zmrjg2hct06ybwobqc-get.json */,
+				EF33D726211D422A00560C69 /* cust_test_5234fzk37pi2mz0cen3-get.json */,
+				EF33D727211D422A00560C69 /* cust_test_4zmrjg2hct06ybwobqc-delete.json */,
+				EF33D728211D422A00560C69 /* cust_test_4zmrjg2hct06ybwobqc-patch.json */,
+			);
+			path = customers;
+			sourceTree = "<group>";
+		};
+		EF33D71D211D422A00560C69 /* cust_test_5234fzk37pi2mz0cen3 */ = {
+			isa = PBXGroup;
+			children = (
+				EF33D71E211D422A00560C69 /* cards-bGltaXQ9MQ-get.json */,
+				EF33D71F211D422A00560C69 /* schedules-get.json */,
+			);
+			path = cust_test_5234fzk37pi2mz0cen3;
+			sourceTree = "<group>";
+		};
+		EF33D720211D422A00560C69 /* cust_test_4zmrjg2hct06ybwobqc */ = {
+			isa = PBXGroup;
+			children = (
+				EF33D721211D422A00560C69 /* cards */,
+			);
+			path = cust_test_4zmrjg2hct06ybwobqc;
+			sourceTree = "<group>";
+		};
+		EF33D721211D422A00560C69 /* cards */ = {
+			isa = PBXGroup;
+			children = (
+				EF33D722211D422A00560C69 /* card_test_4zmrjfzf0spz3mh63cs-get.json */,
+				EF33D723211D422A00560C69 /* card_test_4zmrjfzf0spz3mh63cs-delete.json */,
+				EF33D724211D422A00560C69 /* card_test_4zmrjfzf0spz3mh63cs-patch.json */,
+			);
+			path = cards;
+			sourceTree = "<group>";
+		};
+		EF33D72A211D422A00560C69 /* occurrences */ = {
+			isa = PBXGroup;
+			children = (
+				EF33D72B211D422A00560C69 /* occu_test_58dt3strf4m1y7bqii8-get.json */,
+			);
+			path = occurrences;
+			sourceTree = "<group>";
+		};
+		EF33D736211D422A00560C69 /* charges */ = {
+			isa = PBXGroup;
+			children = (
+				EF33D737211D422A00560C69 /* schedules-get.json */,
+				EF33D738211D422A00560C69 /* chrg_test_4zmrjgxdh4ycj2qncoj */,
+				EF33D73E211D422A00560C69 /* chrg_test_4zmrjgxdh4ycj2qncoj-get.json */,
+				EF33D73F211D422A00560C69 /* chrg_test_4zmrjgxdh4ycj2qncoj-patch.json */,
+				EF33D740211D422A00560C69 /* chrg_test_53z5zoeovi39e1erbj0-get.json */,
+				EF33D741211D422A00560C69 /* chrg_test_53z5zoeovi39e1erbj0 */,
+			);
+			path = charges;
+			sourceTree = "<group>";
+		};
+		EF33D738211D422A00560C69 /* chrg_test_4zmrjgxdh4ycj2qncoj */ = {
+			isa = PBXGroup;
+			children = (
+				EF33D739211D422A00560C69 /* refunds-post.json */,
+				EF33D73A211D422A00560C69 /* refunds-get.json */,
+				EF33D73B211D422A00560C69 /* refunds */,
+				EF33D73D211D422A00560C69 /* capture-post.json */,
+			);
+			path = chrg_test_4zmrjgxdh4ycj2qncoj;
+			sourceTree = "<group>";
+		};
+		EF33D73B211D422A00560C69 /* refunds */ = {
+			isa = PBXGroup;
+			children = (
+				EF33D73C211D422A00560C69 /* rfnd_test_4zmrjhlbqy587sw6fwt-get.json */,
+			);
+			path = refunds;
+			sourceTree = "<group>";
+		};
+		EF33D741211D422A00560C69 /* chrg_test_53z5zoeovi39e1erbj0 */ = {
+			isa = PBXGroup;
+			children = (
+				EF33D742211D422A00560C69 /* reverse-post.json */,
+			);
+			path = chrg_test_53z5zoeovi39e1erbj0;
+			sourceTree = "<group>";
+		};
+		EF33D744211D422A00560C69 /* disputes */ = {
+			isa = PBXGroup;
+			children = (
+				EF33D745211D422A00560C69 /* open-get.json */,
+				EF33D746211D422A00560C69 /* dspt_test_4zgf15h89w8t775kcm8-patch.json */,
+				EF33D747211D422A00560C69 /* pending-get.json */,
+				EF33D748211D422A00560C69 /* closed-get.json */,
+				EF33D749211D422A00560C69 /* dspt_test_4zgf15h89w8t775kcm8-get.json */,
+			);
+			path = disputes;
+			sourceTree = "<group>";
+		};
+		EF33D74A211D422A00560C69 /* forex */ = {
+			isa = PBXGroup;
+			children = (
+				EF33D74B211D422A00560C69 /* usd-get.json */,
+			);
+			path = forex;
+			sourceTree = "<group>";
+		};
+		EF33D74D211D422A00560C69 /* schedules */ = {
+			isa = PBXGroup;
+			children = (
+				EF33D74E211D422A00560C69 /* schd_test_585t7iomh2dte3ejxh5-delete.json */,
+				EF33D74F211D422A00560C69 /* schd_test_585t7iomh2dte3ejxh5-get.json */,
+				EF33D750211D422A00560C69 /* schd_test_585t7iomh2dte3ejxh5 */,
+			);
+			path = schedules;
+			sourceTree = "<group>";
+		};
+		EF33D750211D422A00560C69 /* schd_test_585t7iomh2dte3ejxh5 */ = {
+			isa = PBXGroup;
+			children = (
+				EF33D751211D422A00560C69 /* occurrences-get.json */,
+			);
+			path = schd_test_585t7iomh2dte3ejxh5;
+			sourceTree = "<group>";
+		};
+		EF33D752211D422A00560C69 /* transfers */ = {
+			isa = PBXGroup;
+			children = (
+				EF33D753211D422A00560C69 /* trsf_test_4zmrjicrvw7j6uhv1l4-get.json */,
+				EF33D754211D422A00560C69 /* schedules-get.json */,
+				EF33D755211D422A00560C69 /* trsf_test_4zmrjicrvw7j6uhv1l4-patch.json */,
+				EF33D756211D422A00560C69 /* trsf_test_4zmrjicrvw7j6uhv1l4-delete.json */,
+			);
+			path = transfers;
+			sourceTree = "<group>";
+		};
+		EF33D757211D422A00560C69 /* recipients */ = {
+			isa = PBXGroup;
+			children = (
+				EF33D758211D422A00560C69 /* recp_test_508a9dytz793gxv9m77-get.json */,
+				EF33D759211D422A00560C69 /* recp_test_508a9dytz793gxv9m77-patch.json */,
+				EF33D75A211D422A00560C69 /* recp_test_508a9dytz793gxv9m77 */,
+				EF33D75C211D422A00560C69 /* recp_test_508a9dytz793gxv9m77-delete.json */,
+			);
+			path = recipients;
+			sourceTree = "<group>";
+		};
+		EF33D75A211D422A00560C69 /* recp_test_508a9dytz793gxv9m77 */ = {
+			isa = PBXGroup;
+			children = (
+				EF33D75B211D422A00560C69 /* schedules-get.json */,
+			);
+			path = recp_test_508a9dytz793gxv9m77;
+			sourceTree = "<group>";
+		};
+		EF33D762211D422A00560C69 /* transactions */ = {
+			isa = PBXGroup;
+			children = (
+				EF33D763211D422A00560C69 /* trxn_test_4zmrjhlflnz6id6q0bo-get.json */,
+			);
+			path = transactions;
+			sourceTree = "<group>";
+		};
+		EF33D766211D422A00560C69 /* links */ = {
+			isa = PBXGroup;
+			children = (
+				EF33D767211D422A00560C69 /* link_test_56bsanpa365jnlbc7rt-get.json */,
+			);
+			path = links;
+			sourceTree = "<group>";
+		};
+		EF33D76C211D422A00560C69 /* events */ = {
+			isa = PBXGroup;
+			children = (
+				EF33D76D211D422A00560C69 /* evnt_test_531zv1nto0a5pimuiza-get.json */,
+			);
+			path = events;
+			sourceTree = "<group>";
+		};
+		EF33D779211D422A00560C69 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				EF33D77A211D422A00560C69 /* omise */,
+				EF33D79A211D422A00560C69 /* Omise.php */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+		EF33D77A211D422A00560C69 /* omise */ = {
+			isa = PBXGroup;
+			children = (
+				EF33D77B211D422A00560C69 /* OmiseForex.php */,
+				EF33D77C211D422A00560C69 /* OmiseSource.php */,
+				EF33D77D211D422A00560C69 /* OmiseTest.php */,
+				EF33D77E211D422A00560C69 /* res */,
+				EF33D783211D422A00560C69 /* OmiseRefundList.php */,
+				EF33D784211D422A00560C69 /* OmiseTransaction.php */,
+				EF33D785211D422A00560C69 /* OmiseOccurrence.php */,
+				EF33D786211D422A00560C69 /* OmiseCustomer.php */,
+				EF33D787211D422A00560C69 /* OmiseBalance.php */,
+				EF33D788211D422A00560C69 /* OmiseScheduleList.php */,
+				EF33D789211D422A00560C69 /* OmiseSchedule.php */,
+				EF33D78A211D422A00560C69 /* OmiseRecipient.php */,
+				EF33D78B211D422A00560C69 /* OmiseToken.php */,
+				EF33D78C211D422A00560C69 /* OmiseOccurrenceList.php */,
+				EF33D78D211D422A00560C69 /* OmiseCard.php */,
+				EF33D78E211D422A00560C69 /* OmiseSearch.php */,
+				EF33D78F211D422A00560C69 /* OmiseAccount.php */,
+				EF33D790211D422A00560C69 /* OmiseCardList.php */,
+				EF33D791211D422A00560C69 /* OmiseDispute.php */,
+				EF33D792211D422A00560C69 /* OmiseTransfer.php */,
+				EF33D793211D422A00560C69 /* OmiseLink.php */,
+				EF33D794211D422A00560C69 /* OmiseEvent.php */,
+				EF33D795211D422A00560C69 /* OmiseRefund.php */,
+				EF33D796211D422A00560C69 /* OmiseScheduler.php */,
+				EF33D797211D422A00560C69 /* OmiseCharge.php */,
+				EF33D798211D422A00560C69 /* exception */,
+			);
+			path = omise;
+			sourceTree = "<group>";
+		};
+		EF33D77E211D422A00560C69 /* res */ = {
+			isa = PBXGroup;
+			children = (
+				EF33D77F211D422A00560C69 /* OmiseApiResource.php */,
+				EF33D780211D422A00560C69 /* obj */,
+				EF33D782211D422A00560C69 /* OmiseVaultResource.php */,
+			);
+			path = res;
+			sourceTree = "<group>";
+		};
+		EF33D780211D422A00560C69 /* obj */ = {
+			isa = PBXGroup;
+			children = (
+				EF33D781211D422A00560C69 /* OmiseObject.php */,
+			);
+			path = obj;
+			sourceTree = "<group>";
+		};
+		EF33D798211D422A00560C69 /* exception */ = {
+			isa = PBXGroup;
+			children = (
+				EF33D799211D422A00560C69 /* OmiseExceptions.php */,
+			);
+			path = exception;
+			sourceTree = "<group>";
+		};
+		EF33D79B211D422A00560C69 /* data */ = {
+			isa = PBXGroup;
+			children = (
+				EF33D79C211D422A00560C69 /* ca_certificates.pem */,
+			);
+			path = data;
+			sourceTree = "<group>";
+		};
+		EF33D7A1211D422A00560C69 /* cer */ = {
+			isa = PBXGroup;
+			children = (
+				EF33D7A2211D422A00560C69 /* aps_development.cer */,
+				EF33D7A3211D422A00560C69 /* CertificateSigningRequest.certSigningRequest */,
+				EF33D7A4211D422A00560C69 /* ck.pem */,
+				EF33D7A5211D422A00560C69 /* Certificates.p12 */,
+				EF33D7A6211D422A00560C69 /* PushCert.pem */,
+				EF33D7A7211D422A00560C69 /* PushKey.pem */,
+			);
+			path = cer;
+			sourceTree = "<group>";
+		};
+		EF33D7AD211D422A00560C69 /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				EF33D7AE211D422A00560C69 /* Promotion */,
+				EF33D7B1211D422A00560C69 /* jummumLogo.png */,
+				EF33D7B2211D422A00560C69 /* Reward */,
+				EF33D7B4211D422A00560C69 /* NoImage.jpg */,
+			);
+			path = Image;
+			sourceTree = "<group>";
+		};
+		EF33D7AE211D422A00560C69 /* Promotion */ = {
+			isa = PBXGroup;
+			children = (
+				EF33D7AF211D422A00560C69 /* promoBanner.jpg */,
+				EF33D7B0211D422A00560C69 /* promoThumbNail.jpg */,
+			);
+			path = Promotion;
+			sourceTree = "<group>";
+		};
+		EF33D7B2211D422A00560C69 /* Reward */ = {
+			isa = PBXGroup;
+			children = (
+				EF33D7B3211D422A00560C69 /* tubtim.jpg */,
+			);
+			path = Reward;
+			sourceTree = "<group>";
+		};
+		EF33D7BE211D422A00560C69 /* JUMMUM_OM_MAMARIN7 */ = {
+			isa = PBXGroup;
+			children = (
+				EF33D7BF211D422A00560C69 /* Image */,
+			);
+			path = JUMMUM_OM_MAMARIN7;
+			sourceTree = "<group>";
+		};
+		EF33D7BF211D422A00560C69 /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				EF33D7C0211D422A00560C69 /* Logo */,
+				EF33D7C6211D422A00560C69 /* Menu */,
+				EF33D7DE211D422A00560C69 /* NoImage.jpg */,
+			);
+			path = Image;
+			sourceTree = "<group>";
+		};
+		EF33D7C0211D422A00560C69 /* Logo */ = {
+			isa = PBXGroup;
+			children = (
+				EF33D7C1211D422A00560C69 /* sushiShin.jpg */,
+				EF33D7C2211D422A00560C69 /* mamarin_logo.jpg */,
+				EF33D7C3211D422A00560C69 /* jummumChef.png */,
+				EF33D7C4211D422A00560C69 /* jummumChef_backPink.png */,
+				EF33D7C5211D422A00560C69 /* jummumChef_backGreen.png */,
+			);
+			path = Logo;
+			sourceTree = "<group>";
+		};
+		EF33D7C6211D422A00560C69 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				EF33D7C7211D422A00560C69 /* pizzaHam.jpg */,
+				EF33D7C8211D422A00560C69 /* noodle dry original.jpg */,
+				EF33D7C9211D422A00560C69 /* pizzaHamMushroom.jpg */,
+				EF33D7CA211D422A00560C69 /* fried squid.jpg */,
+				EF33D7CB211D422A00560C69 /* tubtim.jpg */,
+				EF33D7CC211D422A00560C69 /* bakeFish.jpg */,
+				EF33D7CD211D422A00560C69 /* sticky rice dessert.jpg */,
+				EF33D7CE211D422A00560C69 /* tofu.jpg */,
+				EF33D7CF211D422A00560C69 /* violet drink.jpg */,
+				EF33D7D0211D422A00560C69 /* noodle red soup.jpg */,
+				EF33D7D1211D422A00560C69 /* wonderful soup.jpg */,
+				EF33D7D2211D422A00560C69 /* fried shrimp.jpg */,
+				EF33D7D3211D422A00560C69 /* grillChicken.jpg */,
+				EF33D7D4211D422A00560C69 /* yellow drink.jpg */,
+				EF33D7D5211D422A00560C69 /* pancake.jpg */,
+				EF33D7D6211D422A00560C69 /* noodle soup original.jpg */,
+				EF33D7D7211D422A00560C69 /* salmonSashimi.jpg */,
+				EF33D7D8211D422A00560C69 /* yentafo.jpg */,
+				EF33D7D9211D422A00560C69 /* ข้าวแห้งปลาอินทรีย์.jpg */,
+				EF33D7DA211D422A00560C69 /* noodle dry red.jpg */,
+				EF33D7DB211D422A00560C69 /* clear soup.jpg */,
+				EF33D7DC211D422A00560C69 /* red rice.jpg */,
+				EF33D7DD211D422A00560C69 /* shrimpChilli.jpg */,
+			);
+			path = Menu;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -245,9 +1311,247 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF33D7FA211D422A00560C69 /* JMMBranchSearchGetList.php in Resources */,
+				EF33D80A211D422A00560C69 /* JMMRewardPointInsert.php in Resources */,
+				EF33D8C2211D422B00560C69 /* yellow drink.jpg in Resources */,
+				EF33D89D211D422B00560C69 /* testpush.php in Resources */,
+				EF33D863211D422B00560C69 /* sources-post.json in Resources */,
+				EF33D81C211D422A00560C69 /* OccurrenceTest.php in Resources */,
+				EF33D8E6211D422B00560C69 /* HtmlEmailTemplateForgotPassword.php in Resources */,
+				EF33D824211D422A00560C69 /* TokenTest.php in Resources */,
+				EF33D875211D422B00560C69 /* OmiseForex.php in Resources */,
+				EF33D88C211D422B00560C69 /* OmiseEvent.php in Resources */,
+				EF33D862211D422B00560C69 /* search-c2NvcGU9ZGlzcHV0ZSZxdWVyeT1kZW1vJmZpbHRlcnMlNUJjYXJkX2xhc3RfZGlnaXRzJTVEPTU0NTQ-get.json in Resources */,
+				EF33D8BE211D422B00560C69 /* noodle red soup.jpg in Resources */,
+				EF33D884211D422B00560C69 /* OmiseOccurrenceList.php in Resources */,
+				EF33D80F211D422A00560C69 /* phpunit.xml in Resources */,
+				EF33D889211D422B00560C69 /* OmiseDispute.php in Resources */,
+				EF33D82A211D422A00560C69 /* tokn_test_4zmrjhuk2rndz24a6x0-get.json in Resources */,
+				EF33D895211D422B00560C69 /* JMMHotDealGetList.php in Resources */,
+				EF33D871211D422B00560C69 /* links-get.json in Resources */,
+				EF33D838211D422A00560C69 /* search-c2NvcGU9Y2hhcmdl-get.json in Resources */,
+				EF33D8CA211D422B00560C69 /* red rice.jpg in Resources */,
+				EF33D892211D422B00560C69 /* ca_certificates.pem in Resources */,
+				EF33D82F211D422A00560C69 /* card_test_4zmrjfzf0spz3mh63cs-patch.json in Resources */,
+				EF33D87B211D422B00560C69 /* OmiseRefundList.php in Resources */,
+				EF33D8DF211D422B00560C69 /* transactionLog20180809.log in Resources */,
+				EF33D8E4211D422B00560C69 /* JMMDisputeReasonGetList.php in Resources */,
+				EF33D868211D422B00560C69 /* disputes-get.json in Resources */,
+				EF33D7FB211D422A00560C69 /* JMMReceiptDisputeRatingAllAfterReceiptGet.php in Resources */,
+				EF33D853211D422B00560C69 /* occurrences-get.json in Resources */,
+				EF33D836211D422A00560C69 /* charges-post.json in Resources */,
+				EF33D881211D422B00560C69 /* OmiseSchedule.php in Resources */,
+				EF33D8CB211D422B00560C69 /* shrimpChilli.jpg in Resources */,
+				EF33D8D4211D422B00560C69 /* urlinsertprefix.php in Resources */,
+				EF33D89C211D422B00560C69 /* PushKey.pem in Resources */,
+				EF33D8AB211D422B00560C69 /* JMMReceiptUpdate.php in Resources */,
+				EF33D8BC211D422B00560C69 /* tofu.jpg in Resources */,
+				EF33D857211D422B00560C69 /* trsf_test_4zmrjicrvw7j6uhv1l4-delete.json in Resources */,
 				EF33D6BA211D41F200560C69 /* LaunchScreen.storyboard in Resources */,
+				EF33D84A211D422B00560C69 /* open-get.json in Resources */,
+				EF33D841211D422A00560C69 /* refunds-post.json in Resources */,
+				EF33D876211D422B00560C69 /* OmiseSource.php in Resources */,
+				EF33D8CF211D422B00560C69 /* JMMLedStatusUpdate.php in Resources */,
+				EF33D88E211D422B00560C69 /* OmiseScheduler.php in Resources */,
+				EF33D86C211D422B00560C69 /* schedules-post.json in Resources */,
+				EF33D8AF211D422B00560C69 /* JMMUserAccountForgotPasswordInsert.php in Resources */,
+				EF33D839211D422A00560C69 /* customers-post.json in Resources */,
+				EF33D801211D422A00560C69 /* JMMUserAccountInsert.php in Resources */,
+				EF33D886211D422B00560C69 /* OmiseSearch.php in Resources */,
+				EF33D874211D422B00560C69 /* circle.yml in Resources */,
+				EF33D860211D422B00560C69 /* search-c2NvcGU9Y3VzdG9tZXImcXVlcnk9ZG9lJmZpbHRlcnMlNUJjcmVhdGVkJTVEPTIwMTctMDEtMDEuLjIwMTctMDgtMzA-get.json in Resources */,
+				EF33D852211D422B00560C69 /* schd_test_585t7iomh2dte3ejxh5-get.json in Resources */,
+				EF33D8DB211D422B00560C69 /* JMMRatingInsert.php in Resources */,
+				EF33D894211D422B00560C69 /* JMMRewardPointSpentUsedGetList.php in Resources */,
+				EF33D834211D422A00560C69 /* recipients-post.json in Resources */,
+				EF33D8A3211D422B00560C69 /* promoThumbNail.jpg in Resources */,
+				EF33D7FF211D422A00560C69 /* JMMMenuNoteGetList.php in Resources */,
+				EF33D8B1211D422B00560C69 /* mamarin_logo.jpg in Resources */,
+				EF33D88A211D422B00560C69 /* OmiseTransfer.php in Resources */,
+				EF33D878211D422B00560C69 /* OmiseApiResource.php in Resources */,
+				EF33D87D211D422B00560C69 /* OmiseOccurrence.php in Resources */,
+				EF33D8B4211D422B00560C69 /* jummumChef_backGreen.png in Resources */,
+				EF33D81B211D422A00560C69 /* EventTest.php in Resources */,
+				EF33D8A5211D422B00560C69 /* tubtim.jpg in Resources */,
+				EF33D819211D422A00560C69 /* ScheduleTest.php in Resources */,
+				EF33D8A2211D422B00560C69 /* promoBanner.jpg in Resources */,
+				EF33D82D211D422A00560C69 /* card_test_4zmrjfzf0spz3mh63cs-get.json in Resources */,
+				EF33D893211D422B00560C69 /* composer.json in Resources */,
+				EF33D8C4211D422B00560C69 /* noodle soup original.jpg in Resources */,
+				EF33D8E5211D422B00560C69 /* HtmlTermsOfService.php in Resources */,
+				EF33D8C6211D422B00560C69 /* yentafo.jpg in Resources */,
+				EF33D896211D422B00560C69 /* JMMDisputeCancelInsert.php in Resources */,
+				EF33D8A1211D422B00560C69 /* JMMDisputeGetList.php in Resources */,
+				EF33D7F9211D422A00560C69 /* JMMUserAccountUpdate.php in Resources */,
+				EF33D880211D422B00560C69 /* OmiseScheduleList.php in Resources */,
+				EF33D887211D422B00560C69 /* OmiseAccount.php in Resources */,
+				EF33D850211D422B00560C69 /* charges-get.json in Resources */,
+				EF33D7FC211D422A00560C69 /* ResetPasswordTimeOut.php in Resources */,
+				EF33D8B0211D422B00560C69 /* sushiShin.jpg in Resources */,
+				EF33D8D2211D422B00560C69 /* JMMRewardPointGet.php in Resources */,
+				EF33D8A6211D422B00560C69 /* NoImage.jpg in Resources */,
+				EF33D856211D422B00560C69 /* trsf_test_4zmrjicrvw7j6uhv1l4-patch.json in Resources */,
+				EF33D8E0211D422B00560C69 /* modelm.php in Resources */,
+				EF33D85F211D422B00560C69 /* search-c2NvcGU9cmVjaXBpZW50JnF1ZXJ5PWRlbW8mZmlsdGVycyU1QmFjdGl2ZSU1RD10cnVl-get.json in Resources */,
+				EF33D800211D422A00560C69 /* JMMReceiptGet.php in Resources */,
+				EF33D882211D422B00560C69 /* OmiseRecipient.php in Resources */,
+				EF33D8E1211D422B00560C69 /* JMMRatingUpdate.php in Resources */,
+				EF33D8C5211D422B00560C69 /* salmonSashimi.jpg in Resources */,
+				EF33D845211D422A00560C69 /* chrg_test_4zmrjgxdh4ycj2qncoj-get.json in Resources */,
+				EF33D813211D422A00560C69 /* RefundTest.php in Resources */,
+				EF33D8A8211D422B00560C69 /* dbConnect.php in Resources */,
+				EF33D883211D422B00560C69 /* OmiseToken.php in Resources */,
+				EF33D8E2211D422B00560C69 /* modelh.php in Resources */,
+				EF33D872211D422B00560C69 /* README.md in Resources */,
+				EF33D821211D422A00560C69 /* SearchTest.php in Resources */,
+				EF33D891211D422B00560C69 /* Omise.php in Resources */,
+				EF33D814211D422A00560C69 /* LinkTest.php in Resources */,
+				EF33D83F211D422A00560C69 /* search-c2NvcGU9Y2hhcmdlJnF1ZXJ5PWRlbW8mZmlsdGVycyU1QmNhcHR1cmVkJTVEPXRydWUmcGFnZT0yJm9yZGVyPXJldmVyc2VfY2hyb25vbG9naWNhbA-get.json in Resources */,
+				EF33D847211D422B00560C69 /* chrg_test_53z5zoeovi39e1erbj0-get.json in Resources */,
+				EF33D8A0211D422B00560C69 /* JMMMasterGet.php in Resources */,
+				EF33D81E211D422A00560C69 /* SourceTest.php in Resources */,
+				EF33D82C211D422A00560C69 /* schedules-get.json in Resources */,
+				EF33D870211D422B00560C69 /* search-c2NvcGU9Y2hhcmdlJnF1ZXJ5PWRlbW8mZmlsdGVycyU1QmNhcHR1cmVkJTVEPXRydWUmcGFnZT0y-get.json in Resources */,
+				EF33D8A9211D422B00560C69 /* JMMRewardPointSpentUsedMoreGetList.php in Resources */,
+				EF33D8C7211D422B00560C69 /* ข้าวแห้งปลาอินทรีย์.jpg in Resources */,
+				EF33D877211D422B00560C69 /* OmiseTest.php in Resources */,
+				EF33D85E211D422B00560C69 /* search-c2NvcGU9Y2hhcmdlJnF1ZXJ5PWRlbW8mZmlsdGVycyU1QmNhcHR1cmVkJTVEPXRydWU-get.json in Resources */,
+				EF33D8C8211D422B00560C69 /* noodle dry red.jpg in Resources */,
+				EF33D820211D422A00560C69 /* CustomerTest.php in Resources */,
+				EF33D858211D422B00560C69 /* recp_test_508a9dytz793gxv9m77-get.json in Resources */,
+				EF33D864211D422B00560C69 /* link_test_56bsanpa365jnlbc7rt-get.json in Resources */,
+				EF33D851211D422B00560C69 /* schd_test_585t7iomh2dte3ejxh5-delete.json in Resources */,
+				EF33D898211D422B00560C69 /* CertificateSigningRequest.certSigningRequest in Resources */,
+				EF33D8BB211D422B00560C69 /* sticky rice dessert.jpg in Resources */,
+				EF33D8B9211D422B00560C69 /* tubtim.jpg in Resources */,
+				EF33D828211D422A00560C69 /* AccountTest.php in Resources */,
+				EF33D818211D422A00560C69 /* SchedulerTest.php in Resources */,
+				EF33D817211D422A00560C69 /* RecipientTest.php in Resources */,
+				EF33D816211D422A00560C69 /* ForexTest.php in Resources */,
+				EF33D842211D422A00560C69 /* refunds-get.json in Resources */,
+				EF33D8A7211D422B00560C69 /* downloadImage.php in Resources */,
+				EF33D8B6211D422B00560C69 /* noodle dry original.jpg in Resources */,
+				EF33D87C211D422B00560C69 /* OmiseTransaction.php in Resources */,
+				EF33D8C1211D422B00560C69 /* grillChicken.jpg in Resources */,
+				EF33D88F211D422B00560C69 /* OmiseCharge.php in Resources */,
+				EF33D823211D422A00560C69 /* DisputeTest.php in Resources */,
+				EF33D805211D422A00560C69 /* JMMBranchGetList.php in Resources */,
+				EF33D8AC211D422B00560C69 /* JMMRecommendShopInsert.php in Resources */,
+				EF33D83E211D422A00560C69 /* account-get.json in Resources */,
+				EF33D81F211D422A00560C69 /* CardTest.php in Resources */,
+				EF33D81A211D422A00560C69 /* TransferTest.php in Resources */,
+				EF33D84E211D422B00560C69 /* dspt_test_4zgf15h89w8t775kcm8-get.json in Resources */,
+				EF33D809211D422A00560C69 /* JMMRewardPointSpentGetList.php in Resources */,
+				EF33D888211D422B00560C69 /* OmiseCardList.php in Resources */,
+				EF33D890211D422B00560C69 /* OmiseExceptions.php in Resources */,
+				EF33D89A211D422B00560C69 /* Certificates.p12 in Resources */,
+				EF33D8D9211D422B00560C69 /* JMMBranchAndCustomerTableQRGet.php in Resources */,
+				EF33D859211D422B00560C69 /* recp_test_508a9dytz793gxv9m77-patch.json in Resources */,
+				EF33D826211D422A00560C69 /* OmiseExceptionTest.php in Resources */,
+				EF33D8A4211D422B00560C69 /* jummumLogo.png in Resources */,
+				EF33D854211D422B00560C69 /* trsf_test_4zmrjicrvw7j6uhv1l4-get.json in Resources */,
+				EF33D85A211D422B00560C69 /* schedules-get.json in Resources */,
+				EF33D8CE211D422B00560C69 /* JMMCommentInsert.php in Resources */,
+				EF33D866211D422B00560C69 /* search-c2NvcGU9Y2hhcmdlJnF1ZXJ5PW9yZGVyJmZpbHRlcnMlNUJjYXB0dXJlZCU1RD10cnVlJnBhZ2U9MiZvcmRlcj1yZXZlcnNlX2Nocm9ub2xvZ2ljYWw-get.json in Resources */,
+				EF33D803211D422A00560C69 /* HtmlPrivacyPolicy.php in Resources */,
+				EF33D827211D422A00560C69 /* ClassExistsTest.php in Resources */,
+				EF33D8BA211D422B00560C69 /* bakeFish.jpg in Resources */,
+				EF33D84D211D422B00560C69 /* closed-get.json in Resources */,
 				EF33D6B7211D41F200560C69 /* Assets.xcassets in Resources */,
+				EF33D8B2211D422B00560C69 /* jummumChef.png in Resources */,
+				EF33D81D211D422A00560C69 /* TransactionTest.php in Resources */,
+				EF33D8D0211D422B00560C69 /* ResetPassword.php in Resources */,
+				EF33D7FE211D422A00560C69 /* JMMRewardPointSpentExpiredGetList.php in Resources */,
+				EF33D8B3211D422B00560C69 /* jummumChef_backPink.png in Resources */,
+				EF33D831211D422A00560C69 /* cust_test_5234fzk37pi2mz0cen3-get.json in Resources */,
+				EF33D861211D422B00560C69 /* trxn_test_4zmrjhlflnz6id6q0bo-get.json in Resources */,
+				EF33D83C211D422A00560C69 /* search-c2NvcGU9Y2hhcmdlJnF1ZXJ5PWRlbW8-get.json in Resources */,
+				EF33D8C9211D422B00560C69 /* clear soup.jpg in Resources */,
+				EF33D8DC211D422B00560C69 /* JMMCustomerTableGetList.php in Resources */,
+				EF33D8D3211D422B00560C69 /* OmiseCheckOut.php in Resources */,
+				EF33D810211D422A00560C69 /* LICENSE in Resources */,
+				EF33D86F211D422B00560C69 /* search-c2NvcGU9bGluayZxdWVyeT1kZW1vJmZpbHRlcnMlNUJ1c2VkJTVEPXRydWUmb3JkZXI9cmV2ZXJzZV9jaHJvbm9sb2dpY2Fs-get.json in Resources */,
+				EF33D87E211D422B00560C69 /* OmiseCustomer.php in Resources */,
+				EF33D89E211D422B00560C69 /* JMMUserAccountValidate.php in Resources */,
+				EF33D8C0211D422B00560C69 /* fried shrimp.jpg in Resources */,
+				EF33D8DE211D422B00560C69 /* JMMUserAccountGet.php in Resources */,
+				EF33D897211D422B00560C69 /* aps_development.cer in Resources */,
+				EF33D822211D422A00560C69 /* ChargeTest.php in Resources */,
+				EF33D7FD211D422A00560C69 /* JMMWriteLog.php in Resources */,
+				EF33D879211D422B00560C69 /* OmiseObject.php in Resources */,
+				EF33D82E211D422A00560C69 /* card_test_4zmrjfzf0spz3mh63cs-delete.json in Resources */,
+				EF33D832211D422A00560C69 /* cust_test_4zmrjg2hct06ybwobqc-delete.json in Resources */,
+				EF33D846211D422A00560C69 /* chrg_test_4zmrjgxdh4ycj2qncoj-patch.json in Resources */,
+				EF33D84C211D422B00560C69 /* pending-get.json in Resources */,
+				EF33D8AD211D422B00560C69 /* JMMPromotionGetList.php in Resources */,
+				EF33D8D1211D422B00560C69 /* JMMBranchSearchMoreGetList.php in Resources */,
+				EF33D8AE211D422B00560C69 /* JMMDisputeInsert.php in Resources */,
+				EF33D899211D422B00560C69 /* ck.pem in Resources */,
+				EF33D8BD211D422B00560C69 /* violet drink.jpg in Resources */,
+				EF33D830211D422A00560C69 /* cust_test_4zmrjg2hct06ybwobqc-get.json in Resources */,
+				EF33D837211D422A00560C69 /* transfers-get.json in Resources */,
+				EF33D80B211D422A00560C69 /* JMMLogInUserAccountInsert.php in Resources */,
+				EF33D806211D422A00560C69 /* JMMLogOutInsert.php in Resources */,
+				EF33D8DA211D422B00560C69 /* JMMMenuGetList.php in Resources */,
+				EF33D82B211D422A00560C69 /* cards-bGltaXQ9MQ-get.json in Resources */,
+				EF33D811211D422A00560C69 /* CHANGELOG.md in Resources */,
+				EF33D855211D422B00560C69 /* schedules-get.json in Resources */,
+				EF33D807211D422A00560C69 /* JMMOpeningTimeGet.php in Resources */,
+				EF33D8AA211D422B00560C69 /* JMMLedStatusGet.php in Resources */,
+				EF33D8E3211D422B00560C69 /* JMMUserAccountValidate new.php in Resources */,
+				EF33D89F211D422B00560C69 /* JMMReceiptDisputeRatingGet.php in Resources */,
+				EF33D833211D422A00560C69 /* cust_test_4zmrjg2hct06ybwobqc-patch.json in Resources */,
+				EF33D804211D422A00560C69 /* HtmlContactUs.php in Resources */,
+				EF33D8BF211D422B00560C69 /* wonderful soup.jpg in Resources */,
+				EF33D844211D422A00560C69 /* capture-post.json in Resources */,
+				EF33D812211D422A00560C69 /* TestConfig.php in Resources */,
+				EF33D829211D422A00560C69 /* tokens-post.json in Resources */,
+				EF33D848211D422B00560C69 /* reverse-post.json in Resources */,
+				EF33D84F211D422B00560C69 /* usd-get.json in Resources */,
+				EF33D849211D422B00560C69 /* search-c2NvcGU9cmVmdW5kJnF1ZXJ5PSZmaWx0ZXJzJTVCdm9pZGVkJTVEPXRydWU-get.json in Resources */,
+				EF33D88B211D422B00560C69 /* OmiseLink.php in Resources */,
+				EF33D8CD211D422B00560C69 /* JMMRewardRedemptionWithBranchIDGetList.php in Resources */,
+				EF33D80E211D422A00560C69 /* urlinsertlistprefix.php in Resources */,
+				EF33D86B211D422B00560C69 /* search-c2NvcGU9Y2hhcmdlJnF1ZXJ5PW9yZGVyJmZpbHRlcnMlNUJjYXB0dXJlZCU1RD10cnVlJnBhZ2U9MSZvcmRlcj1yZXZlcnNlX2Nocm9ub2xvZ2ljYWw-get.json in Resources */,
+				EF33D808211D422A00560C69 /* JMMReceiptSummaryGetList.php in Resources */,
+				EF33D835211D422A00560C69 /* occu_test_58dt3strf4m1y7bqii8-get.json in Resources */,
+				EF33D85C211D422B00560C69 /* schedules-get.json in Resources */,
+				EF33D843211D422A00560C69 /* rfnd_test_4zmrjhlbqy587sw6fwt-get.json in Resources */,
+				EF33D8C3211D422B00560C69 /* pancake.jpg in Resources */,
+				EF33D8B8211D422B00560C69 /* fried squid.jpg in Resources */,
+				EF33D873211D422B00560C69 /* .gitignore in Resources */,
+				EF33D885211D422B00560C69 /* OmiseCard.php in Resources */,
+				EF33D84B211D422B00560C69 /* dspt_test_4zgf15h89w8t775kcm8-patch.json in Resources */,
+				EF33D867211D422B00560C69 /* search-c2NvcGU9Y2hhcmdlJnF1ZXJ5PWRlbW8mZmlsdGVycyU1QmNhcHR1cmVkJTVEPXRydWUmcGFnZT0xJm9yZGVyPXJldmVyc2VfY2hyb25vbG9naWNhbA-get.json in Resources */,
+				EF33D83A211D422A00560C69 /* recipients-get.json in Resources */,
+				EF33D80D211D422A00560C69 /* JMMRewardPointSpentExpiredMoreGetList.php in Resources */,
+				EF33D83D211D422A00560C69 /* events-get.json in Resources */,
+				EF33D87A211D422B00560C69 /* OmiseVaultResource.php in Resources */,
+				EF33D86D211D422B00560C69 /* links-post.json in Resources */,
+				EF33D825211D422A00560C69 /* BalanceTest.php in Resources */,
+				EF33D8D6211D422B00560C69 /* JMMPromoCodeInsert.php in Resources */,
+				EF33D8D5211D422B00560C69 /* urlupdateprefix.php in Resources */,
+				EF33D86E211D422B00560C69 /* search-c2NvcGU9dHJhbnNmZXImcXVlcnk9ZGVtbyU0MG9taXNlLmNvJmZpbHRlcnMlNUJjdXJyZW5jeSU1RD10aGI-get.json in Resources */,
+				EF33D89B211D422B00560C69 /* PushCert.pem in Resources */,
 				EF33D6B5211D41EE00560C69 /* Main.storyboard in Resources */,
+				EF33D87F211D422B00560C69 /* OmiseBalance.php in Resources */,
+				EF33D815211D422A00560C69 /* OmiseObjectTest.php in Resources */,
+				EF33D88D211D422B00560C69 /* OmiseRefund.php in Resources */,
+				EF33D802211D422A00560C69 /* JMMHotDealWithBranchIDGetList.php in Resources */,
+				EF33D85D211D422B00560C69 /* balance-get.json in Resources */,
+				EF33D869211D422B00560C69 /* evnt_test_531zv1nto0a5pimuiza-get.json in Resources */,
+				EF33D86A211D422B00560C69 /* transfers-post.json in Resources */,
+				EF33D80C211D422A00560C69 /* ck.pem in Resources */,
+				EF33D8D7211D422B00560C69 /* JMMBranchAndCustomerTableGet.php in Resources */,
+				EF33D865211D422B00560C69 /* customers-get.json in Resources */,
+				EF33D85B211D422B00560C69 /* recp_test_508a9dytz793gxv9m77-delete.json in Resources */,
+				EF33D8D8211D422B00560C69 /* JMMReceiptMaxModifiedDateGetList.php in Resources */,
+				EF33D83B211D422A00560C69 /* transactions-get.json in Resources */,
+				EF33D8B7211D422B00560C69 /* pizzaHamMushroom.jpg in Resources */,
+				EF33D8DD211D422B00560C69 /* JMMRewardPointSpentMoreGetList.php in Resources */,
+				EF33D8CC211D422B00560C69 /* NoImage.jpg in Resources */,
+				EF33D840211D422A00560C69 /* schedules-get.json in Resources */,
+				EF33D8B5211D422B00560C69 /* pizzaHam.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

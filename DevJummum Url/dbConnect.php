@@ -2,59 +2,26 @@
     
     
     //conection variable
+    $con
     $jummum = "DEV_JUMMUM";
     $jummumOM = "DEV_JUMMUM_OM";
     $urlPath = "DEV/";
     $jummumPath = "$urlPath$jummum/";
     $jummumOMPath = "$urlPath$jummumOM/";
     $encryptKey = "jmmom";
-
-    function alarmAdmin()
-    {
-        $url = str_replace("jinglejill.com","jinglejill.dyndns.co.za","http://jinglejill.com:350/LEDADMIN=ON");
-        
-        
-        // create a new cURL resource
-        $ch = curl_init();
-        
-        // set URL and other appropriate options
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_HEADER, 0);
-        
-        // grab URL and pass it to the browser
-        curl_exec($ch);
-        
-        // close cURL resource, and free up system resources
-        curl_close($ch);
-    }
-
-    function alarmShop($urlNoti)
-    {
-        $url = str_replace("jinglejill.com",$urlNoti,"http://jinglejill.com:350/LED=ON");
-        writeToLog($url);
-        
-        // create a new cURL resource
-        $ch = curl_init();
-        
-        // set URL and other appropriate options
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_HEADER, 0);
-        
-        // grab URL and pass it to the browser
-        curl_exec($ch);
-        
-        // close cURL resource, and free up system resources
-        curl_close($ch);
-    }
-
+    $jummumCkPath = "./../$jummum/";
+    $jummumCkPass = "jill";
+    $jummumOMCkPath = "./../$jummumOM/";
+    $jummumOMCkPass = "jill";
+    $jummumAdminCkPath = "./../jummumAdmin/";
+    $jummumAdminCkPass = "jill";
+    
     function generate_strings($number, $length) {
         
         
         mt_srand(10000000 * (double)microtime() * $length); // Generate a randome string
         
         $salt    = "ABCDEFGHJKMNPQRSTUVWXY3456789"; // the characters you want to allow
-//        $salt    = "abcdefghjkmnpqrstuvwxyzABCDEFGHJKMNPQRSTUVWXY3456789"; // the characters you want to allow
-        
         
         $len    = strlen($salt);
         
@@ -171,48 +138,6 @@
         {
             $_POST['$param_name'] = mysqli_real_escape_string($con,$param_val);
         }        
-    }
-    
-    function putAlertToDevice()
-    {
-        global $con;
-        $user = $_POST["modifiedUser"];
-        $actionScreen = $_POST["actionScreen"];
-        
-        
-        // push alert to device
-        // Set autocommit to on
-        mysqli_autocommit($con,TRUE);
-        writeToLog("set auto commit to on");
-        
-        
-        //alert query fail-> please check recent transactions again
-        $type = 'alert';
-        $action = '';
-        
-        
-        $selectedRow["alert"] = $actionScreen;
-        $deviceToken = getDeviceTokenFromUsername($user);
-        $sql = "insert into pushSync (DeviceToken, TableName, Action, Data, TimeSync) values ('$deviceToken','$type','$action','" . json_encode($selectedRow, JSON_UNESCAPED_UNICODE) . "',now())";
-        $res = mysqli_query($con,$sql);
-        if(!$res)
-        {
-            $error = "query fail, sql: " . $sql . ", modified user: " . $user . " error: " . mysqli_error($con);
-            writeToLog($error);
-        }
-        else
-        {
-            writeToLog("query success, sql: " . $sql . ", modified user: " . $user);
-            
-            $pushSyncID = mysqli_insert_id($con);
-            writeToLog('pushsyncid: '.$pushSyncID);
-            $paramBody = array(
-                               'badge' => 0
-                               );
-            sendPushNotification($deviceToken, $paramBody);
-            //----------
-        }
-        mysqli_close($con);
     }
 
     function setConnectionValue($dbName)
@@ -405,95 +330,175 @@
         sendPushNotification($deviceToken, $paramBody);
     }
     
-    function sendPushNotificationToDeviceWithMsg($deviceToken,$msg)
+    function sendPushNotificationAdmin($deviceToken,$title,$text,$category,$contentType,$data)
     {
-        $paramBody = array(
-                           'alert' => $msg
-                           ,'sound' => "default"
-                           );
-        sendPushNotification($deviceToken, $paramBody);
+        foreach($deviceToken as $eachDeviceToken)
+        {
+            if(strlen($eachDeviceToken) == 64)
+            {
+                $paramBody = array(
+                                   'content-available' => $contentAvailable
+                                   ,'data' => $data
+                                   );
+                if($category != '')
+                {
+                    $paramBody["category"] = $category;
+                }
+                if($msg != '')
+                {
+                    $paramBody["alert"] = $text;
+                    $paramBody["sound"] = "default";
+                }
+                
+                sendPushNotificationWithPath($eachDeviceToken, $paramBody, $jummumAdminCkPath, $jummumAdminCkPass);
+            }
+            else
+            {
+                $key = "AAAAXP_MM2Y:APA91bEb4yFGMlfXF-lnsEfh1dxAflVdmWW5-3FWQDBpEoyerj3a5U0YT68gjGk3oFkf4P8F5831f5AiowJuYDCsHNMwF0z6d1FPy33-p_YqejhlO-dRjNHo7aJAMasNtoEODxrkiYUHuIRBfganw5kolkL9TOvAhg";
+                sendFirebasePushNotification($eachDeviceToken,"",$msg,$data,$key);
+            }
+        }
+    }
+    
+    function sendPushNotificationJummum($deviceToken,$title,$text,$category,$contentType,$data)
+    {
+        foreach($deviceToken as $eachDeviceToken)
+        {
+            if(strlen($eachDeviceToken) == 64)
+            {
+                $paramBody = array(
+                                   'content-available' => $contentAvailable
+                                   ,'data' => $data
+                                   );
+                if($category != '')
+                {
+                    $paramBody["category"] = $category;
+                }
+                if($msg != '')
+                {
+                    $paramBody["alert"] = $text;
+                    $paramBody["sound"] = "default";
+                }
+                
+                sendPushNotificationWithPath($eachDeviceToken, $paramBody, $jummumCkPath, $jummumCkPass);
+            }
+            else
+            {
+                $key = "AAAAXP_MM2Y:APA91bEb4yFGMlfXF-lnsEfh1dxAflVdmWW5-3FWQDBpEoyerj3a5U0YT68gjGk3oFkf4P8F5831f5AiowJuYDCsHNMwF0z6d1FPy33-p_YqejhlO-dRjNHo7aJAMasNtoEODxrkiYUHuIRBfganw5kolkL9TOvAhg";
+                sendFirebasePushNotification($eachDeviceToken,"",$msg,$data,$key);
+            }
+        }
+    }
+    
+    function sendPushNotificationJummumOM($deviceToken,$title,$text,$category,$contentType,$data)
+    {
+        foreach($deviceToken as $eachDeviceToken)
+        {
+            if(strlen($eachDeviceToken) == 64)
+            {
+                $paramBody = array(
+                                   'content-available' => $contentAvailable
+                                   );
+                if($category != '')
+                {
+                    $paramBody["category"] = $category;
+                }
+                if($msg != '')
+                {
+                    $paramBody["alert"] = $text;
+                    $paramBody["sound"] = "default";
+                }
+                if($data)
+                {
+                    $paramBody["data"] = $data;                    
+                }
+                sendPushNotificationWithPath($eachDeviceToken, $paramBody, $jummumOMCkPath, $jummumOMCkPass);
+            }
+            else
+            {
+                $key = "AAAAXP_MM2Y:APA91bEb4yFGMlfXF-lnsEfh1dxAflVdmWW5-3FWQDBpEoyerj3a5U0YT68gjGk3oFkf4P8F5831f5AiowJuYDCsHNMwF0z6d1FPy33-p_YqejhlO-dRjNHo7aJAMasNtoEODxrkiYUHuIRBfganw5kolkL9TOvAhg";
+                sendFirebasePushNotification($eachDeviceToken,"",$msg,$data,$key);
+            }
+        }
     }
     
     function sendPushNotificationToDeviceWithPath($deviceToken,$path,$passForCk,$msg,$receiptID,$category,$contentAvailable)
     {
-        if($category == '')
+        foreach($deviceToken as $eachDeviceToken)
         {
-            if($msg == '')
+            if(strlen($eachDeviceToken) == 64)
             {
                 $paramBody = array(
                                    'content-available' => $contentAvailable
                                    ,'receiptID' => $receiptID
                                    );
+                if($category != '')
+                {
+                    $paramBody["category"] = $category;
+                }
+                if($msg != '')
+                {
+                    $paramBody["alert"] = $msg;
+                    $paramBody["sound"] = "default";
+                }
+                
+                sendPushNotificationWithPath($eachDeviceToken, $paramBody, $path, $passForCk);
             }
             else
             {
-                $paramBody = array(
-                                   'alert' => $msg
-                                   ,'sound' => "default"
-                                   ,'content-available' => $contentAvailable
-                                   ,'receiptID' => $receiptID
-                                   );
-            }
-        }
-        else
-        {
-            if($msg == '')
-            {
-                $paramBody = array(
-                                   'category' => $category
-                                   ,'content-available' => $contentAvailable
-                                   ,'receiptID' => $receiptID
-                                   );
-            }
-            else
-            {
-                $paramBody = array(
-                                   'alert' => $msg
-                                   ,'sound' => "default"
-                                   ,'category' => $category
-                                   ,'content-available' => $contentAvailable
-                                   ,'receiptID' => $receiptID
-                                   );
-            }
-        }
-        
-        foreach($deviceToken as $eachDeviceToken)
-        {
-            if(strlen($eachDeviceToken) == 64)
-            {
-                sendPushNotificationWithPath($eachDeviceToken, $paramBody, $path, $passForCk ,$paramBody2);
+                $data = array("receiptID" => $receiptID);
+                sendFirebasePushNotification($eachDeviceToken,"",$msg,$data,$key);
             }
         }
     }
     
-    function updateCountNotSeen($con,$user,$deviceToken,$badge)
+    function sendFirebasePushNotification($token, $title, $text, $data, $key)
     {
-        $deviceTokenAndCountNotSeenList = getDeviceTokenAndCountNotSeenList($user,$deviceToken);
-        foreach ($deviceTokenAndCountNotSeenList as $deviceTokenAndCountNotSeen)
+        // create curl resource
+        $ch = curl_init();
+        
+        // set url
+        curl_setopt($ch,CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_URL, "https://fcm.googleapis.com/fcm/send");
+        
+        
+        
+        //payload
+        $noti = array("title" => $title, "text" => $text);
+        $paramBody = array(
+                           "to" => $token
+                           ,"notification" => $noti
+                           ,"data" => $data
+                           );
+        $payload = json_encode($paramBody);
+        
+        
+        
+        //header
+        $header = array();
+        $header[] = 'Content-Type:application/json';
+        $header[] = 'Authorization: key=' . $key;
+        
+        
+        curl_setopt( $ch, CURLOPT_POSTFIELDS, $payload );
+        curl_setopt( $ch, CURLOPT_HTTPHEADER, $header);
+        
+        
+        
+        //return the transfer as a string
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        
+        // $output contains the output string
+        $output = curl_exec($ch);
+        
+        
+        if ($output === false)
         {
-            $deviceTokenCountNotSeen = $deviceTokenAndCountNotSeen["DeviceToken"];
-            $countNotSeen = $deviceTokenAndCountNotSeen["CountNotSeen"];
-            $username = $deviceTokenAndCountNotSeen["Username"];
-            writeToLog('device token: ' . $deviceToken. ', count not seen: ' . $countNotSeen);
-            writeToLog('badge to add: ' . $badge);
-            $updateBadge = $badge+$countNotSeen;
-            
-            
-            //query statement
-            $sql = "update useraccount set countnotseen = $updateBadge where username = '$username'";
-            $ret = doQueryTask($sql);
-            if($ret != "")
-            {
-//                mysqli_rollback($con);
-                return $ret;
-            }
-            
-            $paramBody = array(
-                               'badge' => $updateBadge
-                               );
-            sendPushNotification($deviceTokenCountNotSeen, $paramBody);
+            // throw new Exception('Curl error: ' . curl_error($crl));
+            print_r('Curl error: ' . curl_error($ch));
         }
-        return "";
+        // close curl resource to free up system resources
+        curl_close($ch);
     }
     
     function getSelectedRow($sql)
@@ -653,10 +658,6 @@
 
     function sendPushNotification($strDeviceToken,$arrBody)
     {
-        if($strDeviceToken == "simulator")
-        {
-            return;
-        }
         writeToLog("send push to device: " . $strDeviceToken . ", body: " . json_encode($arrBody));
         global $pushFail;
         $token = $strDeviceToken;
@@ -708,12 +709,9 @@
         fclose($fp);
         return $status;
     }
-    function sendPushNotificationWithPath($strDeviceToken,$arrBody,$path,$passForCk,$arrBody2)
+    
+    function sendPushNotificationWithPath($strDeviceToken,$arrBody,$path,$passForCk)
     {
-        if($strDeviceToken == "simulator")
-        {
-            return;
-        }
         writeToLog("send push to device: " . $strDeviceToken . ", body: " . json_encode($arrBody));
         global $pushFail;
         $token = $strDeviceToken;
@@ -747,10 +745,6 @@
         }
         
         $body['aps'] = $arrBody;
-        if($arrBody2)
-        {
-            $body['data'] = $arrBody2;
-        }
         $json = json_encode($body);
         $msg = chr(0).pack('n', 32).pack('H*',$token).pack('n',strlen($json)).$json;
         $result = fwrite($fp, $msg, strlen($msg));
@@ -864,51 +858,7 @@
             $response = array('status' => 'Mailer Error: ' . $mail->ErrorInfo);
             
             $error = "send email fail, Mailer Error: " . $mail->ErrorInfo . ", modified user: " . $user;
-            writeToLog($error);
-            
-            
-            
-            
-            {
-                //--------- ใช้สำหรับกรณี หน้าที่เรียกใช้ homemodel back ออกจากหน้าตัวเองไปแล้ว
-                // Set autocommit to on
-                mysqli_autocommit($con,TRUE);
-                writeToLog("set auto commit to on");
-                
-                
-                //alert query fail-> please check recent transactions again
-                $type = 'alert';
-                $action = '';
-                
-                
-                
-                $deviceToken = getDeviceTokenFromUsername($user);
-                $sql = "insert into pushSync (DeviceToken, TableName, Action, Data, TimeSync) values ('$deviceToken','$type','$action','',now())";
-                $res = mysqli_query($con,$sql);
-                if(!$res)
-                {
-                    $error = "query fail, sql: " . $sql . ", modified user: " . $user . " error: " . mysqli_error($con);
-                    writeToLog($error);
-                }
-                else
-                {
-                    writeToLog("query success, sql: " . $sql . ", modified user: " . $_POST["modifiedUser"]);
-                    
-                    
-                    $pushSyncID = mysqli_insert_id($con);
-                    mysqli_close($con);
-                    
-                    writeToLog('pushsyncid: '.$pushSyncID);
-                    $paramBody = array(
-                                       'badge' => 0
-                                       //                               'type' => 'alert',
-                                       //                               'pushSyncID' => $pushSyncID
-                                       );
-                    sendPushNotification($deviceToken, $paramBody);
-                    
-                    ///----
-                }
-            }
+            writeToLog($error);            
         }
         else
         {
@@ -925,5 +875,26 @@
             $randomString .= $characters[rand(0, $charactersLength - 1)];
         }
         return $randomString;
+    }
+    
+    function getDayOfWeekText($dayOfWeek)
+    {
+        switch($dayOfWeek)
+        {
+            case 1:
+                return "Mon";
+            case 2:
+                return "Tue\t";
+            case 3:
+                return "Wed";
+            case 4:
+                return "Thu\t";
+            case 5:
+                return "Fri\t";
+            case 6:
+                return "Sat\t";
+            case 7:
+                return "Sun\t";
+        }
     }
 ?>

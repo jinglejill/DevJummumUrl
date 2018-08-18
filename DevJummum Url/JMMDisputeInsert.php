@@ -118,7 +118,11 @@
     if($type == 2)
     {
         $msg = "Open dispute request";
-        sendPushNotificationToDeviceWithPath($pushSyncDeviceTokenReceiveOrder,"./../$jummumOM/",'jill',$msg,$receiptID,'cancelOrder',1);
+        $category = "updateStatus";
+        $contentType = 1;
+        $data = array("receiptID" => $receiptID);
+        sendPushNotificationJummumOM($pushSyncDeviceTokenReceiveOrder,$title,$msg,$category,$contentType,$data);
+//        sendPushNotificationToDeviceWithPath($pushSyncDeviceTokenReceiveOrder,"./../$jummumOM/",'jill',$msg,$receiptID,'cancelOrder',1);
         //****************send noti to shop (turn on light)
         //alarmShop
         //query statement
@@ -136,16 +140,22 @@
     }
     
     
-    //send noti to customer
+    //send noti to customer from admin
     if($type == 5)
     {
         $sql = "select login.DeviceToken from login left join useraccount on login.username = useraccount.username where useraccount.MemberID = '$memberID' order by login.modifiedDate desc limit 1;";
         $selectedRow = getSelectedRow($sql);
         $customerDeviceToken = $selectedRow[0]["DeviceToken"];
+        $arrCustomerDeviceToken = array();
+        array_push($arrCustomerDeviceToken,$customerDeviceToken);
+        
         
         $msg = "Review dispute";
         $category = "updateStatus";
-        sendPushNotificationToDeviceWithPath($customerDeviceToken,'./','jill',$msg,$receiptID,'cancelOrder',1);
+        $contentType = 1;
+        $data = array("receiptID" => $receiptID);
+        sendPushNotificationJummum($arrCustomerDeviceToken,$title,$msg,$category,$contentType,$data);
+//        sendPushNotificationToDeviceWithPath($customerDeviceToken,'./','jill',$msg,$receiptID,'cancelOrder',1);
     }
     
     

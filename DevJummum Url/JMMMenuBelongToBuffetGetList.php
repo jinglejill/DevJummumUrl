@@ -7,10 +7,13 @@
     
     
     
-    if(isset($_POST["branchID"]))
+    if(isset($_POST["receiptID"]) && isset($_POST["branchID"]))
     {
+        $receiptID = $_POST["receiptID"];
         $branchID = $_POST["branchID"];
     }
+    
+    
     
     
     // Check connection
@@ -20,11 +23,17 @@
     }
     
     
+    
+    //*** get dbName
     $sql = "select * from $jummumOM.branch where BranchID = '$branchID'";
     $selectedRow = getSelectedRow($sql);
     $dbName = $selectedRow[0]["DbName"];
+    //***------
     
     
+    
+    
+    //*** get OpeningTime
     //get customer order status from branch
     $sql = "select * from $dbName.Setting where keyName = 'customerOrderStatus'";
     $selectedRow = getSelectedRow($sql);
@@ -80,7 +89,7 @@
             }
         }
     }
-    //*********
+    //***------
     
     
     
@@ -99,7 +108,6 @@
     
     
     
-    
     if($inOpeningTime)
     {
         $sql = "select 1 as Text;";
@@ -108,11 +116,10 @@
     {
         $sql = "select 0 as Text;";
     }
-    $sql .= "select '$branchID' BranchID, $dbName.menu.* from $dbName.menu where Status = 1 and belongToMenuID = 0;";
-    $sql .= "select '$branchID' BranchID, $dbName.menuType.* from $dbName.menu left join $dbName.menuType on $dbName.menu.menuTypeID = $dbName.menuType.menuTypeID where $dbName.menu.Status = 1 and $dbName.menuType.Status = 1 and belongToMenuID = 0;";
-    $sql .= "select '$branchID' BranchID, $dbName.note.* from $dbName.note where Status = 1;";
-    $sql .= "select '$branchID' BranchID, '$branchID' BranchID, $dbName.notetype.* from $dbName.notetype where Status = 1;";
-    $sql .= "select '$branchID' BranchID, $dbName.specialPriceProgram.* from $dbName.specialPriceProgram where date_format(now(),'%Y-%m-%d') between date_format(startDate,'%Y-%m-%d') and date_format(endDate,'%Y-%m-%d');";
+    $sql .= "select '$branchID' BranchID,  belongToBuffetMenu.* from receipt LEFT JOIN ordertaking ON receipt.ReceiptID = ordertaking.ReceiptID LEFT JOIN $dbName.menu BuffetMenu ON ordertaking.MenuID = BuffetMenu.menuID LEFT JOIN $dbName.menu belongToBuffetMenu on BuffetMenu.menuID = belongToBuffetMenu.belongToMenuID where receipt.receiptID = '$receiptID' and BuffetMenu.buffetMenu = '1' and belongToBuffetMenu.status = '1';";
+    $sql .= "select distinct '$branchID' BranchID, $dbName.MenuType.* from receipt LEFT JOIN ordertaking ON receipt.ReceiptID = ordertaking.ReceiptID LEFT JOIN $dbName.menu BuffetMenu ON ordertaking.MenuID = BuffetMenu.menuID LEFT JOIN $dbName.menu belongToBuffetMenu on BuffetMenu.menuID = belongToBuffetMenu.belongToMenuID left join $dbName.menuType on belongToBuffetMenu.menuTypeID = $dbName.menuType.menuTypeID where receipt.receiptID = '$receiptID' and BuffetMenu.buffetMenu = '1' and belongToBuffetMenu.status = '1' and $dbName.menuType.status = '1';";
+    $sql .= "select distinct '$branchID' BranchID, Note.* from receipt LEFT JOIN ordertaking ON receipt.ReceiptID = ordertaking.ReceiptID LEFT JOIN $dbName.menu BuffetMenu ON ordertaking.MenuID = BuffetMenu.menuID LEFT JOIN $dbName.menu belongToBuffetMenu on BuffetMenu.menuID = belongToBuffetMenu.belongToMenuID left join $dbName.menuNote on belongToBuffetMenu.menuID = $dbName.menuNote.menuID left join $dbName.Note on $dbName.menuNote.noteID = $dbName.Note.noteID where receipt.receiptID = '$receiptID' and BuffetMenu.buffetMenu = '1' and belongToBuffetMenu.status = '1' and $dbName.Note.status = '1';";
+    $sql .= "select distinct '$branchID' BranchID, Note.* from receipt LEFT JOIN ordertaking ON receipt.ReceiptID = ordertaking.ReceiptID LEFT JOIN $dbName.menu BuffetMenu ON ordertaking.MenuID = BuffetMenu.menuID LEFT JOIN $dbName.menu belongToBuffetMenu on BuffetMenu.menuID = belongToBuffetMenu.belongToMenuID left join $dbName.menuNote on belongToBuffetMenu.menuID = $dbName.menuNote.menuID left join $dbName.Note on $dbName.menuNote.noteID = $dbName.Note.noteID left join $dbName.NoteType on $dbName.note.noteTypeID = $dbName.NoteType.noteTypeID where receipt.receiptID = '$receiptID' and BuffetMenu.buffetMenu = '1' and belongToBuffetMenu.status = '1' and $dbName.Note.status = '1' and $dbName.NoteType.status = '1';";
     writeToLog("sql = " . $sql);
     
     

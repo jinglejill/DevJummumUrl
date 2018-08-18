@@ -107,7 +107,11 @@
                 $msg = "Review negotiation";
             }
 
-            sendPushNotificationToDeviceWithPath($pushSyncDeviceTokenReceiveOrder,"./../$jummumOM/",'jill',$msg,$receiptID,'cancelOrder',1);
+            $category = "updateStatus";
+            $contentType = 1;
+            $data = array("receiptID" => $receiptID);
+            sendPushNotificationJummumOM($pushSyncDeviceTokenReceiveOrder,$title,$msg,$category,$contentType,$data);
+//            sendPushNotificationToDeviceWithPath($pushSyncDeviceTokenReceiveOrder,"./../$jummumOM/",'jill',$msg,$receiptID,'cancelOrder',1);
             //****************send noti to shop (turn on light)
             //alarmShop
             //query statement

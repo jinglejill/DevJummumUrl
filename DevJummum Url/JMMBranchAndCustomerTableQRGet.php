@@ -57,7 +57,7 @@
     if(sizeof($selectedRow)>0)
     {
         $eachDbName = $selectedRow[0]["DbName"];
-        $sqlCustomerTable = "select $branchID as BranchID, $eachDbName.CustomerTable.* from $eachDbName.CustomerTable";
+        $sqlCustomerTable = "select $branchID as BranchID, $eachDbName.CustomerTable.* from $eachDbName.CustomerTable where customerTableID = '$customerTableID'";
     }
     else
     {

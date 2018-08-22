@@ -4,7 +4,19 @@
     writeToLog("file: " . basename(__FILE__) . ", user: " . $_POST["modifiedUser"]);
     printAllPost();
     
-
+    
+    
+    if(isset($_POST["omiseToken"]) && isset($_POST["amount"]))
+    {
+        $omiseToken = $_POST["omiseToken"];
+        $amount = $_POST["amount"];
+    }
+    
+    if(isset($_POST["promoCodeID"]))
+    {
+        $promoCodeID = $_POST["promoCodeID"];
+    }
+    
     
     if(isset($_POST["receiptID"]) && isset($_POST["branchID"]) && isset($_POST["customerTableID"]) && isset($_POST["memberID"]) && isset($_POST["servingPerson"]) && isset($_POST["customerType"]) && isset($_POST["openTableDate"]) && isset($_POST["cashAmount"]) && isset($_POST["cashReceive"]) && isset($_POST["creditCardType"]) && isset($_POST["creditCardNo"]) && isset($_POST["creditCardAmount"]) && isset($_POST["transferDate"]) && isset($_POST["transferAmount"]) && isset($_POST["remark"]) && isset($_POST["discountType"]) && isset($_POST["discountAmount"]) && isset($_POST["discountValue"]) && isset($_POST["discountReason"]) && isset($_POST["serviceChargePercent"]) && isset($_POST["serviceChargeValue"]) && isset($_POST["priceIncludeVat"]) && isset($_POST["vatPercent"]) && isset($_POST["vatValue"]) && isset($_POST["status"]) && isset($_POST["statusRoute"]) && isset($_POST["receiptNoID"]) && isset($_POST["receiptNoTaxID"]) && isset($_POST["receiptDate"]) && isset($_POST["sendToKitchenDate"]) && isset($_POST["deliveredDate"]) && isset($_POST["mergeReceiptID"]) && isset($_POST["buffetReceiptID"]) && isset($_POST["modifiedUser"]) && isset($_POST["modifiedDate"]))
     {
@@ -80,9 +92,38 @@
         }
     }
 
+    $type = $_POST["type"];
+    if($type == 1)
+    {
+        if(isset($_POST["prUserPromotionUsedID"]) && isset($_POST["prUserAccountID"]) && isset($_POST["prPromotionID"]) && isset($_POST["prReceiptID"]) && isset($_POST["prModifiedUser"]) && isset($_POST["prModifiedDate"]))
+        {
+            $prUserPromotionUsedID = $_POST["prUserPromotionUsedID"];
+            $prUserAccountID = $_POST["prUserAccountID"];
+            $prPromotionID = $_POST["prPromotionID"];
+            $prReceiptID = $_POST["prReceiptID"];
+            $prModifiedUser = $_POST["prModifiedUser"];
+            $prModifiedDate = $_POST["prModifiedDate"];
+        }
+    }
+    else
+    {
+        if(isset($_POST["prUserRewardRedemptionUsedID"]) && isset($_POST["prUserAccountID"]) && isset($_POST["prRewardRedemptionID"]) && isset($_POST["prReceiptID"]) && isset($_POST["prModifiedUser"]) && isset($_POST["prModifiedDate"]))
+        {
+            $prUserRewardRedemptionUsedID = $_POST["prUserRewardRedemptionUsedID"];
+            $prUserAccountID = $_POST["prUserAccountID"];
+            $prRewardRedemptionID = $_POST["prRewardRedemptionID"];
+            $prReceiptID = $_POST["prReceiptID"];
+            $prModifiedUser = $_POST["prModifiedUser"];
+            $prModifiedDate = $_POST["prModifiedDate"];
+        }
+    }
     
     
-   
+    
+    
+    writeToLog('token : ' . $omiseToken);
+    writeToLog('amount : ' . $amount);
+    
     
     
     
@@ -162,10 +203,37 @@
     
     
     
-
+    
+    //omise part
+    if($amount != 0)
+    {
+        require_once  dirname(__FILE__) . '/omise-php/lib/Omise.php';
+        
+        
+        $sql = "select * from Setting where keyName = 'PublicKey'";
+        $selectedRow = getSelectedRow($sql);
+        $publicKey = $selectedRow[0]["Value"];
+        $sql = "select * from Setting where keyName = 'SecretKey'";
+        $selectedRow = getSelectedRow($sql);
+        $secretKey = $selectedRow[0]["Value"];
+        define('OMISE_PUBLIC_KEY', "$publicKey");
+        define('OMISE_SECRET_KEY', "$secretKey");
+        
+        
+        $charge = OmiseCharge::create(array(
+                                            'amount'   => $amount,
+                                            'currency' => 'THB',
+                                            'card'     => "$omiseToken"
+                                            ));
+        
+    }
+    else
+    {
+        $doReceiptProcess = 1;
+    }
     
     
-//    if($doReceiptProcess || $charge["status"] == "successful")//omise status
+    if($doReceiptProcess || $charge["status"] == "successful")//omise status
     {
         // Check connection
         if (mysqli_connect_errno())
@@ -182,7 +250,7 @@
         
         
         //query statement
-        $sql = "INSERT INTO Receipt(BranchID, CustomerTableID, MemberID, ServingPerson, CustomerType, OpenTableDate, CashAmount, CashReceive, CreditCardType, CreditCardNo, CreditCardAmount, TransferDate, TransferAmount, Remark, DiscountType, DiscountAmount, DiscountValue, DiscountReason, ServiceChargePercent, ServiceChargeValue, PriceIncludeVat, VatPercent, VatValue, Status, StatusRoute, ReceiptNoID, ReceiptNoTaxID, ReceiptDate, MergeReceiptID, BuffetReceiptID, ModifiedUser, ModifiedDate) VALUES ('$branchID', '$customerTableID', '$memberID', '$servingPerson', '$customerType', '$openTableDate', '$cashAmount', '$cashReceive', '$creditCardType', '$creditCardNo', '$creditCardAmount', '$transferDate', '$transferAmount', '$remark', '$discountType', '$discountAmount', '$discountValue', '$discountReason', '$serviceChargePercent', '$serviceChargeValue', '$priceIncludeVat', '$vatPercent', '$vatValue', '$status', '$status', '$receiptNoID', '$receiptNoTaxID', '$receiptDate', '$mergeReceiptID', '$buffetReceiptID', '$modifiedUser', '$modifiedDate')";
+        $sql = "INSERT INTO Receipt(BranchID, CustomerTableID, MemberID, ServingPerson, CustomerType, OpenTableDate, CashAmount, CashReceive, CreditCardType, CreditCardNo, CreditCardAmount, TransferDate, TransferAmount, Remark, DiscountType, DiscountAmount, DiscountValue, DiscountReason, ServiceChargePercent, ServiceChargeValue, PriceIncludeVat, VatPercent, VatValue, Status, StatusRoute, ReceiptNoID, ReceiptNoTaxID, ReceiptDate, MergeReceiptID, ModifiedUser, ModifiedDate) VALUES ('$branchID', '$customerTableID', '$memberID', '$servingPerson', '$customerType', '$openTableDate', '$cashAmount', '$cashReceive', '$creditCardType', '$creditCardNo', '$creditCardAmount', '$transferDate', '$transferAmount', '$remark', '$discountType', '$discountAmount', '$discountValue', '$discountReason', '$serviceChargePercent', '$serviceChargeValue', '$priceIncludeVat', '$vatPercent', '$vatValue', '$status', '$status', '$receiptNoID', '$receiptNoTaxID', '$receiptDate', '$mergeReceiptID', '$modifiedUser', '$modifiedDate')";
         $ret = doQueryTask($sql);
         if($ret != "")
         {
@@ -319,10 +387,105 @@
         
         
         
+        if($type == 1)
+        {
+            //user promotion used - voucher code
+            if($prPromotionID != 0)
+            {
+                //query statement
+                $sql = "INSERT INTO UserPromotionUsed(UserAccountID, PromotionID, ReceiptID, ModifiedUser, ModifiedDate) VALUES ('$prUserAccountID', '$prPromotionID', '$receiptID', '$prModifiedUser', '$prModifiedDate')";
+                $ret = doQueryTask($sql);
+                if($ret != "")
+                {
+                    mysqli_rollback($con);
+//                    putAlertToDevice();
+                    echo json_encode($ret);
+                    exit();
+                }
+            }
+        }
+        else
+        {
+            //user rewardRedemption used - voucher code
+            if($prRewardRedemptionID != 0)
+            {
+                //query statement
+                $sql = "INSERT INTO UserRewardRedemptionUsed(UserAccountID, RewardRedemptionID, ReceiptID, ModifiedUser, ModifiedDate) VALUES ('$prUserAccountID', '$prRewardRedemptionID', '$receiptID', '$prModifiedUser', '$prModifiedDate')";
+                $ret = doQueryTask($sql);
+                if($ret != "")
+                {
+                    mysqli_rollback($con);
+//                    putAlertToDevice();
+                    echo json_encode($ret);
+                    exit();
+                }
+                
+                
+                
+                //query statement
+                $sql = "update promoCode set status = 2, modifiedUser = '$modifiedUser', modifiedDate = '$modifiedDate' where promoCodeID = '$promoCodeID'";
+                $ret = doQueryTask($sql);
+                if($ret != "")
+                {
+                    mysqli_rollback($con);
+//                    putAlertToDevice();
+                    echo json_encode($ret);
+                    exit();
+                }
+            }
+        }
         
         
-
+        
+        
+        
+        
+        //reward
+        $sql = "SELECT * FROM `rewardprogram` WHERE StartDate <= now() and EndDate >= now() and type = 1 order by modifiedDate desc";
+        $selectedRow = getSelectedRow($sql);
+        if(sizeof($selectedRow)>0)
+        {
+            $salesSpent = $selectedRow[0]["SalesSpent"];
+            $receivePoint = $selectedRow[0]["ReceivePoint"];
+            $rewardPoint = $amount/100.0/$salesSpent*$receivePoint;
+            
+            
+            $sql = "INSERT INTO `rewardpoint`(`MemberID`, `ReceiptID`, `Point`, `Status`, `ModifiedUser`, `ModifiedDate`) VALUES ('$memberID','$receiptID','$rewardPoint',1,'$modifiedUser','$modifiedDate')";
+            $sql = "INSERT INTO RewardPoint(MemberID, ReceiptID, Point, Status, PromoCodeID, ModifiedUser, ModifiedDate) VALUES ('$memberID', '$receiptID', '$rewardPoint', '1', '0', '$modifiedUser', '$modifiedDate')";
+            $ret = doQueryTask($sql);
+            if($ret != "")
+            {
+                mysqli_rollback($con);
+//                putAlertToDevice();
+                echo json_encode($ret);
+                exit();
+            }
+        }
+        //-----********
+        
+        
+        
+        
+        
         //-----****************************
+        //****************send noti to shop (turn on light)
+        //alarmShop
+        //query statement
+        $ledStatus = 1;
+        $sql = "update $jummumOM.Branch set LedStatus = '$ledStatus', ModifiedUser = '$modifiedUser', ModifiedDate = '$modifiedDate' where branchID = '$branchID';";
+        $ret = doQueryTask($sql);
+        if($ret != "")
+        {
+            mysqli_rollback($con);
+            //        putAlertToDevice();
+            echo json_encode($ret);
+            exit();
+        }
+        mysqli_commit($con);
+        //****************
+        
+        
+        
         //get pushSync Device in JUMMUM OM
         $pushSyncDeviceTokenReceiveOrder = array();
         $sql = "select * from $jummumOM.device left join $jummumOM.Branch on $jummumOM.device.DbName = $jummumOM.Branch.DbName where branchID = '$branchID';";
@@ -337,19 +500,11 @@
 
 
         $msg = 'New order coming!! receipt No:' . $receiptNoID;
-        sendPushNotificationToDeviceWithPath($pushSyncDeviceTokenReceiveOrder,"./../$jummumOM/",'jill',$msg,$receiptID,'printKitchenBill',1);
-        //****************send noti to shop (turn on light)
-        $ledStatus = 1;
-        $sql = "update $jummumOM.Branch set LedStatus = '$ledStatus', ModifiedUser = '$modifiedUser', ModifiedDate = '$modifiedDate' where branchID = '$branchID';";
-        $ret = doQueryTask($sql);
-        if($ret != "")
-        {
-            mysqli_rollback($con);
-            //        putAlertToDevice();
-            echo json_encode($ret);
-            exit();
-        }
-        //****************
+        $category = "printKitchenBill";
+        $contentAvailable = 1;
+        $data = array("receiptID" => $receiptID);
+        sendPushNotificationJummumOM($pushSyncDeviceTokenReceiveOrder,$title,$msg,$category,$contentAvailable,$data);
+
         
         
         
@@ -359,14 +514,24 @@
         //do script successful
         mysqli_commit($con);
         mysqli_close($con);
+        
+        
+        
+        
         writeToLog("query commit, file: " . basename(__FILE__) . ", user: " . $_POST['modifiedUser']);
-        $response = array('status' => '1', 'sql' => $sql, 'tableName' => 'BuffetOrder', dataJson => $dataJson);
+        $response = array('status' => '1', 'sql' => $sql, 'tableName' => 'OmiseCheckOut', dataJson => $dataJson);
         
         echo json_encode($response);
         
         exit();
     }
-
+    else
+    {
+        writeToLog("omise charge fail, file: " . basename(__FILE__) . ", user: " . $_POST['modifiedUser']);
+        $response = array('status' => '2', 'msg' => 'ตัดบัตรเครดิตไม่สำเร็จ กรุณาตรวจสอบข้อมูลบัตรเครดิตใหม่อีกครั้ง');
+        echo json_encode($response);
+        exit();
+    }
 
 
 ?>

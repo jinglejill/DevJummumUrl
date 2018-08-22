@@ -1,16 +1,16 @@
 <?php
     include_once("dbConnect.php");
-    setConnectionValue($jummumOM);
+    setConnectionValueWithoutCheckUpdate("");
     writeToLog("file: " . basename(__FILE__) . ", user: " . $_POST["modifiedUser"]);
     printAllPost();
-    ini_set("memory_limit","-1");
     
     
-    if(isset($_POST["searchText"]) && isset($_POST["name"]))
+    
+    if(isset($_POST["keyName"]))
     {
-        $searchText = $_POST["searchText"];
-        $name = $_POST["name"];
+        $keyName = $_POST["keyName"];
     }
+    
     
     
     
@@ -21,19 +21,19 @@
     }
     
     
-    //select table -> branch, customerTable
-    $sql = "SELECT * FROM $jummumOM.Branch where status = 1 and customerApp = 1 and name like '%$searchText%' and name > '$name' order by name limit 10;";
-
+    
+    //-----
+    $sql = "select * from setting where keyName = '$keyName';";
+    
     
     
     /* execute multi query */
     $jsonEncode = executeMultiQueryArray($sql);
     $response = array('success' => true, 'data' => $jsonEncode, 'error' => null, 'status' => 1);
     echo json_encode($response);
-
-
+    
+    
     
     // Close connections
     mysqli_close($con);
-    
 ?>

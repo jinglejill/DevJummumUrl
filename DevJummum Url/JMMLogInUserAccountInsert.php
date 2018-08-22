@@ -6,12 +6,13 @@
     
     
     
-    if(isset($_POST["logInID"]) && isset($_POST["username"]) && isset($_POST["status"]) && isset($_POST["deviceToken"]) && isset($_POST["modifiedUser"]) && isset($_POST["modifiedDate"]))
+    if(isset($_POST["logInID"]) && isset($_POST["username"]) && isset($_POST["status"]) && isset($_POST["deviceToken"]) && isset($_POST["model"]) && isset($_POST["modifiedUser"]) && isset($_POST["modifiedDate"]))
     {
         $logInID = $_POST["logInID"];
         $username = $_POST["username"];
         $status = $_POST["status"];
         $deviceToken = $_POST["deviceToken"];
+        $model = $_POST["model"];
         $modifiedUser = $_POST["modifiedUser"];
         $modifiedDate = $_POST["modifiedDate"];
     }
@@ -31,7 +32,6 @@
         $modifiedUser = $_POST["modifiedUser"];
         $modifiedDate = $_POST["modifiedDate"];
     }
-
     
     
     // Check connection
@@ -50,7 +50,7 @@
     
     //login--------------------
     //query statement
-    $sql = "INSERT INTO LogIn(Username, Status, DeviceToken, ModifiedUser, ModifiedDate) VALUES ('$username', '$status', '$deviceToken', '$modifiedUser', '$modifiedDate')";
+    $sql = "INSERT INTO LogIn(Username, Status, DeviceToken, Model, ModifiedUser, ModifiedDate) VALUES ('$username', '$status', '$deviceToken', '$model', '$modifiedUser', '$modifiedDate')";
     $ret = doQueryTask($sql);
     if($ret != "")
     {
@@ -244,8 +244,8 @@
         }
         else
         {
-            $sqlNote = "select * from Note where 0;";
-            $sqlNoteType = "select * from NoteType where 0;";
+            $sqlNote = "select * from Receipt where 0;";
+            $sqlNoteType = "select * from Receipt where 0;";
         }
         $sqlAll .= $sqlNote;
         $sqlAll .= $sqlNoteType;
@@ -258,14 +258,14 @@
     else
     {
         $sqlAll .= "select * from Receipt where 0;";
-        $sqlAll .= "select * from CustomerTable where 0;";
-        $sqlAll .= "select * from Branch where 0;";
-        $sqlAll .= "select * from OrderTaking where 0;";
-        $sqlAll .= "select * from Menu where 0;";
-        $sqlAll .= "select * from MenuType where 0;";
-        $sqlAll .= "select * from OrderNote where 0;";
-        $sqlAll .= "select * from Note where 0;";
-        $sqlAll .= "select * from NoteType where 0;";        
+        $sqlAll .= "select * from Receipt where 0;";
+        $sqlAll .= "select * from Receipt where 0;";
+        $sqlAll .= "select * from Receipt where 0;";
+        $sqlAll .= "select * from Receipt where 0;";
+        $sqlAll .= "select * from Receipt where 0;";
+        $sqlAll .= "select * from Receipt where 0;";
+        $sqlAll .= "select * from Receipt where 0;";
+        $sqlAll .= "select * from Receipt where 0;";
     }
     
     

@@ -100,29 +100,8 @@
         array_push($pushSyncDeviceTokenReceiveOrder,$deviceToken);
     }
     
-    
-
-    
-    
-    
-    
-    
-    /* execute multi query */
-    $sql = "select * from receipt where receiptID = '$receiptID';";
-    $sql .= "Select * from Dispute where receiptID = '$receiptID' and disputeID = '$disputeID';";
-    $dataJson = executeMultiQueryArray($sql);
-    
-    
-    
-    //send noti to om
     if($type == 2)
     {
-        $msg = "Open dispute request";
-        $category = "updateStatus";
-        $contentType = 1;
-        $data = array("receiptID" => $receiptID);
-        sendPushNotificationJummumOM($pushSyncDeviceTokenReceiveOrder,$title,$msg,$category,$contentType,$data);
-//        sendPushNotificationToDeviceWithPath($pushSyncDeviceTokenReceiveOrder,"./../$jummumOM/",'jill',$msg,$receiptID,'cancelOrder',1);
         //****************send noti to shop (turn on light)
         //alarmShop
         //query statement
@@ -138,25 +117,62 @@
         }
         //****************
     }
+    mysqli_commit($con);
     
     
-    //send noti to customer from admin
+    
+    
+    //send noti to om
+    if($type == 2)
+    {
+        $msg = "Open dispute request";
+        $category = "updateStatus";
+        $contentAvailable = 1;
+        $data = array("receiptID" => $receiptID);
+        sendPushNotificationJummumOM($pushSyncDeviceTokenReceiveOrder,$title,$msg,$category,$contentAvailable,$data);
+    }
+    
+    
+    
     if($type == 5)
     {
-        $sql = "select login.DeviceToken from login left join useraccount on login.username = useraccount.username where useraccount.MemberID = '$memberID' order by login.modifiedDate desc limit 1;";
+        //send noti to customer from admin
+        $sql = "select * from receipt where receiptID = '$receiptID'";
+        $selectedRow = getSelectedRow($sql);
+        $memberID = $selectedRow[0]["MemberID"];
+        $sql = "select login.DeviceToken from login left join useraccount on login.username = useraccount.username where useraccount.userAccountID = '$memberID' order by login.modifiedDate desc limit 1;";
         $selectedRow = getSelectedRow($sql);
         $customerDeviceToken = $selectedRow[0]["DeviceToken"];
         $arrCustomerDeviceToken = array();
         array_push($arrCustomerDeviceToken,$customerDeviceToken);
         
-        
         $msg = "Review dispute";
         $category = "updateStatus";
-        $contentType = 1;
+        $contentAvailable = 1;
         $data = array("receiptID" => $receiptID);
-        sendPushNotificationJummum($arrCustomerDeviceToken,$title,$msg,$category,$contentType,$data);
-//        sendPushNotificationToDeviceWithPath($customerDeviceToken,'./','jill',$msg,$receiptID,'cancelOrder',1);
+        sendPushNotificationJummum($arrCustomerDeviceToken,$title,$msg,$category,$contentAvailable,$data);
+
+        
+        
+        
+        
+        //send to shop to update status not need any action just inform
+        $msg = "";
+        $category = "updateStatus";
+        $contentAvailable = 1;
+        $data = array("receiptID" => $receiptID);
+        sendPushNotificationJummumOM($pushSyncDeviceTokenReceiveOrder,$title,$msg,$category,$contentAvailable,$data);
+        
     }
+
+    
+    
+    /* execute multi query */
+    $sql = "select * from receipt where receiptID = '$receiptID';";
+    $sql .= "Select * from Dispute where receiptID = '$receiptID' and disputeID = '$disputeID';";
+    $dataJson = executeMultiQueryArray($sql);
+    
+    
     
     
     //do script successful

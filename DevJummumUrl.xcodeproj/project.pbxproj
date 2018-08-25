@@ -248,6 +248,9 @@
 		EF33D8E4211D422B00560C69 /* JMMDisputeReasonGetList.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D7F6211D422A00560C69 /* JMMDisputeReasonGetList.php */; };
 		EF33D8E5211D422B00560C69 /* HtmlTermsOfService.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D7F7211D422A00560C69 /* HtmlTermsOfService.php */; };
 		EF33D8E6211D422B00560C69 /* HtmlEmailTemplateForgotPassword.php in Resources */ = {isa = PBXBuildFile; fileRef = EF33D7F8211D422A00560C69 /* HtmlEmailTemplateForgotPassword.php */; };
+		EF6C7D0321320C3D00C335AC /* dev_jummum_om-2.sql in Resources */ = {isa = PBXBuildFile; fileRef = EF6C7D0021320C3D00C335AC /* dev_jummum_om-2.sql */; };
+		EF6C7D0421320C3D00C335AC /* dev_jummum_om_mamarin7-3.sql in Resources */ = {isa = PBXBuildFile; fileRef = EF6C7D0121320C3D00C335AC /* dev_jummum_om_mamarin7-3.sql */; };
+		EF6C7D0521320C3D00C335AC /* dev_jummum-2.sql in Resources */ = {isa = PBXBuildFile; fileRef = EF6C7D0221320C3D00C335AC /* dev_jummum-2.sql */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -519,6 +522,9 @@
 		EF33D7F6211D422A00560C69 /* JMMDisputeReasonGetList.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = JMMDisputeReasonGetList.php; sourceTree = "<group>"; };
 		EF33D7F7211D422A00560C69 /* HtmlTermsOfService.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = HtmlTermsOfService.php; sourceTree = "<group>"; };
 		EF33D7F8211D422A00560C69 /* HtmlEmailTemplateForgotPassword.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = HtmlEmailTemplateForgotPassword.php; sourceTree = "<group>"; };
+		EF6C7D0021320C3D00C335AC /* dev_jummum_om-2.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "dev_jummum_om-2.sql"; sourceTree = "<group>"; };
+		EF6C7D0121320C3D00C335AC /* dev_jummum_om_mamarin7-3.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "dev_jummum_om_mamarin7-3.sql"; sourceTree = "<group>"; };
+		EF6C7D0221320C3D00C335AC /* dev_jummum-2.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "dev_jummum-2.sql"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -608,6 +614,7 @@
 		EF33D6DF211D422A00560C69 /* DevJummum Url */ = {
 			isa = PBXGroup;
 			children = (
+				EF6C7CFF21320C3D00C335AC /* JUMMUM_dbStructure */,
 				EF33D7A1211D422A00560C69 /* cer */,
 				EF33D6F3211D422A00560C69 /* ck.pem */,
 				EF33D7B6211D422A00560C69 /* dbConnect.php */,
@@ -1187,6 +1194,16 @@
 			path = Menu;
 			sourceTree = "<group>";
 		};
+		EF6C7CFF21320C3D00C335AC /* JUMMUM_dbStructure */ = {
+			isa = PBXGroup;
+			children = (
+				EF6C7D0021320C3D00C335AC /* dev_jummum_om-2.sql */,
+				EF6C7D0121320C3D00C335AC /* dev_jummum_om_mamarin7-3.sql */,
+				EF6C7D0221320C3D00C335AC /* dev_jummum-2.sql */,
+			);
+			path = JUMMUM_dbStructure;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1339,6 +1356,7 @@
 				EF33D874211D422B00560C69 /* circle.yml in Resources */,
 				EF33D860211D422B00560C69 /* search-c2NvcGU9Y3VzdG9tZXImcXVlcnk9ZG9lJmZpbHRlcnMlNUJjcmVhdGVkJTVEPTIwMTctMDEtMDEuLjIwMTctMDgtMzA-get.json in Resources */,
 				EF33D852211D422B00560C69 /* schd_test_585t7iomh2dte3ejxh5-get.json in Resources */,
+				EF6C7D0521320C3D00C335AC /* dev_jummum-2.sql in Resources */,
 				EF33D8DB211D422B00560C69 /* JMMRatingInsert.php in Resources */,
 				EF33D894211D422B00560C69 /* JMMRewardPointSpentUsedGetList.php in Resources */,
 				EF33D834211D422A00560C69 /* recipients-post.json in Resources */,
@@ -1413,6 +1431,7 @@
 				EF33D823211D422A00560C69 /* DisputeTest.php in Resources */,
 				EF33D8AC211D422B00560C69 /* JMMRecommendShopInsert.php in Resources */,
 				EF33D83E211D422A00560C69 /* account-get.json in Resources */,
+				EF6C7D0321320C3D00C335AC /* dev_jummum_om-2.sql in Resources */,
 				EF33D81F211D422A00560C69 /* CardTest.php in Resources */,
 				EF33D81A211D422A00560C69 /* TransferTest.php in Resources */,
 				EF33D84E211D422B00560C69 /* dspt_test_4zgf15h89w8t775kcm8-get.json in Resources */,
@@ -1458,6 +1477,7 @@
 				EF33D846211D422A00560C69 /* chrg_test_4zmrjgxdh4ycj2qncoj-patch.json in Resources */,
 				EF33D84C211D422B00560C69 /* pending-get.json in Resources */,
 				EF33D8AD211D422B00560C69 /* JMMPromotionGetList.php in Resources */,
+				EF6C7D0421320C3D00C335AC /* dev_jummum_om_mamarin7-3.sql in Resources */,
 				EF33D8D1211D422B00560C69 /* JMMBranchSearchMoreGetList.php in Resources */,
 				EF33D8AE211D422B00560C69 /* JMMDisputeInsert.php in Resources */,
 				EF33D899211D422B00560C69 /* ck.pem in Resources */,

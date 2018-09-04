@@ -6,117 +6,161 @@
     
     
     
-    if(isset($_POST["omiseToken"]) && isset($_POST["amount"]))
-    {
-        $omiseToken = $_POST["omiseToken"];
-        $amount = $_POST["amount"];
-    }
+    header("Content-Type: application/json");
     
-    if(isset($_POST["promoCodeID"]))
-    {
-        $promoCodeID = $_POST["promoCodeID"];
-    }
+    // get the lower case rendition of the headers of the request
     
+    $headers = array_change_key_case(getallheaders());
     
-    if(isset($_POST["receiptID"]) && isset($_POST["branchID"]) && isset($_POST["customerTableID"]) && isset($_POST["memberID"]) && isset($_POST["servingPerson"]) && isset($_POST["customerType"]) && isset($_POST["openTableDate"]) && isset($_POST["cashAmount"]) && isset($_POST["cashReceive"]) && isset($_POST["creditCardType"]) && isset($_POST["creditCardNo"]) && isset($_POST["creditCardAmount"]) && isset($_POST["transferDate"]) && isset($_POST["transferAmount"]) && isset($_POST["remark"]) && isset($_POST["discountType"]) && isset($_POST["discountAmount"]) && isset($_POST["discountValue"]) && isset($_POST["discountReason"]) && isset($_POST["serviceChargePercent"]) && isset($_POST["serviceChargeValue"]) && isset($_POST["priceIncludeVat"]) && isset($_POST["vatPercent"]) && isset($_POST["vatValue"]) && isset($_POST["status"]) && isset($_POST["statusRoute"]) && isset($_POST["receiptNoID"]) && isset($_POST["receiptNoTaxID"]) && isset($_POST["receiptDate"]) && isset($_POST["sendToKitchenDate"]) && isset($_POST["deliveredDate"]) && isset($_POST["mergeReceiptID"]) && isset($_POST["buffetReceiptID"]) && isset($_POST["modifiedUser"]) && isset($_POST["modifiedDate"]))
-    {
-        $receiptID = $_POST["receiptID"];
-        $branchID = $_POST["branchID"];
-        $customerTableID = $_POST["customerTableID"];
-        $memberID = $_POST["memberID"];
-        $servingPerson = $_POST["servingPerson"];
-        $customerType = $_POST["customerType"];
-        $openTableDate = $_POST["openTableDate"];
-        $cashAmount = $_POST["cashAmount"];
-        $cashReceive = $_POST["cashReceive"];
-        $creditCardType = $_POST["creditCardType"];
-        $creditCardNo = $_POST["creditCardNo"];
-        $creditCardAmount = $_POST["creditCardAmount"];
-        $transferDate = $_POST["transferDate"];
-        $transferAmount = $_POST["transferAmount"];
-        $remark = $_POST["remark"];
-        $discountType = $_POST["discountType"];
-        $discountAmount = $_POST["discountAmount"];
-        $discountValue = $_POST["discountValue"];
-        $discountReason = $_POST["discountReason"];
-        $serviceChargePercent = $_POST["serviceChargePercent"];
-        $serviceChargeValue = $_POST["serviceChargeValue"];
-        $priceIncludeVat = $_POST["priceIncludeVat"];
-        $vatPercent = $_POST["vatPercent"];
-        $vatValue = $_POST["vatValue"];
-        $status = $_POST["status"];
-        $statusRoute = $_POST["statusRoute"];
-        $receiptNoID = $_POST["receiptNoID"];
-        $receiptNoTaxID = $_POST["receiptNoTaxID"];
-        $receiptDate = $_POST["receiptDate"];
-        $sendToKitchenDate = $_POST["sendToKitchenDate"];
-        $deliveredDate = $_POST["deliveredDate"];
-        $mergeReceiptID = $_POST["mergeReceiptID"];
-        $buffetReceiptID = $_POST["buffetReceiptID"];
-        $modifiedUser = $_POST["modifiedUser"];
-        $modifiedDate = $_POST["modifiedDate"];
-    }
+    // extract the content-type
     
-    if (isset($_POST["countOtOrderTaking"]))
+    if (isset($headers["content-type"]))
     {
-        $countOtOrderTaking = $_POST["countOtOrderTaking"];
-        for($i=0; $i<$countOtOrderTaking; $i++)
-        {
-            $otOrderTakingID[$i] = $_POST["otOrderTakingID".sprintf("%02d", $i)];
-            $otBranchID[$i] = $_POST["otBranchID".sprintf("%02d", $i)];
-            $otCustomerTableID[$i] = $_POST["otCustomerTableID".sprintf("%02d", $i)];
-            $otMenuID[$i] = $_POST["otMenuID".sprintf("%02d", $i)];
-            $otQuantity[$i] = $_POST["otQuantity".sprintf("%02d", $i)];
-            $otSpecialPrice[$i] = $_POST["otSpecialPrice".sprintf("%02d", $i)];
-            $otPrice[$i] = $_POST["otPrice".sprintf("%02d", $i)];
-            $otTakeAway[$i] = $_POST["otTakeAway".sprintf("%02d", $i)];
-            $otNoteIDListInText[$i] = $_POST["otNoteIDListInText".sprintf("%02d", $i)];
-            $otOrderNo[$i] = $_POST["otOrderNo".sprintf("%02d", $i)];
-            $otStatus[$i] = $_POST["otStatus".sprintf("%02d", $i)];
-            $otReceiptID[$i] = $_POST["otReceiptID".sprintf("%02d", $i)];
-            $otModifiedUser[$i] = $_POST["otModifiedUser".sprintf("%02d", $i)];
-            $otModifiedDate[$i] = $_POST["otModifiedDate".sprintf("%02d", $i)];
-        }
-    }
-    
-    if (isset($_POST["countOnOrderNote"]))
-    {
-        $countOnOrderNote = $_POST["countOnOrderNote"];
-        for($i=0; $i<$countOnOrderNote; $i++)
-        {
-            $onOrderNoteID[$i] = $_POST["onOrderNoteID".sprintf("%02d", $i)];
-            $onOrderTakingID[$i] = $_POST["onOrderTakingID".sprintf("%02d", $i)];
-            $onNoteID[$i] = $_POST["onNoteID".sprintf("%02d", $i)];
-            $onModifiedUser[$i] = $_POST["onModifiedUser".sprintf("%02d", $i)];
-            $onModifiedDate[$i] = $_POST["onModifiedDate".sprintf("%02d", $i)];
-        }
-    }
-
-    $type = $_POST["type"];
-    if($type == 1)
-    {
-        if(isset($_POST["prUserPromotionUsedID"]) && isset($_POST["prUserAccountID"]) && isset($_POST["prPromotionID"]) && isset($_POST["prReceiptID"]) && isset($_POST["prModifiedUser"]) && isset($_POST["prModifiedDate"]))
-        {
-            $prUserPromotionUsedID = $_POST["prUserPromotionUsedID"];
-            $prUserAccountID = $_POST["prUserAccountID"];
-            $prPromotionID = $_POST["prPromotionID"];
-            $prReceiptID = $_POST["prReceiptID"];
-            $prModifiedUser = $_POST["prModifiedUser"];
-            $prModifiedDate = $_POST["prModifiedDate"];
-        }
+        $content_type = $headers["content-type"];
+        writeToLog("set contentType: " . $content_type);
     }
     else
     {
-        if(isset($_POST["prUserRewardRedemptionUsedID"]) && isset($_POST["prUserAccountID"]) && isset($_POST["prRewardRedemptionID"]) && isset($_POST["prReceiptID"]) && isset($_POST["prModifiedUser"]) && isset($_POST["prModifiedDate"]))
+        $content_type = "";
+        writeToLog("not set contentType: " . $content_type);
+    }
+    
+    // if JSON, read and parse it
+    if ($content_type == "application/json" || strpos($content_type,"application/json")!== false)
+    {
+        // read it
+        
+        $handle = fopen("php://input", "rb");
+        $raw_post_data = '';
+        while (!feof($handle)) {
+            $raw_post_data .= fread($handle, 8192);
+        }
+        fclose($handle);
+        
+        // parse it
+        
+        $data = json_decode($raw_post_data, true);
+    }
+    else
+    {
+        // report non-JSON request and exit
+    }
+    
+    
+    writeToLog("data from omise pay: " . json_encode($data));
+    
+    
+    {
+        $omiseToken = $data["omiseToken"];
+        $amount = $data["amount"];
+    }
+    
+    {
+        $promoCodeID = $data["promoCodeID"];
+    }
+    
+    
+    {
+        $receiptID = $data["receiptID"];
+        $branchID = $data["branchID"];
+        $customerTableID = $data["customerTableID"];
+        $memberID = $data["memberID"];
+        $servingPerson = $data["servingPerson"];
+        $customerType = $data["customerType"];
+        $openTableDate = $data["openTableDate"];
+        $cashAmount = $data["cashAmount"];
+        $cashReceive = $data["cashReceive"];
+        $creditCardType = $data["creditCardType"];
+        $creditCardNo = $data["creditCardNo"];
+        $creditCardAmount = $data["creditCardAmount"];
+        $transferDate = $data["transferDate"];
+        $transferAmount = $data["transferAmount"];
+        $remark = $data["remark"];
+        $discountType = $data["discountType"];
+        $discountAmount = $data["discountAmount"];
+        $discountValue = $data["discountValue"];
+        $discountReason = $data["discountReason"];
+        $serviceChargePercent = $data["serviceChargePercent"];
+        $serviceChargeValue = $data["serviceChargeValue"];
+        $priceIncludeVat = $data["priceIncludeVat"];
+        $vatPercent = $data["vatPercent"];
+        $vatValue = $data["vatValue"];
+        $status = $data["status"];
+        $statusRoute = $data["statusRoute"];
+        $receiptNoID = $data["receiptNoID"];
+        $receiptNoTaxID = $data["receiptNoTaxID"];
+        $receiptDate = $data["receiptDate"];
+        $sendToKitchenDate = $data["sendToKitchenDate"];
+        $deliveredDate = $data["deliveredDate"];
+        $mergeReceiptID = $data["mergeReceiptID"];
+        $buffetReceiptID = $data["buffetReceiptID"];
+        $voucherCode = $data["voucherCode"];
+        $modifiedUser = $data["modifiedUser"];
+        $modifiedDate = $data["modifiedDate"];
+    }
+    
+    {
+        $arrOrderTaking = $data["orderTaking"];
+        for($i=0; $i<sizeof($arrOrderTaking); $i++)
         {
-            $prUserRewardRedemptionUsedID = $_POST["prUserRewardRedemptionUsedID"];
-            $prUserAccountID = $_POST["prUserAccountID"];
-            $prRewardRedemptionID = $_POST["prRewardRedemptionID"];
-            $prReceiptID = $_POST["prReceiptID"];
-            $prModifiedUser = $_POST["prModifiedUser"];
-            $prModifiedDate = $_POST["prModifiedDate"];
+            $orderTaking = $arrOrderTaking[$i];
+            
+            
+            $otOrderTakingID[$i] = $orderTaking["orderTakingID"];
+            $otBranchID[$i] = $orderTaking["branchID"];
+            $otCustomerTableID[$i] = $orderTaking["customerTableID"];
+            $otMenuID[$i] = $orderTaking["menuID"];
+            $otQuantity[$i] = $orderTaking["quantity"];
+            $otSpecialPrice[$i] = $orderTaking["specialPrice"];
+            $otPrice[$i] = $orderTaking["price"];
+            $otTakeAway[$i] = $orderTaking["takeAway"];
+            $otNoteIDListInText[$i] = $orderTaking["noteIDListInText"];
+            $otOrderNo[$i] = $orderTaking["orderNo"];
+            $otStatus[$i] = $orderTaking["status"];
+            $otReceiptID[$i] = $orderTaking["receiptID"];
+            $otModifiedUser[$i] = $orderTaking["modifiedUser"];
+            $otModifiedDate[$i] = $orderTaking["modifiedDate"];
         }
     }
+    
+    
+    $arrOrderNote = $data["orderNote"];
+    for($i=0; $i<sizeof($arrOrderNote); $i++)
+    {
+        $orderNote = $arrOrderNote[$i];
+        
+        
+        $onOrderNoteID[$i] = $orderNote["orderNoteID"];
+        $onOrderTakingID[$i] = $orderNote["orderTakingID"];
+        $onNoteID[$i] = $orderNote["noteID"];
+        $onModifiedUser[$i] = $orderNote["modifiedUser"];
+        $onModifiedDate[$i] = $orderNote["modifiedDate"];
+    }
+    
+    
+    $userPromotionUsed = $data["userPromotionUsed"];
+    if($userPromotionUsed)
+    {
+        $prUserPromotionUsedID = $userPromotionUsed["userPromotionUsedID"];
+        $prUserAccountID = $userPromotionUsed["userAccountID"];
+        $prPromotionID = $userPromotionUsed["promotionID"];
+        $prReceiptID = $userPromotionUsed["receiptID"];
+        $prModifiedUser = $userPromotionUsed["modifiedUser"];
+        $prModifiedDate = $userPromotionUsed["modifiedDate"];
+    }
+    
+    
+    $userRewardRedemptionUsed = $data["userRewardRedemptionUsed"];
+    if($userRewardRedemptionUsed)
+    {
+        $prUserRewardRedemptionUsedID = $userRewardRedemptionUsed["userRewardRedemptionUsedID"];
+        $prUserAccountID = $userRewardRedemptionUsed["userAccountID"];
+        $prRewardRedemptionID = $userRewardRedemptionUsed["rewardRedemptionID"];
+        $prReceiptID = $userRewardRedemptionUsed["receiptID"];
+        $prModifiedUser = $userRewardRedemptionUsed["modifiedUser"];
+        $prModifiedDate = $userRewardRedemptionUsed["modifiedDate"];
+    }
+
     
     
     
@@ -220,12 +264,22 @@
         define('OMISE_SECRET_KEY', "$secretKey");
         
         
-        $charge = OmiseCharge::create(array(
-                                            'amount'   => $amount,
-                                            'currency' => 'THB',
-                                            'card'     => "$omiseToken"
-                                            ));
-        
+        try
+        {
+            $charge = OmiseCharge::create(array(
+                                                'amount'   => $amount,
+                                                'currency' => 'THB',
+                                                'card'     => "$omiseToken"
+                                                ));
+            
+        }
+        catch (Exception $e)
+        {
+            writeToLog("omise charge fail, file: " . basename(__FILE__) . ", user: " . $_POST['modifiedUser']);
+            $response = array('status' => '2', 'msg' => $e->getMessage());
+            echo json_encode($response);
+            exit();
+        }
     }
     else
     {
@@ -250,7 +304,7 @@
         
         
         //query statement
-        $sql = "INSERT INTO Receipt(BranchID, CustomerTableID, MemberID, ServingPerson, CustomerType, OpenTableDate, CashAmount, CashReceive, CreditCardType, CreditCardNo, CreditCardAmount, TransferDate, TransferAmount, Remark, DiscountType, DiscountAmount, DiscountValue, DiscountReason, ServiceChargePercent, ServiceChargeValue, PriceIncludeVat, VatPercent, VatValue, Status, StatusRoute, ReceiptNoID, ReceiptNoTaxID, ReceiptDate, MergeReceiptID, BuffetReceiptID, ModifiedUser, ModifiedDate) VALUES ('$branchID', '$customerTableID', '$memberID', '$servingPerson', '$customerType', '$openTableDate', '$cashAmount', '$cashReceive', '$creditCardType', '$creditCardNo', '$creditCardAmount', '$transferDate', '$transferAmount', '$remark', '$discountType', '$discountAmount', '$discountValue', '$discountReason', '$serviceChargePercent', '$serviceChargeValue', '$priceIncludeVat', '$vatPercent', '$vatValue', '$status', '$status', '$receiptNoID', '$receiptNoTaxID', '$receiptDate', '$mergeReceiptID', '$buffetReceiptID', '$modifiedUser', '$modifiedDate')";
+        $sql = "INSERT INTO Receipt(BranchID, CustomerTableID, MemberID, ServingPerson, CustomerType, OpenTableDate, CashAmount, CashReceive, CreditCardType, CreditCardNo, CreditCardAmount, TransferDate, TransferAmount, Remark, DiscountType, DiscountAmount, DiscountValue, DiscountReason, ServiceChargePercent, ServiceChargeValue, PriceIncludeVat, VatPercent, VatValue, Status, StatusRoute, ReceiptNoID, ReceiptNoTaxID, ReceiptDate, MergeReceiptID, BuffetReceiptID, VoucherCode, ModifiedUser, ModifiedDate) VALUES ('$branchID', '$customerTableID', '$memberID', '$servingPerson', '$customerType', '$openTableDate', '$cashAmount', '$cashReceive', '$creditCardType', '$creditCardNo', '$creditCardAmount', '$transferDate', '$transferAmount', '$remark', '$discountType', '$discountAmount', '$discountValue', '$discountReason', '$serviceChargePercent', '$serviceChargeValue', '$priceIncludeVat', '$vatPercent', '$vatValue', '$status', '$status', '$receiptNoID', '$receiptNoTaxID', '$receiptDate', '$mergeReceiptID', '$buffetReceiptID', '$voucherCode', '$modifiedUser', '$modifiedDate')";
         $ret = doQueryTask($sql);
         if($ret != "")
         {
@@ -296,9 +350,9 @@
         
         //orderTakingList
         $orderTakingOldNew = array();
-        if($countOtOrderTaking > 0)
+        if(sizeof($arrOrderTaking) > 0)
         {
-            for($k=0; $k<$countOtOrderTaking; $k++)
+            for($k=0; $k<sizeof($arrOrderTaking); $k++)
             {
                 //query statement
                 $sql = "INSERT INTO OrderTaking(BranchID, CustomerTableID, MenuID, Quantity, SpecialPrice, Price, TakeAway, NoteIDListInText, OrderNo, Status, ReceiptID, ModifiedUser, ModifiedDate) VALUES ('$otBranchID[$k]', '$otCustomerTableID[$k]', '$otMenuID[$k]', '$otQuantity[$k]', '$otSpecialPrice[$k]', '$otPrice[$k]', '$otTakeAway[$k]', '$otNoteIDListInText[$k]', '$otOrderNo[$k]', '$otStatus[$k]', '$receiptID', '$otModifiedUser[$k]', '$otModifiedDate[$k]')";
@@ -306,7 +360,7 @@
                 if($ret != "")
                 {
                     mysqli_rollback($con);
-//                    putAlertToDevice();
+                    //                    putAlertToDevice();
                     echo json_encode($ret);
                     exit();
                 }
@@ -317,7 +371,7 @@
                 $newID = mysqli_insert_id($con);
                 
                 
-
+                
                 
                 //select row ที่แก้ไข ขึ้นมาเก็บไว้
                 $orderTakingOldNew[$otOrderTakingID[$k]] = $newID;
@@ -329,7 +383,7 @@
             //**********sync device token อื่น
             //select row ที่แก้ไข ขึ้นมาเก็บไว้
             $sql = "select * from OrderTaking where OrderTakingID in ('$otOrderTakingID[0]'";
-            for($i=1; $i<$countOtOrderTaking; $i++)
+            for($i=1; $i<sizeof($arrOrderTaking); $i++)
             {
                 $sql .= ",'$otOrderTakingID[$i]'";
             }
@@ -341,9 +395,9 @@
         
         
         //orderNoteList
-        if($countOnOrderNote > 0)
+        if(sizeof($arrOrderNote) > 0)
         {
-            for($k=0; $k<$countOnOrderNote; $k++)
+            for($k=0; $k<sizeof($arrOrderNote); $k++)
             {
                 //query statement
                 $onOrderTakingID[$k] = $orderTakingOldNew[$onOrderTakingID[$k]];
@@ -352,7 +406,7 @@
                 if($ret != "")
                 {
                     mysqli_rollback($con);
-//                    putAlertToDevice();
+                    //                    putAlertToDevice();
                     echo json_encode($ret);
                     exit();
                 }
@@ -373,7 +427,7 @@
             //**********sync device token อื่น
             //select row ที่แก้ไข ขึ้นมาเก็บไว้
             $sql = "select * from OrderNote where OrderNoteID in ('$onOrderNoteID[0]'";
-            for($i=1; $i<$countOnOrderNote; $i++)
+            for($i=1; $i<sizeof($arrOrderNote); $i++)
             {
                 $sql .= ",'$onOrderNoteID[$i]'";
             }
@@ -387,7 +441,7 @@
         
         
         
-        if($type == 1)
+        if($userPromotionUsed)
         {
             //user promotion used - voucher code
             if($prPromotionID != 0)
@@ -398,7 +452,7 @@
                 if($ret != "")
                 {
                     mysqli_rollback($con);
-//                    putAlertToDevice();
+                    //                    putAlertToDevice();
                     echo json_encode($ret);
                     exit();
                 }
@@ -415,7 +469,7 @@
                 if($ret != "")
                 {
                     mysqli_rollback($con);
-//                    putAlertToDevice();
+                    //                    putAlertToDevice();
                     echo json_encode($ret);
                     exit();
                 }
@@ -428,7 +482,7 @@
                 if($ret != "")
                 {
                     mysqli_rollback($con);
-//                    putAlertToDevice();
+                    //                    putAlertToDevice();
                     echo json_encode($ret);
                     exit();
                 }

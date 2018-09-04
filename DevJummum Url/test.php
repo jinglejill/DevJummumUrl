@@ -1,5 +1,6 @@
-<?php
-    header("Location: ./test2.php");
-    echo "test";
-?>
-
+<?php 
+    
+    header('Location: http://www.jummum.co/website/test.html');
+    exit();
+    
+    ?>

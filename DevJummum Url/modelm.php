@@ -289,9 +289,7 @@
             {
                 $copyWithZone .= tab() . tab() . "[copy set" . $dbColumnName[$j] . ":self." . makeFirstLetterLowerCase($dbColumnName[$j]) . "];<br>";
             }
-        }
-        $copyWithZone .= tab() . tab() . "((" . getTableNameFromPrimaryKey($primaryKey) .  " *)copy).replaceSelf = self.replaceSelf;<br>";
-        $copyWithZone .= tab() . tab() . "((" . getTableNameFromPrimaryKey($primaryKey) .  " *)copy).idInserted = self.idInserted;<br>";
+        }        
         $copyWithZone .= tab() . "}<br>";
         $copyWithZone .= tab() . "<br>";
         $copyWithZone .= tab() . "return copy;<br>";

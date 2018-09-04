@@ -1,14 +1,15 @@
 <?php
-    include_once("./../../NeedUpdateVersionDev/JMMNeedUpdateVersion.php");
+    $masterFolder = "MasterDev";
+    include_once("./../../$masterFolder/JMMNeedUpdateVersion.php");
     
     //conection variable
     $con;
     $jummum = "DEV_JUMMUM";
     $jummumOM = "DEV_JUMMUM_OM";
     $encryptKey = "jmmom";
-    $jummumCkPath = "./../$jummum/";
+    $jummumCkPath = "./../../$masterFolder/JUMMUM";
     $jummumCkPass = "jill";
-    $jummumOMCkPath = "./../$jummumOM/";
+    $jummumOMCkPath = "./../$masterFolder/JUMMUM_OM";
     $jummumOMCkPass = "jill";
     $adminCkPath = "./../../AdminApp/";
     $adminCkPass = "jill";
@@ -532,32 +533,7 @@
                 }
                 
                 
-                //----in the period of user use old version, we need to send receiptID key
-                if($data)
-                {
-                    $receiptID = $data["receiptID"];
-                    if(!$receiptID)
-                    {
-                        $receiptID = $data["settingID"];
-                    }
-                }
-                if($receiptID)
-                {
-                    $paramBody["receiptID"] = $receiptID;
-                }
-                //----------------
-                
-                
-                sendPushNotificationWithPath($eachDeviceToken, $paramBody, $jummumOMCkPath, $jummumOMCkPass);
-                
-                
-                //----in the period of user use old version, we need to send receiptID key
-                if($category == "updateStatus")
-                {
-                    $paramBody["category"] = "cancelOrder";
-                    sendPushNotificationWithPath($eachDeviceToken, $paramBody, $jummumOMCkPath, $jummumOMCkPass);
-                }
-                //----------------
+                sendPushNotificationWithPath($eachDeviceToken, $paramBody, $jummumOMCkPath, $jummumOMCkPass);                
             }
             else
             {

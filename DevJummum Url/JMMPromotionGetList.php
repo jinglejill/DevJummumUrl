@@ -186,7 +186,7 @@
             }
             else
             {
-                if($noOfLimitUsePerUserPerDay == 1 && $noOfLimitUsePerUser > 1)
+                if($noOfLimitUsePerUserPerDay == 1 && $noOfLimitUsePerUser > 1 && $usedCountPerUser > 0)
                 {
                     $sql = "select * from promotionDiscount where promotionID = '$promotionID' and time = ($usedCountPerUser+1)";
                     $selectedRow = getSelectedRow($sql);
@@ -296,9 +296,11 @@
     
     if($voucherValid)
     {
-        if($noOfLimitUsePerUserPerDay == 1 && $noOfLimitUsePerUser > 1)
+        writeToLog("noOfLimitUsePerUserPerDay: " . $noOfLimitUsePerUserPerDay);
+        writeToLog("noOfLimitUsePerUser: " . $noOfLimitUsePerUser);
+        if($noOfLimitUsePerUserPerDay == 1 && $noOfLimitUsePerUser > 1 && $usedCountPerUser > 0)
         {
-            $sql = "select Promotion.`PromotionID`, `MainBranchID`, `StartDate`, `EndDate`, `UsingStartDate`, `UsingEndDate`, `Header`, `SubTitle`, `ImageUrl`, PromotionDiscount.`DiscountType`, PromotionDiscount.`DiscountAmount`, `MinimumSpending`, `MaxDiscountAmountPerDay`, `AllowEveryone`, `AllowDiscountForAllMenuType`, `DiscountMenuID`, `NoOfLimitUse`, `NoOfLimitUsePerUser`, `NoOfLimitUsePerUserPerDay`, `VoucherCode`, `TermsConditions`, `Type`, `OrderNo`, `Status`, Promotion.`ModifiedUser`, Promotion.`ModifiedDate`, $moreDiscountToGo as MoreDiscountToGo,0 PromoCodeID from promotion left join PromotionDiscount on promotionID = PromotionDiscount.promotionID where voucherCode = '$voucherCode' and date_format(now(),'%Y-%m-%d') between date_format(usingStartDate,'%Y-%m-%d') and date_format(usingEndDate,'%Y-%m-%d') and PromotionDiscount.time = ($usedCountPerUser+1);";
+            $sql = "select Promotion.`PromotionID`, `MainBranchID`, `StartDate`, `EndDate`, `UsingStartDate`, `UsingEndDate`, `Header`, `SubTitle`, `ImageUrl`, PromotionDiscount.`DiscountType`, PromotionDiscount.`DiscountAmount`, `MinimumSpending`, PromotionDiscount.`MaxDiscountAmountPerDay`, `AllowEveryone`, `AllowDiscountForAllMenuType`, `DiscountMenuID`, `NoOfLimitUse`, `NoOfLimitUsePerUser`, `NoOfLimitUsePerUserPerDay`, `VoucherCode`, `TermsConditions`, `Type`, `OrderNo`, `Status`, Promotion.`ModifiedUser`, Promotion.`ModifiedDate`, $moreDiscountToGo as MoreDiscountToGo,0 PromoCodeID from promotion left join PromotionDiscount on PromotionDiscount.promotionID = PromotionDiscount.promotionID where voucherCode = '$voucherCode' and date_format(now(),'%Y-%m-%d') between date_format(usingStartDate,'%Y-%m-%d') and date_format(usingEndDate,'%Y-%m-%d') and PromotionDiscount.time = ($usedCountPerUser+1);";
         }
         else
         {

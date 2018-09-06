@@ -14,7 +14,7 @@
     }
     else
     {
-        $imageFileName = "201508131130161.jpg";
+        $imageFileName = "/201508131130161.jpg";
     }
     
     
@@ -40,25 +40,50 @@
         switch($type)
         {
             case 1://menu
-                $imageFileName = "./$dbName/Image/Menu/$imageFileName";
+                $imageFileName = "/$dbName/Image/Menu/$imageFileName";
                 break;
             case 2://logo
-                $imageFileName = "./$dbName/Image/Logo/$imageFileName";
+                $imageFileName = "/$dbName/Image/Logo/$imageFileName";
                 break;
             case 3://promotion
-                $imageFileName = "./Image/Promotion/$imageFileName";
+                $imageFileName = "/Image/Promotion/$imageFileName";
                 break;
             case 4://reward
-                $imageFileName = "./Image/Reward/$imageFileName";
+                $imageFileName = "/Image/Reward/$imageFileName";
+                break;
+            case 5://jummum material
+                $imageFileName = "/Image/$imageFileName";
                 break;
         }
     }
     else
     {
-        $imageFileName = "./Image/NoImage.jpg";
+        switch($type)
+        {
+                case 1:
+                case 2:
+            {
+                $imageFileName = "/$dbName/Image/NoImage.jpg";
+            }
+                break;
+                case 3:
+                case 4:
+                case 5:
+            {
+                $imageFileName = "/Image/NoImage.jpg";
+            }
+                break;
+            
+        }
+        
     }
-    $filenameIn  = $imageFileName;
     
+    $filenameIn = "." . $imageFileName;
+//    $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+//    $posSlash = strripos($actual_link,"/");
+//    $currentUrlFolderPath = substr($actual_link,0,$posSlash);
+//    $filenameIn = $currentUrlFolderPath . $imageFileName . '?' .mt_rand();
+    writeToLog("fileNameIn: " . $filenameIn);
     
     
     // Check if file already exists

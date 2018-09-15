@@ -251,7 +251,7 @@
     //omise part
     if($amount != 0)
     {
-        require_once  dirname(__FILE__) . '/omise-php/lib/Omise.php';
+        require_once  dirname(__FILE__) . '/../../omise-php/lib/Omise.php';
         
         
         $sql = "select * from Setting where keyName = 'PublicKey'";
@@ -434,7 +434,60 @@
             $sql .= ");";
             $sqlAll .= $sql;
         }
+        else
+        {
+            $sql = "select * from orderNote where 0;";
+            $sqlAll .= $sql;
+        }
         //------
+        
+        
+        //lucky draw
+//        $sql = "select * from $selectedDbName.setting where keyName = 'luckyDrawSpend'";
+        $sql = "select LuckyDrawBahtSpent from $jummumOM.branch where branchID = '$branchID'";
+        $selectedRow = getSelectedRow($sql);
+        $luckyDrawBahtSpent = $selectedRow[0]["LuckyDrawBahtSpent"];
+        if($luckyDrawBahtSpent)
+        {
+            $luckyDrawTimes = floor($amount/100/$luckyDrawBahtSpent);
+        }
+        else
+        {
+            $luckyDrawTimes = 0;
+        }
+        writeToLog("luckyDrawTimes: " . $luckyDrawTimes);
+        if($luckyDrawTimes > 0)
+        {
+            for($i=0; $i<$luckyDrawTimes; $i++)
+            {
+                if($i==0)
+                {
+                    $sql = "insert into LuckyDrawTicket (ReceiptID,MemberID, RewardRedemptionID,ModifiedUser,ModifiedDate) values ('$receiptID','$memberID',-1,'$modifiedUser','$modifiedDate')";
+                }
+                else
+                {
+                    $sql .= ",('$receiptID','$memberID',-1,'$modifiedUser','$modifiedDate')";
+                }
+            }
+            $ret = doQueryTask($sql);
+            if($ret != "")
+            {
+                mysqli_rollback($con);
+                //                    putAlertToDevice();
+                echo json_encode($ret);
+                exit();
+            }
+        }
+//        $sql = "select * from LuckyDrawTicket where receiptID = '$receiptID'";
+        $currentDateTime = date('Y-m-d H:i:s');
+        $sql = "select * from setting where keyName = 'luckyDrawTimeLimit';";
+        $selectedRow = getSelectedRow($sql);
+        $luckyDrawTimeLimit = $selectedRow[0]["Value"];
+        $sql = "select * from luckyDrawTicket left join receipt on luckyDrawTicket.receiptID = receipt.receiptID where luckyDrawTicket.memberID = '$memberID' and receipt.branchID = '$branchID' and rewardRedemptionID = -1 and TIME_TO_SEC(timediff('$currentDateTime', luckyDrawTicket.modifiedDate)) <= '$luckyDrawTimeLimit';";
+        $sqlAll .= $sql;
+        
+        
+        
         /* execute multi query */
         $dataJson = executeMultiQueryArray($sqlAll);
         
@@ -516,11 +569,6 @@
             }
         }
         //-----********
-        
-        
-        
-        
-        
         //-----****************************
         //****************send noti to shop (turn on light)
         //alarmShop
@@ -537,6 +585,9 @@
         }
         mysqli_commit($con);
         //****************
+        
+        
+        
         
         
         
@@ -566,7 +617,7 @@
         
         
         //do script successful
-        mysqli_commit($con);
+//        mysqli_commit($con);
         mysqli_close($con);
         
         

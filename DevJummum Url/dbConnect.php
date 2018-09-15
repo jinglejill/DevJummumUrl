@@ -7,9 +7,9 @@
     $jummum = "DEV_JUMMUM";
     $jummumOM = "DEV_JUMMUM_OM";
     $encryptKey = "jmmom";
-    $jummumCkPath = "./../../$masterFolder/JUMMUM";
+    $jummumCkPath = "./../../$masterFolder/JUMMUM/";
     $jummumCkPass = "jill";
-    $jummumOMCkPath = "./../$masterFolder/JUMMUM_OM";
+    $jummumOMCkPath = "./../../$masterFolder/JUMMUM_OM/";
     $jummumOMCkPass = "jill";
     $adminCkPath = "./../../AdminApp/";
     $adminCkPass = "jill";
@@ -29,7 +29,7 @@
         $ch = curl_init();
         
         // set url
-//                curl_setopt($ch, CURLOPT_URL, "http://www.jummum.co/DEV/DEV_JUMMUM/test.php");
+//curl_setopt($ch, CURLOPT_URL, "http://www.jummum.co/MasterDemo/JUMMUM/JMMLatestVersion.php");
         curl_setopt($ch, CURLOPT_URL, "http://itunes.apple.com/lookup?bundleId=$bundleID");
         
         //return the transfer as a string
@@ -429,29 +429,12 @@
                     $paramBody["sound"] = "default";
                 }
                 
-                
-                //----in the period of user use old version, we need to send receiptID key
-                if($data)
-                {
-                    $receiptID = $data["receiptID"];
-                    if(!$receiptID)
-                    {
-                        $receiptID = $data["settingID"];
-                    }
-                }
-                if($receiptID)
-                {
-                    $paramBody["receiptID"] = $receiptID;
-                }
-                //----------------
-            
-                
                 sendPushNotificationWithPath($eachDeviceToken, $paramBody, $adminCkPath, $adminCkPass);
             }
             else
             {
                 $key = $firebaseKeyAdmin;
-                sendFirebasePushNotification($eachDeviceToken,"",$msg,$data,$key);
+                sendFirebasePushNotification($eachDeviceToken,$text,"",$data,$key);
             }
         }
     }
@@ -479,38 +462,22 @@
                     $paramBody["sound"] = "default";
                 }
                 
-                
-                //----in the period of user use old version, we need to send receiptID key
-                if($data)
-                {
-                    $receiptID = $data["receiptID"];
-                    if(!$receiptID)
-                    {
-                        $receiptID = $data["settingID"];
-                    }
-                }
-                if($receiptID)
-                {
-                    $paramBody["receiptID"] = $receiptID;
-                }
-                //----------------
-                
-                
                 sendPushNotificationWithPath($eachDeviceToken, $paramBody, $jummumCkPath, $jummumCkPass);
             }
             else
             {
                 $key = $firebaseKeyJummum;
-                sendFirebasePushNotification($eachDeviceToken,"",$msg,$data,$key);
+                sendFirebasePushNotification($eachDeviceToken,$text,"",$data,$key);
             }
         }
     }
     
     function sendPushNotificationJummumOM($deviceToken,$title,$text,$category,$contentAvailable,$data)
     {
-        writeToLog("send push to $jummumOM");
+        
         global $jummumOMCkPath;
         global $jummumOMCkPass;
+        writeToLog("send push to ck path: $jummumOMCkPath");
         foreach($deviceToken as $eachDeviceToken)
         {
             if(strlen($eachDeviceToken) == 64)
@@ -538,7 +505,7 @@
             else
             {
                 $key = $firebaseKeyJummumOM;
-                sendFirebasePushNotification($eachDeviceToken,"",$msg,$data,$key);
+                sendFirebasePushNotification($eachDeviceToken,$text,"",$data,$key);
             }
         }
     }
@@ -793,12 +760,12 @@
 
         if(!$pushFail)
         {
-//            $fp = stream_socket_client(
-//                                       'ssl://gateway.sandbox.push.apple.com:2195', $err,
-//                                       $errstr, 60, STREAM_CLIENT_CONNECT|STREAM_CLIENT_PERSISTENT, $ctx);
             $fp = stream_socket_client(
-                                       'ssl://gateway.push.apple.com:2195', $err,
+                                       'ssl://gateway.sandbox.push.apple.com:2195', $err,
                                        $errstr, 60, STREAM_CLIENT_CONNECT|STREAM_CLIENT_PERSISTENT, $ctx);
+//            $fp = stream_socket_client(
+//                                       'ssl://gateway.push.apple.com:2195', $err,
+//                                       $errstr, 60, STREAM_CLIENT_CONNECT|STREAM_CLIENT_PERSISTENT, $ctx);
         }
         
         
@@ -847,12 +814,12 @@
         
         if(!$pushFail)
         {
-//            $fp = stream_socket_client(
-//                                       'ssl://gateway.sandbox.push.apple.com:2195', $err,
-//                                       $errstr, 60, STREAM_CLIENT_CONNECT|STREAM_CLIENT_PERSISTENT, $ctx);
             $fp = stream_socket_client(
-                                       'ssl://gateway.push.apple.com:2195', $err,
+                                       'ssl://gateway.sandbox.push.apple.com:2195', $err,
                                        $errstr, 60, STREAM_CLIENT_CONNECT|STREAM_CLIENT_PERSISTENT, $ctx);
+//            $fp = stream_socket_client(
+//                                       'ssl://gateway.push.apple.com:2195', $err,
+//                                       $errstr, 60, STREAM_CLIENT_CONNECT|STREAM_CLIENT_PERSISTENT, $ctx);
         }
         
         
@@ -899,12 +866,12 @@
         
         if(!$pushFail)
         {
-//            $fp = stream_socket_client(
-//                                       'ssl://gateway.sandbox.push.apple.com:2195', $err,
-//                                       $errstr, 60, STREAM_CLIENT_CONNECT|STREAM_CLIENT_PERSISTENT, $ctx);
             $fp = stream_socket_client(
-                                       'ssl://gateway.push.apple.com:2195', $err,
+                                       'ssl://gateway.sandbox.push.apple.com:2195', $err,
                                        $errstr, 60, STREAM_CLIENT_CONNECT|STREAM_CLIENT_PERSISTENT, $ctx);
+//            $fp = stream_socket_client(
+//                                       'ssl://gateway.push.apple.com:2195', $err,
+//                                       $errstr, 60, STREAM_CLIENT_CONNECT|STREAM_CLIENT_PERSISTENT, $ctx);
         }
         
         

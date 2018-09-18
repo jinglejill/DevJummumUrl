@@ -300,7 +300,7 @@
         writeToLog("noOfLimitUsePerUser: " . $noOfLimitUsePerUser);
         if($noOfLimitUsePerUserPerDay == 1 && $noOfLimitUsePerUser > 1 && $usedCountPerUser > 0)
         {
-            $sql = "select Promotion.`PromotionID`, `MainBranchID`, `StartDate`, `EndDate`, `UsingStartDate`, `UsingEndDate`, `Header`, `SubTitle`, `ImageUrl`, PromotionDiscount.`DiscountType`, PromotionDiscount.`DiscountAmount`, `MinimumSpending`, PromotionDiscount.`MaxDiscountAmountPerDay`, `AllowEveryone`, `AllowDiscountForAllMenuType`, `DiscountMenuID`, `NoOfLimitUse`, `NoOfLimitUsePerUser`, `NoOfLimitUsePerUserPerDay`, `VoucherCode`, `TermsConditions`, `Type`, `OrderNo`, `Status`, Promotion.`ModifiedUser`, Promotion.`ModifiedDate`, $moreDiscountToGo as MoreDiscountToGo,0 PromoCodeID from promotion left join PromotionDiscount on PromotionDiscount.promotionID = PromotionDiscount.promotionID where voucherCode = '$voucherCode' and date_format(now(),'%Y-%m-%d') between date_format(usingStartDate,'%Y-%m-%d') and date_format(usingEndDate,'%Y-%m-%d') and PromotionDiscount.time = ($usedCountPerUser+1);";
+            $sql = "select Promotion.`PromotionID`, `MainBranchID`, `StartDate`, `EndDate`, `UsingStartDate`, `UsingEndDate`, `Header`, `SubTitle`, `ImageUrl`, PromotionDiscount.`DiscountType`, PromotionDiscount.`DiscountAmount`, `ShopDiscount`, `JummumDiscount`, `SharedDiscountType`, `SharedDiscountAmountMax`, `MinimumSpending`, PromotionDiscount.`MaxDiscountAmountPerDay`, `AllowEveryone`, `AllowDiscountForAllMenuType`, `DiscountMenuID`, `NoOfLimitUse`, `NoOfLimitUsePerUser`, `NoOfLimitUsePerUserPerDay`, `VoucherCode`, `TermsConditions`, `Type`, `OrderNo`, `Status`, Promotion.`ModifiedUser`, Promotion.`ModifiedDate`, $moreDiscountToGo as MoreDiscountToGo,0 PromoCodeID from promotion left join PromotionDiscount on PromotionDiscount.promotionID = PromotionDiscount.promotionID where voucherCode = '$voucherCode' and date_format(now(),'%Y-%m-%d') between date_format(usingStartDate,'%Y-%m-%d') and date_format(usingEndDate,'%Y-%m-%d') and PromotionDiscount.time = ($usedCountPerUser+1);";
         }
         else
         {
@@ -319,7 +319,7 @@
     {
         if($voucherValid2)
         {
-            $sql = "select $moreDiscountToGo as MoreDiscountToGo,RewardRedemptionID,AllowDiscountForAllMenuType,DiscountType,DiscountAmount,MainBranchID,DiscountMenuID,$promoCodeID PromoCodeID from rewardRedemption where rewardRedemptionID = '$rewardRedemptionID';";
+            $sql = "select $moreDiscountToGo as MoreDiscountToGo,RewardRedemptionID,AllowDiscountForAllMenuType,DiscountType,DiscountAmount, `ShopDiscount`, `JummumDiscount`, `SharedDiscountType`, `SharedDiscountAmountMax`,MainBranchID,DiscountMenuID,$promoCodeID PromoCodeID from rewardRedemption where rewardRedemptionID = '$rewardRedemptionID';";
             $sql .= "select '' as Text;";
             $sql .= "select 2 as Text";
         }

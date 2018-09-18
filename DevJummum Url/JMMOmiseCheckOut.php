@@ -68,6 +68,7 @@
         $servingPerson = $data["servingPerson"];
         $customerType = $data["customerType"];
         $openTableDate = $data["openTableDate"];
+        $totalAmount = $data["totalAmount"];
         $cashAmount = $data["cashAmount"];
         $cashReceive = $data["cashReceive"];
         $creditCardType = $data["creditCardType"];
@@ -95,6 +96,8 @@
         $mergeReceiptID = $data["mergeReceiptID"];
         $buffetReceiptID = $data["buffetReceiptID"];
         $voucherCode = $data["voucherCode"];
+        $shopDiscount = $data["shopDiscount"];
+        $jummumDiscount = $data["jummumDiscount"];
         $modifiedUser = $data["modifiedUser"];
         $modifiedDate = $data["modifiedDate"];
     }
@@ -304,7 +307,19 @@
         
         
         //query statement
-        $sql = "INSERT INTO Receipt(BranchID, CustomerTableID, MemberID, ServingPerson, CustomerType, OpenTableDate, CashAmount, CashReceive, CreditCardType, CreditCardNo, CreditCardAmount, TransferDate, TransferAmount, Remark, DiscountType, DiscountAmount, DiscountValue, DiscountReason, ServiceChargePercent, ServiceChargeValue, PriceIncludeVat, VatPercent, VatValue, Status, StatusRoute, ReceiptNoID, ReceiptNoTaxID, ReceiptDate, MergeReceiptID, BuffetReceiptID, VoucherCode, ModifiedUser, ModifiedDate) VALUES ('$branchID', '$customerTableID', '$memberID', '$servingPerson', '$customerType', '$openTableDate', '$cashAmount', '$cashReceive', '$creditCardType', '$creditCardNo', '$creditCardAmount', '$transferDate', '$transferAmount', '$remark', '$discountType', '$discountAmount', '$discountValue', '$discountReason', '$serviceChargePercent', '$serviceChargeValue', '$priceIncludeVat', '$vatPercent', '$vatValue', '$status', '$status', '$receiptNoID', '$receiptNoTaxID', '$receiptDate', '$mergeReceiptID', '$buffetReceiptID', '$voucherCode', '$modifiedUser', '$modifiedDate')";
+        $currentDateTime = date('Y-m-d');
+        $sql = "select * from transactionFee where date_format(StartDate,'%Y-%m-%d') <= '$currentDateTime' and date_format(EndDate,'%Y-%m-%d') >= '$currentDateTime' and branchID = 0 order by modifiedDate desc";
+        $selectedRow = getSelectedRow($sql);
+        $transactionFee = $selectedRow[0]["Rate"];
+        $transactionFeeValue = $amount * 0.01 * $transactionFee * 0.01;
+        $transactionFeeValue = round($transactionFeeValue * 100)/100;
+        $sql = "select * from transactionFee where date_format(StartDate,'%Y-%m-%d') <= '$currentDateTime' and date_format(EndDate,'%Y-%m-%d') >= '$currentDateTime' and branchID = '$branchID' order by modifiedDate desc";
+        $selectedRow = getSelectedRow($sql);
+        $transactionFeeBranch = $selectedRow[0]["Rate"];
+        $transactionFeeValueBranch = $amount * 0.01 * $transactionFeeBranch * 0.01;
+        $transactionFeeValueBranch = round($transactionFeeValueBranch * 100)/100;
+        $jummumPayValue = $transactionFeeValue - $transactionFeeValueBranch;
+        $sql = "INSERT INTO Receipt(BranchID, CustomerTableID, MemberID, ServingPerson, CustomerType, OpenTableDate, TotalAmount, CashAmount, CashReceive, CreditCardType, CreditCardNo, CreditCardAmount, TransferDate, TransferAmount, Remark, DiscountType, DiscountAmount, DiscountValue, DiscountReason, ServiceChargePercent, ServiceChargeValue, PriceIncludeVat, VatPercent, VatValue, Status, StatusRoute, ReceiptNoID, ReceiptNoTaxID, ReceiptDate, MergeReceiptID, BuffetReceiptID, VoucherCode, ShopDiscount, JummumDiscount, TransactionFeeValue, JummumPayValue, ModifiedUser, ModifiedDate) VALUES ('$branchID', '$customerTableID', '$memberID', '$servingPerson', '$customerType', '$openTableDate', '$totalAmount', '$cashAmount', '$cashReceive', '$creditCardType', '$creditCardNo', '$creditCardAmount', '$transferDate', '$transferAmount', '$remark', '$discountType', '$discountAmount', '$discountValue', '$discountReason', '$serviceChargePercent', '$serviceChargeValue', '$priceIncludeVat', '$vatPercent', '$vatValue', '$status', '$status', '$receiptNoID', '$receiptNoTaxID', '$receiptDate', '$mergeReceiptID', '$buffetReceiptID', '$voucherCode', '$shopDiscount', '$jummumDiscount', '$transactionFeeValue', '$jummumPayValue', '$modifiedUser', '$modifiedDate')";
         $ret = doQueryTask($sql);
         if($ret != "")
         {

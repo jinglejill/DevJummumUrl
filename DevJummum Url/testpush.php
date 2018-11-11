@@ -14,8 +14,11 @@
                      ,'content-available' => $contentAvailable
                      ,'receiptID' => $receiptID
                       );
-    sendPushNotificationWithPath('4dce925d8560d9eef6080b2c2af06ae2e92e472f35c1ef2a0ce032eacfbac668',$arrBody,'./../../MasterDev/JUMMUM_OM/','jill');
-    
+//    {"content-available":1,"data":{"receiptID":"6"},"category":"updateStatus","alert":"Delivered","sound":"default"}
+//    sendPushNotificationWithPath('90bfe9bf70d26fef6ed12b68b6a984608ac3b71e99725e02485000366deb4b04',$arrBody,'./../MasterDev/JUMMUM_OM/','jill');
+   $arrDeviceToken = array();
+    array_push($arrDeviceToken,'bb6eac784aff3d9c8ade3c5c547092d77c72d8f7fbe6c0f28756d6c206755053');
+    sendPushNotificationAdmin($arrDeviceToken,'tttt','eeee','ccc',1,null);
 //    sleep(5);
 //
 //

@@ -1,4 +1,5 @@
 <?php
+//    header('Content-Type: application/json');
     $masterFolder = "MasterDev";
     include_once("./../../$masterFolder/JMMNeedUpdateVersion.php");
     
@@ -18,7 +19,46 @@
     $firebaseKeyJummumOM = "AAAAs8VRTGE:APA91bHeKIqzV7q7aQgoSqefRR7kyGwW7OCcpwsX5o_pu4eMbCTidNe3SU-8YB_2u-W1kD2yLlA4RTXGe4_HGXnFPri9OrFT-fCIjpXtIraxLMaMsQiGmJtVnSzRKaI9Tbh5UZSkjoqYFrymtdZGQYyxz-NNr4f4dQ";
     $firebaseKeyAdmin = "AAAAulrZL7w:APA91bFoAJOcDaZSmiPnT2X2MyC18b95x0j09CiuRqbeo4o0MXvzWWmdsVwKfL6ZyLaEHZ1drMHNG1OZBoWOKWtpDDHKzH0UU3lLy-kly52riEtZ1Az_HZIqCOnrnHGTICXi49Whi8_5EB99X6z81QiBT3j0YmnAIA";
     
+    function getRegExPattern($searchText)
+    {
+        $strPattern = "";
+        $arrSearchText = explode(" ", $searchText);
+        for($i=0; $i<sizeof($arrSearchText); $i++)
+        {
+            if($i != 0)
+            {
+                $strPattern .= "|";
+            }
+            $strPattern .= "($arrSearchText[$i])";
+        }
+        return $strPattern;
+    }
     
+    function luhnAlgorithm($number)
+    {
+        $stack = 0;
+        $number = str_split(strrev($number));
+
+        foreach ($number as $key => $value)
+        {
+            if ($key % 2 == 0)
+            {
+                $value = array_sum(str_split($value * 2));
+            }
+            $stack += $value;
+        }
+        $stack %= 10;
+
+        if ($stack != 0)
+        {
+            $stack -= 10;     $stack = abs($stack);
+        }
+
+
+        $number = implode('', array_reverse($number));
+        $number = $number . strval($stack);
+        return $number;
+    }
     function isNeedUpdateVersion()
     {
         global $bundleID;
@@ -230,6 +270,11 @@
         
         // Create connection
 //        $con=mysqli_connect("localhost","FFD","123456",$dbName);
+
+//        //test
+//        $con=mysqli_connect("localhost","MINIMALIST","123456","MINIMALIST");
+        
+        
         $con=mysqli_connect("localhost","andAdmin","111111",$dbName);
         
         
@@ -291,111 +336,6 @@
             writeToLog("query success, sql: $sql, modified user: $user");
         }
         return "";
-    }
-
-    function doPushNotificationTaskToDevice($deviceToken,$selectedRow,$type,$action)
-    {
-        global $con;
-        $sql = "insert into pushSync (DeviceToken, TableName, Action, Data, TimeSync) values ('$deviceToken','$type','$action','" . json_encode($selectedRow, JSON_UNESCAPED_UNICODE) . "',now())";
-        $ret = doQueryTask($sql);
-        if($ret != "")
-        {
-            mysqli_rollback($con);            
-            return $ret;
-        }
-        $pushSyncID = mysqli_insert_id($con);
-        writeToLog('pushsyncid: '.$pushSyncID);
-        
-        return "";
-    }
-    
-    function doPushNotificationTask($deviceToken,$selectedRow,$type,$action)
-    {
-        global $con;
-        $pushDeviceTokenList = getOtherDeviceTokensList($deviceToken);
-        
-        foreach ($pushDeviceTokenList as $iDeviceToken)
-        {
-            //query statement
-            if(strcmp($type,"sProductSales") == 0)
-            {
-                $sql = "insert into pushSync (DeviceToken, TableName, Action, Data, TimeSync) values ('$iDeviceToken','$type','$action','" . $selectedRow . "',now())";
-            }
-            else if(strcmp($type,"sCompareInventory") == 0)
-            {
-                $sql = "insert into pushSync (DeviceToken, TableName, Action, Data, TimeSync) values ('$iDeviceToken','$type','$action','" . $selectedRow . "',now())";
-            }
-            else
-            {
-                $sql = "insert into pushSync (DeviceToken, TableName, Action, Data, TimeSync) values ('$iDeviceToken','$type','$action','" . json_encode($selectedRow, JSON_UNESCAPED_UNICODE) . "',now())";
-            }
-            $ret = doQueryTask($sql);
-            if($ret != "")
-            {
-                mysqli_rollback($con);
-                return $ret;
-            }
-            $pushSyncID = mysqli_insert_id($con);
-            writeToLog('pushsyncid: '.$pushSyncID);
-        }
-        return "";
-    }
-    
-    function doPushNotificationTaskWithDbName($deviceToken,$selectedRow,$type,$action,$dbName)
-    {
-        global $con;
-//        $pushDeviceTokenList = getOtherDeviceTokensList($deviceToken);
-        
-//        foreach ($pushDeviceTokenList as $iDeviceToken)
-        {
-            //query statement
-            {
-                $sql = "insert into $dbName.pushSync (DeviceToken, TableName, Action, Data, TimeSync) values ('$deviceToken','$type','$action','" . json_encode($selectedRow, JSON_UNESCAPED_UNICODE) . "',now())";
-            }
-            $ret = doQueryTask($sql);
-            if($ret != "")
-            {
-                mysqli_rollback($con);
-                return $ret;
-            }
-            $pushSyncID = mysqli_insert_id($con);
-            writeToLog('pushsyncid: '.$pushSyncID);
-        }
-        return "";
-    }
-    
-    function doPushNotificationTaskAsLog($con,$user,$deviceToken,$selectedRow,$type,$action)
-    {
-        //query statement
-        $sql = "insert into pushSync (DeviceToken, TableName, Action, Data, TimeSync,TimeSynced) values ('$deviceToken','$type','delete log','" . json_encode($selectedRow, true) . "',now(),now())";
-        $ret = doQueryTask($sql);
-        if($ret != "")
-        {
-            mysqli_rollback($con);
-            return $ret;
-        }
-        $pushSyncID = mysqli_insert_id($con);
-        writeToLog('delete log pushsyncid: '.$pushSyncID);
-        return "";
-    }
-    
-    function sendPushNotificationToAllDevices()
-    {
-        $pushDeviceTokenList = getAllDeviceTokenList();
-        
-        foreach ($pushDeviceTokenList as $iDeviceToken)
-        {
-            sendPushNotificationToDevice($iDeviceToken);
-        }
-    }
-    
-    function sendPushNotificationToOtherDevices($deviceToken)
-    {
-        $pushDeviceTokenList = getOtherDeviceTokensList($deviceToken);
-        foreach ($pushDeviceTokenList as $iDeviceToken)
-        {
-            sendPushNotificationToDevice($iDeviceToken);
-        }
     }
     
     function sendPushNotificationToDevice($deviceToken)
@@ -506,36 +446,6 @@
             {
                 $key = $firebaseKeyJummumOM;
                 sendFirebasePushNotification($eachDeviceToken,$text,"",$data,$key);
-            }
-        }
-    }
-    
-    function sendPushNotificationToDeviceWithPath($deviceToken,$path,$passForCk,$msg,$receiptID,$category,$contentAvailable)
-    {
-        foreach($deviceToken as $eachDeviceToken)
-        {
-            if(strlen($eachDeviceToken) == 64)
-            {
-                $paramBody = array(
-                                   'content-available' => $contentAvailable
-                                   ,'receiptID' => $receiptID
-                                   );
-                if($category != '')
-                {
-                    $paramBody["category"] = $category;
-                }
-                if($msg != '')
-                {
-                    $paramBody["alert"] = $msg;
-                    $paramBody["sound"] = "default";
-                }
-                
-                sendPushNotificationWithPath($eachDeviceToken, $paramBody, $path, $passForCk);
-            }
-            else
-            {
-                $data = array("receiptID" => $receiptID);
-                sendFirebasePushNotification($eachDeviceToken,"",$msg,$data,$key);
             }
         }
     }
@@ -984,5 +894,10 @@
             case 7:
                 return "Sun\t";
         }
+    }
+    
+    function makeFirstLetterUpperCase($text)
+    {
+        return strtoupper(substr($text,0,1)) . substr($text,1,strlen($text)-1);
     }
 ?>

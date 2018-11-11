@@ -35,63 +35,54 @@
     
     
     $b64image = "";
-    if($imageFileName != "")
+    switch($type)
     {
-        switch($type)
-        {
-            case 1://menu
-                $imageFileName = "/$dbName/Image/Menu/$imageFileName";
-                break;
-            case 2://logo
-                $imageFileName = "/$dbName/Image/Logo/$imageFileName";
-                break;
-            case 3://promotion
-                $imageFileName = "/Image/Promotion/$imageFileName";
-                break;
-            case 4://reward
-                $imageFileName = "/Image/Reward/$imageFileName";
-                break;
-            case 5://jummum material
-                $imageFileName = "/Image/$imageFileName";
-                break;
-        }
+        case 1://menu
+            $filenameIn = "./../../$masterFolder/$dbName/Image/Menu/$imageFileName";
+            break;
+        case 2://logo
+            $filenameIn = "./../../$masterFolder/$dbName/Image/Logo/$imageFileName";
+            break;
+        case 3://promotion
+            $filenameIn = "./../../$masterFolder/Image/Promotion/$imageFileName";
+            break;
+        case 4://reward
+            $filenameIn = "./../../$masterFolder/Image/Reward/$imageFileName";
+            break;
+        case 5://jummum material
+            $filenameIn = "./../../$masterFolder/Image/$imageFileName";
+            break;
+    }
+    
+    writeToLog("fileNameIn: " . $filenameIn);
+    
+    
+    // Check if file already exists
+    if ($imageFileName != "" && file_exists($filenameIn))
+    {
+        $b64image = base64_encode(file_get_contents($filenameIn));
     }
     else
     {
         switch($type)
         {
-                case 1:
-                case 2:
+            case 1:
+            case 2:
             {
-                $imageFileName = "/$dbName/Image/NoImage.jpg";
+                $filenameIn = "./../../$masterFolder/$dbName/Image/NoImage.jpg";
             }
                 break;
-                case 3:
-                case 4:
-                case 5:
+            case 3:
+            case 4:
+            case 5:
             {
-                $imageFileName = "/Image/NoImage.jpg";
+                $filenameIn = "./../../$masterFolder/Image/NoImage.jpg";
             }
                 break;
-            
         }
         
-    }
-    
-    $filenameIn = "." . $imageFileName;
-//    $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-//    $posSlash = strripos($actual_link,"/");
-//    $currentUrlFolderPath = substr($actual_link,0,$posSlash);
-//    $filenameIn = $currentUrlFolderPath . $imageFileName . '?' .mt_rand();
-    writeToLog("fileNameIn: " . $filenameIn);
-    
-    
-    // Check if file already exists
-    if (file_exists($filenameIn))
-    {
         $b64image = base64_encode(file_get_contents($filenameIn));
     }
-
     
     
     echo json_encode(array('base64String' => $b64image, 'post_image_filename' => $imageFileName));

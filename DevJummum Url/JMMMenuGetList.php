@@ -108,15 +108,13 @@
     {
         $sql = "select 0 as Text;";
     }
-    $sql .= "select '$branchID' BranchID, $dbName.menu.* from $dbName.menu where Status = 1 and belongToMenuID = 0;";
-    $sql .= "select '$branchID' BranchID, $dbName.menuType.* from $dbName.menu left join $dbName.menuType on $dbName.menu.menuTypeID = $dbName.menuType.menuTypeID where $dbName.menu.Status = 1 and $dbName.menuType.Status = 1 and belongToMenuID = 0;";
-    $sql .= "select '$branchID' BranchID, $dbName.note.* from $dbName.note where Status = 1;";
-    $sql .= "select '$branchID' BranchID, '$branchID' BranchID, $dbName.notetype.* from $dbName.notetype where Status = 1;";
-    $sql .= "select '$branchID' BranchID, $dbName.specialPriceProgram.* from $dbName.specialPriceProgram where date_format(now(),'%Y-%m-%d') between date_format(startDate,'%Y-%m-%d') and date_format(endDate,'%Y-%m-%d');";
-    writeToLog("sql = " . $sql);
+    $sql .= "select '$branchID' BranchID, menu.* from $dbName.menu where Status = 1 and alacarteMenu = 1;";
+    $sql .= "select distinct '$branchID' BranchID, menuType.`MenuTypeID`, `Name`, `NameEn`, `AllowDiscount`, menuType.`OrderNo` from $dbName.menu left join $dbName.menuType on menu.menuTypeID = menuType.menuTypeID where menu.Status = 1 and menuType.Status = 1 and alacarteMenu = 1;";
+    $sql .= "select '$branchID' BranchID, specialPriceProgram.* from $dbName.specialPriceProgram left join $dbName.specialPriceProgramDay on specialPriceProgram.specialPriceProgramID = specialPriceProgramDay.specialPriceProgramID where date_format(now(),'%Y-%m-%d') between date_format(startDate,'%Y-%m-%d') and date_format(endDate,'%Y-%m-%d') and specialPriceProgramDay.Day = dayOfWeek(now())-1;";
+    $sql .= "select * from $dbName.setting where keyName = 'luckyDrawSpend'";
     
     
-    
+
     /* execute multi query */
     $jsonEncode = executeMultiQueryArray($sql);
     $response = array('success' => true, 'data' => $jsonEncode, 'error' => null, 'status' => 1);

@@ -23,7 +23,6 @@
     
     $sql = "select * from " . $_GET['tableName'];
     
-    
     if ($result=mysqli_query($con,$sql))
     {
         
@@ -81,7 +80,13 @@
         }
         $property .= "<br>";
         
-
+        
+        //dictionary
+        $dictionary .= "- (NSDictionary *)dictionary;";
+        $dictionary .= "<br>";
+        
+        
+        
         //init method
         $initMethod .= "-(" . getTableNameFromPrimaryKey($primaryKey) . " *)initWith";
         
@@ -171,7 +176,7 @@
     }
     
     //model h
-    echo $property . $initMethod . $getNextID . $addObject . $removeObject . $addList . $removeList . $getObject . $editObject . $copyObjectFrom . "<br><br>";
+    echo $property . $dictionary . $initMethod . $getNextID . $addObject . $removeObject . $addList . $removeList . $getObject . $editObject . $copyObjectFrom . "<br><br>";
     //sharedmodel h
     echo $propertyShared . $method . "<br><br>";
     //db enum utility

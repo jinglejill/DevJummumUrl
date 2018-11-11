@@ -51,7 +51,7 @@ function validateForm()
 </script>
 </head>
 <body text="#FFFFFF" style="background-color:#FF3C4B">
-<p>&nbsp;<img class="" src="http://www.jummum.co/<?=$jummumPath?>Image/jummumLogo.png" alt="" width="120" /></p>
+<p>&nbsp;<img class="" src="http://www.jummum.co/<?=$jummumPath?>Image/jummum_logo.png" alt="" width="120" /></p>
 <form name="resetPasswordForm" action="./resetpassword.php?codereset=<?=$_GET['codereset']?>" onsubmit="return validateForm()" method="post">
 <p>&nbsp;</p>
 <p>รหัสผ่านใหม่:<br /><input name="password" type="password" /></p>

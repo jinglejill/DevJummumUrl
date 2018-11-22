@@ -31,6 +31,7 @@
     $customerOrderStatus = $selectedRow[0]["Value"];
     
     
+    $currentDateTime = date("Y-m-d H:i:s");
     $inOpeningTime = 0;
     if($customerOrderStatus == 1)
     {
@@ -44,7 +45,6 @@
     {
         //get today's opening time**********
         $strDate = date("Y-m-d");
-        $currentDate = date("Y-m-d H:i:s");
         $dayOfWeek = date('w', strtotime($strDate));
         $sql = "select * from $dbName.OpeningTime where day = '$dayOfWeek' order by day,shiftNo";
         $selectedRow = getSelectedRow($sql);
@@ -63,7 +63,7 @@
             {
                 $startDate = date($strDate . " " . $startTime . ":00");
                 $endDate = date($strDate . " " . $endTime . ":00");
-                if($startDate<=$currentDate && $currentDate<=$endDate)
+                if($startDate<=$currentDateTime && $currentDateTime<=$endDate)
                 {
                     $inOpeningTime = 1;
                 }
@@ -73,7 +73,7 @@
                 $nextDate = date("Y-m-d", strtotime($strDate. ' + 1 days'));
                 $startDate = date($strDate . " " . $startTime . ":00");
                 $endDate = date($nextDate . " " . $endTime . ":00");
-                if($startDate<=$currentDate && $currentDate<=$endDate)
+                if($startDate<=$currentDateTime && $currentDateTime<=$endDate)
                 {
                     $inOpeningTime = 1;
                 }
@@ -109,8 +109,8 @@
         $sql = "select 0 as Text;";
     }
     $sql .= "select '$branchID' BranchID, menu.* from $dbName.menu where Status = 1 and alacarteMenu = 1;";
-    $sql .= "select distinct '$branchID' BranchID, menuType.`MenuTypeID`, `Name`, `NameEn`, `AllowDiscount`, menuType.`OrderNo` from $dbName.menu left join $dbName.menuType on menu.menuTypeID = menuType.menuTypeID where menu.Status = 1 and menuType.Status = 1 and alacarteMenu = 1;";
-    $sql .= "select '$branchID' BranchID, specialPriceProgram.* from $dbName.specialPriceProgram left join $dbName.specialPriceProgramDay on specialPriceProgram.specialPriceProgramID = specialPriceProgramDay.specialPriceProgramID where date_format(now(),'%Y-%m-%d') between date_format(startDate,'%Y-%m-%d') and date_format(endDate,'%Y-%m-%d') and specialPriceProgramDay.Day = dayOfWeek(now())-1;";
+    $sql .= "select distinct '1' BranchID, 0 `MenuTypeID`, 'แนะนำ' `Name`,'Recommended' `NameEn`, 0 `AllowDiscount`, 0 OrderNo union (select distinct '$branchID' BranchID, menuType.`MenuTypeID`, `Name`, `NameEn`, `AllowDiscount`, menuType.`OrderNo` from $dbName.menu left join $dbName.menuType on menu.menuTypeID = menuType.menuTypeID where menu.Status = 1 and menuType.Status = 1 and alacarteMenu = 1 order by menuType.orderNo);";
+    $sql .= "select '$branchID' BranchID, specialPriceProgram.* from $dbName.specialPriceProgram left join $dbName.specialPriceProgramDay on specialPriceProgram.specialPriceProgramID = specialPriceProgramDay.specialPriceProgramID where date_format('$currentDateTime','%Y-%m-%d') between date_format(startDate,'%Y-%m-%d') and date_format(endDate,'%Y-%m-%d') and specialPriceProgramDay.Day = weekday('$currentDateTime')+1;";
     $sql .= "select * from $dbName.setting where keyName = 'luckyDrawSpend'";
     
     

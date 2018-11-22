@@ -40,6 +40,7 @@
     $customerOrderStatus = $selectedRow[0]["Value"];
     
     
+    $currentDateTime = date("Y-m-d H:i:s");
     $inOpeningTime = 0;
     if($customerOrderStatus == 1)
     {
@@ -53,7 +54,6 @@
     {
         //get today's opening time**********
         $strDate = date("Y-m-d");
-        $currentDate = date("Y-m-d H:i:s");
         $dayOfWeek = date('w', strtotime($strDate));
         $sql = "select * from $dbName.OpeningTime where day = '$dayOfWeek' order by day,shiftNo";
         $selectedRow = getSelectedRow($sql);
@@ -72,7 +72,7 @@
             {
                 $startDate = date($strDate . " " . $startTime . ":00");
                 $endDate = date($strDate . " " . $endTime . ":00");
-                if($startDate<=$currentDate && $currentDate<=$endDate)
+                if($startDate<=$currentDateTime && $currentDateTime<=$endDate)
                 {
                     $inOpeningTime = 1;
                 }
@@ -82,7 +82,7 @@
                 $nextDate = date("Y-m-d", strtotime($strDate. ' + 1 days'));
                 $startDate = date($strDate . " " . $startTime . ":00");
                 $endDate = date($nextDate . " " . $endTime . ":00");
-                if($startDate<=$currentDate && $currentDate<=$endDate)
+                if($startDate<=$currentDateTime && $currentDateTime<=$endDate)
                 {
                     $inOpeningTime = 1;
                 }
@@ -107,7 +107,6 @@
     
     
     
-    
     if($inOpeningTime)
     {
         $sql = "select 1 as Text;";
@@ -117,8 +116,8 @@
         $sql = "select 0 as Text;";
     }
     $sql .= "select distinct '$branchID' BranchID, Menu.* from receipt LEFT JOIN ordertaking ON receipt.ReceiptID = ordertaking.ReceiptID LEFT JOIN $dbName.BuffetMenuMap on orderTaking.MenuID = BuffetMenuMap.BuffetMenuID LEFT JOIN $dbName.Menu on BuffetMenuMap.MenuID = Menu.MenuID where receipt.receiptID = '$receiptID' and BuffetMenuMap.menuID is not null and BuffetMenuMap.Status = 1 and Menu.status = 1;";
-    $sql .= "select distinct '$branchID' BranchID, MenuType.* from receipt LEFT JOIN ordertaking ON receipt.ReceiptID = ordertaking.ReceiptID LEFT JOIN $dbName.BuffetMenuMap on orderTaking.MenuID = BuffetMenuMap.BuffetMenuID LEFT JOIN $dbName.Menu on BuffetMenuMap.MenuID = Menu.MenuID left join $dbName.menuType on Menu.menuTypeID = menuType.menuTypeID where receipt.receiptID = '$receiptID' and BuffetMenuMap.menuID is not null and BuffetMenuMap.Status = 1 and Menu.status = 1 and menuType.status = '1';";
-    $sql .= "select distinct '$branchID' BranchID, specialPriceProgram.* from receipt LEFT JOIN ordertaking ON receipt.ReceiptID = ordertaking.ReceiptID LEFT JOIN $dbName.BuffetMenuMap on orderTaking.MenuID = BuffetMenuMap.BuffetMenuID LEFT JOIN $dbName.Menu on BuffetMenuMap.MenuID = Menu.MenuID left join $dbName.specialPriceProgram on Menu.menuID = specialPriceProgram.menuID left join $dbName.specialPriceProgramDay on specialPriceProgram.specialPriceProgramID = specialPriceProgramDay.specialPriceProgramID where receipt.receiptID = '$receiptID' and BuffetMenuMap.menuID is not null and BuffetMenuMap.Status = 1 and Menu.status = 1 and date_format(now(),'%Y-%m-%d') between date_format($dbName.specialPriceProgram.startDate,'%Y-%m-%d') and date_format($dbName.specialPriceProgram.endDate,'%Y-%m-%d') and specialPriceProgramDay.Day = dayOfWeek(now())-1;";
+    $sql .= "select distinct '1' BranchID, 0 `MenuTypeID`, 'แนะนำ' `Name`,'Recommended' `NameEn`, 0 `AllowDiscount`, 0 OrderNo union(select distinct '$branchID' BranchID, MenuType.MenuTypeID, MenuType.Name, MenuType.NameEn, MenuType.AllowDiscount, MenuType.OrderNo from receipt LEFT JOIN ordertaking ON receipt.ReceiptID = ordertaking.ReceiptID LEFT JOIN $dbName.BuffetMenuMap on orderTaking.MenuID = BuffetMenuMap.BuffetMenuID LEFT JOIN $dbName.Menu on BuffetMenuMap.MenuID = Menu.MenuID left join $dbName.menuType on Menu.menuTypeID = menuType.menuTypeID where receipt.receiptID = '$receiptID' and BuffetMenuMap.menuID is not null and BuffetMenuMap.Status = 1 and Menu.status = 1 and menuType.status = '1' order by MenuType.OrderNo);";
+    $sql .= "select distinct '$branchID' BranchID, specialPriceProgram.* from receipt LEFT JOIN ordertaking ON receipt.ReceiptID = ordertaking.ReceiptID LEFT JOIN $dbName.BuffetMenuMap on orderTaking.MenuID = BuffetMenuMap.BuffetMenuID LEFT JOIN $dbName.Menu on BuffetMenuMap.MenuID = Menu.MenuID left join $dbName.specialPriceProgram on Menu.menuID = specialPriceProgram.menuID left join $dbName.specialPriceProgramDay on specialPriceProgram.specialPriceProgramID = specialPriceProgramDay.specialPriceProgramID where receipt.receiptID = '$receiptID' and BuffetMenuMap.menuID is not null and BuffetMenuMap.Status = 1 and Menu.status = 1 and date_format('$currentDateTime','%Y-%m-%d') between date_format($dbName.specialPriceProgram.startDate,'%Y-%m-%d') and date_format($dbName.specialPriceProgram.endDate,'%Y-%m-%d') and specialPriceProgramDay.Day = weekday('$currentDateTime')+1;";
     $sql .= "select distinct '$branchID' BranchID, BuffetMenuMap.* from receipt LEFT JOIN ordertaking ON receipt.ReceiptID = ordertaking.ReceiptID LEFT JOIN $dbName.BuffetMenuMap on orderTaking.MenuID = BuffetMenuMap.BuffetMenuID left join $dbName.Menu on BuffetMenuMap.MenuID = Menu.MenuID where receipt.receiptID = '$receiptID' and BuffetMenuMap.menuID is not null and BuffetMenuMap.Status = 1 and Menu.status = 1;";
     $sql .= "select * from receipt where receiptID = '$receiptID';";
 

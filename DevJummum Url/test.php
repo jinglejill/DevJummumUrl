@@ -1,3 +1,10 @@
 <?php
-    echo floor(742/300);
+    and (
+    promotion.NoOfLimitUsePerUser = 0 or
+    promotion.NoOfLimitUsePerUser > (select count(*) from userPromotionUsed where promotionID = promotion.promotionID and userAccountID = '$memberID')
+    )
 ?>
+
+
+
+

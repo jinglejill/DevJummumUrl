@@ -138,6 +138,7 @@
         writeToLog("randomText: " . $randomText);
         writeToLog("rewardGot: " . $rewardGot);
         
+//        $rewardGot = 1;//test
         if($rewardGot == 4)
         {
             //update luckyDrawTicket

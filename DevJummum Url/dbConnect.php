@@ -3,6 +3,7 @@
     $masterFolder = "MasterDev";
     include_once("./../../$masterFolder/JMMNeedUpdateVersion.php");
     
+    
     //conection variable
     $con;
     $jummum = "DEV_JUMMUM";
@@ -18,6 +19,20 @@
     $firebaseKeyJummum = "AAAAz3AS81k:APA91bFKi3sIJEGKHaugE1gSB0i0MHio4W4EnOrrvOWzL9lPufo7ZKrinuhnQlUyGGLwx0925AGW5FvJ5xI2cKiuwU2rSsDGMQzT7-DEKviu2Y3OgHcFqpagJSu9j2qAAJVOAu9hSZf6sxOmcMJEcJrQVJGKGlJhPQ";
     $firebaseKeyJummumOM = "AAAAs8VRTGE:APA91bHeKIqzV7q7aQgoSqefRR7kyGwW7OCcpwsX5o_pu4eMbCTidNe3SU-8YB_2u-W1kD2yLlA4RTXGe4_HGXnFPri9OrFT-fCIjpXtIraxLMaMsQiGmJtVnSzRKaI9Tbh5UZSkjoqYFrymtdZGQYyxz-NNr4f4dQ";
     $firebaseKeyAdmin = "AAAAulrZL7w:APA91bFoAJOcDaZSmiPnT2X2MyC18b95x0j09CiuRqbeo4o0MXvzWWmdsVwKfL6ZyLaEHZ1drMHNG1OZBoWOKWtpDDHKzH0UU3lLy-kly52riEtZ1Az_HZIqCOnrnHGTICXi49Whi8_5EB99X6z81QiBT3j0YmnAIA";
+    
+    function getWeekDayText($weekDay)
+    {
+        switch($weekDay)
+        {
+            case 1: return "จันทร์";
+            case 2: return "อังคาร";
+            case 3: return "พุธ";
+            case 4: return "พฤหัส";
+            case 5: return "ศุกร์";
+            case 6: return "เสาร์";
+            case 7: return "อาทิตย์";
+        }
+    }
     
     function getRegExPattern($searchText)
     {

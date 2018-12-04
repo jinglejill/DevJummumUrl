@@ -109,8 +109,8 @@
         $sql = "select 0 as Text;";
     }
     $sql .= "select '$branchID' BranchID, menu.* from $dbName.menu where Status = 1 and alacarteMenu = 1;";
-    $sql .= "select distinct '1' BranchID, 0 `MenuTypeID`, 'แนะนำ' `Name`,'Recommended' `NameEn`, 0 `AllowDiscount`, 0 OrderNo union (select distinct '$branchID' BranchID, menuType.`MenuTypeID`, `Name`, `NameEn`, `AllowDiscount`, menuType.`OrderNo` from $dbName.menu left join $dbName.menuType on menu.menuTypeID = menuType.menuTypeID where menu.Status = 1 and menuType.Status = 1 and alacarteMenu = 1 order by menuType.orderNo);";
-    $sql .= "select '$branchID' BranchID, specialPriceProgram.* from $dbName.specialPriceProgram left join $dbName.specialPriceProgramDay on specialPriceProgram.specialPriceProgramID = specialPriceProgramDay.specialPriceProgramID where date_format('$currentDateTime','%Y-%m-%d') between date_format(startDate,'%Y-%m-%d') and date_format(endDate,'%Y-%m-%d') and specialPriceProgramDay.Day = weekday('$currentDateTime')+1;";
+    $sql .= "select distinct '$branchID' BranchID, 0 `MenuTypeID`, 'แนะนำ' `Name`,'Recommended' `NameEn`, 0 `AllowDiscount`, 0 OrderNo union (select distinct '$branchID' BranchID, menuType.`MenuTypeID`, `Name`, `NameEn`, `AllowDiscount`, menuType.`OrderNo` from $dbName.menu left join $dbName.menuType on menu.menuTypeID = menuType.menuTypeID where menu.Status = 1 and menuType.Status = 1 and alacarteMenu = 1 order by menuType.orderNo);";
+    $sql .= "select '$branchID' BranchID, specialPriceProgram.* from $dbName.specialPriceProgram left join $dbName.specialPriceProgramDay on specialPriceProgram.specialPriceProgramID = specialPriceProgramDay.specialPriceProgramID where '$currentDateTime' between startDate and endDate and specialPriceProgramDay.Day = weekday('$currentDateTime')+1;";
     $sql .= "select * from $dbName.setting where keyName = 'luckyDrawSpend'";
     
     

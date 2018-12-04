@@ -53,95 +53,29 @@
     {
         $omiseToken = $data["omiseToken"];
         $voucherCode = $data["voucherCode"];
-//        $luckyDrawSpend = $data["luckyDrawSpend"];
     }
     
     {
-        $receiptID = $data["receiptID"];
         $branchID = $data["branchID"];
         $customerTableID = $data["customerTableID"];
         $memberID = $data["memberID"];
-        $servingPerson = $data["servingPerson"];
-        $customerType = $data["customerType"];
-        $openTableDate = $data["openTableDate"];
-        $totalAmount = $data["totalAmount"];
-        $cashAmount = $data["cashAmount"];
-        $cashReceive = $data["cashReceive"];
+        $paymentMethod = $data["paymentMethod"];
         $creditCardType = $data["creditCardType"];
         $creditCardNo = $data["creditCardNo"];
-        $creditCardAmount = $data["creditCardAmount"];
-        $transferDate = $data["transferDate"];
-        $transferAmount = $data["transferAmount"];
         $remark = $data["remark"];
-        $specialPriceDiscount = $data["specialPriceDiscount"];
-        $discountType = $data["discountType"];
-        $discountAmount = $data["discountAmount"];
-        $discountValue = $data["discountValue"];
-        $discountReason = $data["discountReason"];
-        $serviceChargePercent = $data["serviceChargePercent"];
-        $serviceChargeValue = $data["serviceChargeValue"];
-        $priceIncludeVat = $data["priceIncludeVat"];
-        $vatPercent = $data["vatPercent"];
-        $vatValue = $data["vatValue"];
-        $beforeVat = $data["beforeVat"];
-        $status = $data["status"];
-        $statusRoute = $data["statusRoute"];
-        $receiptNoID = $data["receiptNoID"];
-        $receiptNoTaxID = $data["receiptNoTaxID"];
+        $status = ($omiseToken == "") && ($paymentMethod == 1)?1:2;
         $receiptDate = $data["receiptDate"];
-        $sendToKitchenDate = $data["sendToKitchenDate"];
-        $deliveredDate = $data["deliveredDate"];
-        $mergeReceiptID = $data["mergeReceiptID"];
         $buffetReceiptID = $data["buffetReceiptID"];
-        $voucherCode = $data["voucherCode"];
-        $shopDiscount = $data["shopDiscount"];
-        $jummumDiscount = $data["jummumDiscount"];
         $modifiedUser = $data["modifiedUser"];
         $modifiedDate = $data["modifiedDate"];
     }
     
     {
         $arrOrderTaking = $data["orderTaking"];
-        for($i=0; $i<sizeof($arrOrderTaking); $i++)
-        {
-            $orderTaking = $arrOrderTaking[$i];
-            
-            
-            $otOrderTakingID[$i] = $orderTaking["orderTakingID"];
-            $otBranchID[$i] = $orderTaking["branchID"];
-            $otCustomerTableID[$i] = $orderTaking["customerTableID"];
-            $otMenuID[$i] = $orderTaking["menuID"];
-            $otQuantity[$i] = $orderTaking["quantity"];
-            $otSpecialPrice[$i] = $orderTaking["specialPrice"];
-            $otPrice[$i] = $orderTaking["price"];
-            $otTakeAway[$i] = $orderTaking["takeAway"];
-            $otTakeAwayPrice[$i] = $orderTaking["takeAwayPrice"];
-            $otNoteIDListInText[$i] = $orderTaking["noteIDListInText"];
-            $otNotePrice[$i] = $orderTaking["notePrice"];
-            $otDiscountValue[$i] = $orderTaking["discountValue"];
-            $otOrderNo[$i] = $orderTaking["orderNo"];
-            $otStatus[$i] = $orderTaking["status"];
-            $otReceiptID[$i] = $orderTaking["receiptID"];
-            $otModifiedUser[$i] = $orderTaking["modifiedUser"];
-            $otModifiedDate[$i] = $orderTaking["modifiedDate"];
-        }
     }
     
     
     $arrOrderNote = $data["orderNote"];
-    for($i=0; $i<sizeof($arrOrderNote); $i++)
-    {
-        $orderNote = $arrOrderNote[$i];
-        
-        
-        $onOrderNoteID[$i] = $orderNote["orderNoteID"];
-        $onOrderTakingID[$i] = $orderNote["orderTakingID"];
-        $onNoteID[$i] = $orderNote["noteID"];
-        $onQuantity[$i] = $orderNote["quantity"];
-        $onModifiedUser[$i] = $orderNote["modifiedUser"];
-        $onModifiedDate[$i] = $orderNote["modifiedDate"];
-    }
-    
     $userAccountID = $memberID;
     $currentDateTime = date("Y-m-d H:i:s");
     
@@ -239,7 +173,7 @@
         for($i=0; $i<sizeof($arrOrderTaking); $i++)
         {
             $menuID = $arrOrderTaking[$i]["menuID"];
-            $sql = "select menu.*, case when specialPriceProgramDay.specialPriceProgramDayID is null then menu.price else ifnull(specialPriceProgram.SpecialPrice,menu.price) end AS SpecialPrice from $dbName.menu LEFT JOIN $dbName.specialPriceProgram ON menu.menuID = specialPriceProgram.menuID AND date_format('$currentDateTime','%Y-%m-%d') between date_format(specialPriceProgram.startDate,'%Y-%m-%d') and date_format(specialPriceProgram.endDate,'%Y-%m-%d') left join $dbName.specialPriceProgramDay on specialPriceProgram.specialPriceProgramID = specialPriceProgramDay.specialPriceProgramID and specialPriceProgramDay.Day = weekday('$currentDateTime')+1 where status = 1 and menu.menuID = '$menuID'";
+            $sql = "select menu.*, case when specialPriceProgramDay.specialPriceProgramDayID is null then menu.price else ifnull(specialPriceProgram.SpecialPrice,menu.price) end AS SpecialPrice from $dbName.menu LEFT JOIN $dbName.specialPriceProgram ON menu.menuID = specialPriceProgram.menuID AND '$currentDateTime' between specialPriceProgram.startDate and specialPriceProgram.endDate left join $dbName.specialPriceProgramDay on specialPriceProgram.specialPriceProgramID = specialPriceProgramDay.specialPriceProgramID and specialPriceProgramDay.Day = weekday('$currentDateTime')+1 where status = 1 and menu.menuID = '$menuID'";
             $selectedRow = getSelectedRow($sql);
             if(sizeof($selectedRow) == 0)
             {
@@ -343,36 +277,50 @@
         if($orderChanged)
         {
             $warningMsgOrderChanged = "รายการอาหารที่คุณสั่งมีการเปลี่ยนแปลงบางส่วน กรุณาตรวจทานรายการที่คุณสั่งอีกครั้งค่ะ";
-            //make key capital letter for OrderTaking
-            $arrOrderTakingNewCapitalKey = array();
-            for($i=0; $i<sizeof($arrOrderTakingNew); $i++)
-            {
-                $orderTakingNewCapitalKey = array();
-                $orderTakingNew = $arrOrderTakingNew[$i];
-                foreach ($orderTakingNew as $key => $value)
-                {
-                    $orderTakingNewCapitalKey[makeFirstLetterUpperCase($key)] = $value;
-                }
-                array_push($arrOrderTakingNewCapitalKey,$orderTakingNewCapitalKey);
-            }
-
-
-            //make key capital letter for orderNote
-            $arrOrderNoteNewCapitalKey = array();
-            for($i=0; $i<sizeof($arrOrderNoteNew); $i++)
-            {
-                $orderNoteNewCapitalKey = array();
-                $orderNoteNew = $arrOrderNoteNew[$i];
-                foreach ($orderNoteNew as $key => $value)
-                {
-                    $orderNoteNewCapitalKey[makeFirstLetterUpperCase($key)] = $value;
-                }
-                array_push($arrOrderNoteNewCapitalKey,$orderNoteNewCapitalKey);
-            }
-
-            $arrOrderTaking = $arrOrderTakingNewCapitalKey;
+            $arrOrderNote = $arrOrderTakingNew;
+            $arrOrderTaking = $arrOrderNoteNew;
         }
 
+
+        //set value after orderChange*****
+        for($i=0; $i<sizeof($arrOrderTaking); $i++)
+        {
+            $orderTaking = $arrOrderTaking[$i];
+
+
+            $otOrderTakingID[$i] = $orderTaking["orderTakingID"];
+            $otBranchID[$i] = $orderTaking["branchID"];
+            $otCustomerTableID[$i] = $orderTaking["customerTableID"];
+            $otMenuID[$i] = $orderTaking["menuID"];
+            $otQuantity[$i] = $orderTaking["quantity"];
+            $otSpecialPrice[$i] = $orderTaking["specialPrice"];
+            $otPrice[$i] = $orderTaking["price"];
+            $otTakeAway[$i] = $orderTaking["takeAway"];
+            $otTakeAwayPrice[$i] = $orderTaking["takeAwayPrice"];
+            $otNoteIDListInText[$i] = $orderTaking["noteIDListInText"];
+            $otNotePrice[$i] = $orderTaking["notePrice"];
+            $otDiscountValue[$i] = $orderTaking["discountValue"];
+            $otOrderNo[$i] = $orderTaking["orderNo"];
+            $otStatus[$i] = $orderTaking["status"];
+            $otReceiptID[$i] = $orderTaking["receiptID"];
+            $otModifiedUser[$i] = $orderTaking["modifiedUser"];
+            $otModifiedDate[$i] = $orderTaking["modifiedDate"];
+        }
+
+        for($i=0; $i<sizeof($arrOrderNote); $i++)
+        {
+            $orderNote = $arrOrderNote[$i];
+
+            $onOrderNoteID[$i] = $orderNote["orderNoteID"];
+            $onOrderTakingID[$i] = $orderNote["orderTakingID"];
+            $onNoteID[$i] = $orderNote["noteID"];
+            $onQuantity[$i] = $orderNote["quantity"];
+            $onModifiedUser[$i] = $orderNote["modifiedUser"];
+            $onModifiedDate[$i] = $orderNote["modifiedDate"];
+        }
+        //*****
+        
+        
         //get totalPrice
         $totalAmount = 0;
         for($i=0; $i<sizeof($arrOrderTaking); $i++)
@@ -444,17 +392,31 @@
                 {
                     if(($noOfLimitUsePerUserPerDay == 0 || $currentNoOfUsePerUserPerDay < $noOfLimitUsePerUserPerDay) && ($noOfLimitUsePerUser == 0 || $currentNoOfUsePerUser < $noOfLimitUsePerUser) && ($noOfLimitUse == 0 || $currentNoOfUse < $noOfLimitUse))
                     {
-                        $sql = "select * from $dbName.discountGroupMenuMap where discountGroupMenuID = '$discountGroupMenuID' and status = 1";
-                        $discountGroupMenuMap = getSelectedRow($sql);
-                        for($j=0; $j<sizeof($discountGroupMenuMap); $j++)
+                        if($discountGroupMenuID == 0)
                         {
-                            $menuID = $discountGroupMenuMap[$j]["MenuID"];
                             for($i=0; $i<sizeof($arrOrderTaking); $i++)
                             {
                                 if(($menuID == $arrOrderTaking[$i]["menuID"]) && ($discountOnTop || ($arrOrderTaking[$i]["price"] == $arrOrderTaking[$i]["specialPrice"])))
                                 {
                                     $menuParticipateValue += $arrOrderTaking[$i]["specialPrice"];
-                                    $arrOrderTakingParticipate[] = $arrOrderTaking[$i];
+                                    $arrOrderTakingParticipate[] = &$arrOrderTaking[$i];
+                                }
+                            }
+                        }
+                        else
+                        {
+                            $sql = "select * from $dbName.discountGroupMenuMap where discountGroupMenuID = '$discountGroupMenuID' and status = 1";
+                            $discountGroupMenuMap = getSelectedRow($sql);
+                            for($j=0; $j<sizeof($discountGroupMenuMap); $j++)
+                            {
+                                $menuID = $discountGroupMenuMap[$j]["MenuID"];
+                                for($i=0; $i<sizeof($arrOrderTaking); $i++)
+                                {
+                                    if($discountOnTop || ($arrOrderTaking[$i]["price"] == $arrOrderTaking[$i]["specialPrice"]))
+                                    {
+                                        $menuParticipateValue += $arrOrderTaking[$i]["specialPrice"];
+                                        $arrOrderTakingParticipate[] = &$arrOrderTaking[$i];
+                                    }
                                 }
                             }
                         }
@@ -466,6 +428,7 @@
                         {
     //                        $discountValueType1 = $menuParticipateValue<$amount?$menuParticipateValue:$amount;
                             $discountValueType1 = $amount;
+                            writeToLog("discountProgramType:$discountType,discountProgramTitle:$discountTitle, discountProgramValue:$discountValueType1");
                             if($discountValueType1 > $returnDiscount)
                             {
                                 $returnDiscount = $discountValueType1;
@@ -475,6 +438,7 @@
                         else if($discountType == 2)
                         {
                             $discountValueType2 = round($menuParticipateValue*$amount*0.01 * 10000)/10000;
+                            writeToLog("discountProgramType:$discountType,discountProgramTitle:$discountTitle, discountProgramValue:$discountValueType2");
                             if($discountValueType2 > $returnDiscount)
                             {
                                 $returnDiscount = $discountValueType2;
@@ -528,17 +492,31 @@
                     if($unlimitUse || $noOfUseLeft > 0)
                     {
                         $arrMenuParticipateValue = array();
-                        $sql = "select * from $dbName.discountGroupMenuMap where discountGroupMenuID = '$discountGroupMenuID' and status = 1";
-                        $discountGroupMenuMap = getSelectedRow($sql);
-                        for($j=0; $j<sizeof($discountGroupMenuMap); $j++)
+                        if($discountGroupMenuID == 0)
                         {
-                            $menuID = $discountGroupMenuMap[$j]["MenuID"];
                             for($i=0; $i<sizeof($arrOrderTaking); $i++)
                             {
-                                if(($menuID == $arrOrderTaking[$i]["menuID"]) && ($discountOnTop || ($arrOrderTaking[$i]["price"] == $arrOrderTaking[$i]["specialPrice"])))
+                                if($discountOnTop || ($arrOrderTaking[$i]["price"] == $arrOrderTaking[$i]["specialPrice"]))
                                 {
                                     $arrMenuParticipateValue[] = $arrOrderTaking[$i]["specialPrice"];
-                                    $arrOrderTakingParticipate[] = $arrOrderTaking[$i];
+                                    $arrOrderTakingParticipate[] = &$arrOrderTaking[$i];
+                                }
+                            }
+                        }
+                        else
+                        {
+                            $sql = "select * from $dbName.discountGroupMenuMap where discountGroupMenuID = '$discountGroupMenuID' and status = 1";
+                            $discountGroupMenuMap = getSelectedRow($sql);
+                            for($j=0; $j<sizeof($discountGroupMenuMap); $j++)
+                            {
+                                $menuID = $discountGroupMenuMap[$j]["MenuID"];
+                                for($i=0; $i<sizeof($arrOrderTaking); $i++)
+                                {
+                                    if(($menuID == $arrOrderTaking[$i]["menuID"]) && ($discountOnTop || ($arrOrderTaking[$i]["price"] == $arrOrderTaking[$i]["specialPrice"])))
+                                    {
+                                        $arrMenuParticipateValue[] = $arrOrderTaking[$i]["specialPrice"];
+                                        $arrOrderTakingParticipate[] = &$arrOrderTaking[$i];
+                                    }
                                 }
                             }
                         }
@@ -554,7 +532,7 @@
                             {
                                 $discountValueType3 += $arrMenuParticipateValue[$i*($amount+1)-1];
                             }
-
+                            writeToLog("discountProgramType:$discountType,discountProgramTitle:$discountTitle, discountProgramValue:$discountValueType3");
                             if($discountValueType3 > $returnDiscount)
                             {
                                 $returnDiscount = $discountValueType3;
@@ -568,25 +546,42 @@
                     $noOfItem = 0;
                     if(($noOfLimitUsePerUserPerDay == 0 || $currentNoOfUsePerUserPerDay < $noOfLimitUsePerUserPerDay) && ($noOfLimitUsePerUser == 0 || $currentNoOfUsePerUser < $noOfLimitUsePerUser) && ($noOfLimitUse == 0 || $currentNoOfUse < $noOfLimitUse))
                     {
-                        $sql = "select * from $dbName.discountGroupMenuMap where discountGroupMenuID = '$discountGroupMenuID' and status = 1";
-                        $discountGroupMenuMap = getSelectedRow($sql);
-                        for($j=0; $j<sizeof($discountGroupMenuMap); $j++)
+                        if($discountGroupMenuID == 0)
                         {
-                            $menuID = $discountGroupMenuMap[$j]["MenuID"];
                             for($i=0; $i<sizeof($arrOrderTaking); $i++)
                             {
-                                if(($menuID == $arrOrderTaking[$i]["menuID"]) && ($discountOnTop || ($arrOrderTaking[$i]["price"] == $arrOrderTaking[$i]["specialPrice"])))
+                                if($discountOnTop || ($arrOrderTaking[$i]["price"] == $arrOrderTaking[$i]["specialPrice"]))
                                 {
                                     $menuParticipateValue += $arrOrderTaking[$i]["specialPrice"];
                                     $noOfItem++;
-                                    $arrOrderTakingParticipate[] = $arrOrderTaking[$i];
+                                    $arrOrderTakingParticipate[] = &$arrOrderTaking[$i];
                                 }
                             }
                         }
+                        else
+                        {
+                            $sql = "select * from $dbName.discountGroupMenuMap where discountGroupMenuID = '$discountGroupMenuID' and status = 1";
+                            $discountGroupMenuMap = getSelectedRow($sql);
+                            for($j=0; $j<sizeof($discountGroupMenuMap); $j++)
+                            {
+                                $menuID = $discountGroupMenuMap[$j]["MenuID"];
+                                for($i=0; $i<sizeof($arrOrderTaking); $i++)
+                                {
+                                    if(($menuID == $arrOrderTaking[$i]["menuID"]) && ($discountOnTop || ($arrOrderTaking[$i]["price"] == $arrOrderTaking[$i]["specialPrice"])))
+                                    {
+                                        $menuParticipateValue += $arrOrderTaking[$i]["specialPrice"];
+                                        $noOfItem++;
+                                        $arrOrderTakingParticipate[] = &$arrOrderTaking[$i];
+                                    }
+                                }
+                            }
+                        }
+                        
 
                         if($noOfItem >= $minimumSpend)
                         {
                             $discountValueType4 = round($menuParticipateValue*$amount*0.01 * 10000)/10000;
+                            writeToLog("discountProgramType:$discountType,discountProgramTitle:$discountTitle, discountProgramValue:$discountValueType4");
                             if($discountValueType4 > $returnDiscount)
                             {
                                 $returnDiscount = $discountValueType4;
@@ -600,18 +595,33 @@
                     $noOfItem = 0;
                     if(($noOfLimitUsePerUserPerDay == 0 || $currentNoOfUsePerUserPerDay < $noOfLimitUsePerUserPerDay) && ($noOfLimitUsePerUser == 0 || $currentNoOfUsePerUser < $noOfLimitUsePerUser) && ($noOfLimitUse == 0 || $currentNoOfUse < $noOfLimitUse))
                     {
-                        $sql = "select * from $dbName.discountGroupMenuMap where discountGroupMenuID = '$discountGroupMenuID' and status = 1";
-                        $discountGroupMenuMap = getSelectedRow($sql);
-                        for($j=0; $j<sizeof($discountGroupMenuMap); $j++)
+                        if($discountGroupMenuID == 0)
                         {
-                            $menuID = $discountGroupMenuMap[$j]["MenuID"];
                             for($i=0; $i<sizeof($arrOrderTaking); $i++)
                             {
-                                if(($menuID == $arrOrderTaking[$i]["menuID"]) && ($discountOnTop || ($arrOrderTaking[$i]["price"] == $arrOrderTaking[$i]["specialPrice"])))
+                                if($discountOnTop || ($arrOrderTaking[$i]["price"] == $arrOrderTaking[$i]["specialPrice"]))
                                 {
                                     $menuParticipateValue += $arrOrderTaking[$i]["specialPrice"];
                                     $noOfItem++;
-                                    $arrOrderTakingParticipate[] = $arrOrderTaking[$i];
+                                    $arrOrderTakingParticipate[] = &$arrOrderTaking[$i];
+                                }
+                            }
+                        }
+                        else
+                        {
+                            $sql = "select * from $dbName.discountGroupMenuMap where discountGroupMenuID = '$discountGroupMenuID' and status = 1";
+                            $discountGroupMenuMap = getSelectedRow($sql);
+                            for($j=0; $j<sizeof($discountGroupMenuMap); $j++)
+                            {
+                                $menuID = $discountGroupMenuMap[$j]["MenuID"];
+                                for($i=0; $i<sizeof($arrOrderTaking); $i++)
+                                {
+                                    if(($menuID == $arrOrderTaking[$i]["menuID"]) && ($discountOnTop || ($arrOrderTaking[$i]["price"] == $arrOrderTaking[$i]["specialPrice"])))
+                                    {
+                                        $menuParticipateValue += $arrOrderTaking[$i]["specialPrice"];
+                                        $noOfItem++;
+                                        $arrOrderTakingParticipate[] = &$arrOrderTaking[$i];
+                                    }
                                 }
                             }
                         }
@@ -630,8 +640,8 @@
                                     $amount = $amountDiscount;
                                 }
                             }
-                            $amount = $amount == 0?$amountDiscount:$amount;
                             $discountValueType5 = round($menuParticipateValue*$amount*0.01 * 10000)/10000;
+                            writeToLog("discountProgramType:$discountType,discountProgramTitle:$discountTitle, discountProgramValue:$discountValueType5");
                             if($discountValueType5 > $returnDiscount)
                             {
                                 $returnDiscount = $discountValueType5;
@@ -644,20 +654,35 @@
                 {
                     if(($noOfLimitUsePerUserPerDay == 0 || $currentNoOfUsePerUserPerDay < $noOfLimitUsePerUserPerDay) && ($noOfLimitUsePerUser == 0 || $currentNoOfUsePerUser < $noOfLimitUsePerUser) && ($noOfLimitUse == 0 || $currentNoOfUse < $noOfLimitUse))
                     {
-                        $sql = "select * from $dbName.discountGroupMenuMap where discountGroupMenuID = '$discountGroupMenuID' and status = 1";
-                        $discountGroupMenuMap = getSelectedRow($sql);
-                        for($j=0; $j<sizeof($discountGroupMenuMap); $j++)
+                        if($discountGroupMenuID == 0)
                         {
-                            $menuID = $discountGroupMenuMap[$j]["MenuID"];
                             for($i=0; $i<sizeof($arrOrderTaking); $i++)
                             {
-                                if(($menuID == $arrOrderTaking[$i]["menuID"]) && ($discountOnTop || ($arrOrderTaking[$i]["price"] == $arrOrderTaking[$i]["specialPrice"])))
+                                if($discountOnTop || ($arrOrderTaking[$i]["price"] == $arrOrderTaking[$i]["specialPrice"]))
                                 {
                                     $menuParticipateValue += $arrOrderTaking[$i]["specialPrice"];
-                                    $arrOrderTakingParticipate[] = $arrOrderTaking[$i];
+                                    $arrOrderTakingParticipate[] = &$arrOrderTaking[$i];
                                 }
                             }
                         }
+                        else
+                        {
+                            $sql = "select * from $dbName.discountGroupMenuMap where discountGroupMenuID = '$discountGroupMenuID' and status = 1";
+                            $discountGroupMenuMap = getSelectedRow($sql);
+                            for($j=0; $j<sizeof($discountGroupMenuMap); $j++)
+                            {
+                                $menuID = $discountGroupMenuMap[$j]["MenuID"];
+                                for($i=0; $i<sizeof($arrOrderTaking); $i++)
+                                {
+                                    if(($menuID == $arrOrderTaking[$i]["menuID"]) && ($discountOnTop || ($arrOrderTaking[$i]["price"] == $arrOrderTaking[$i]["specialPrice"])))
+                                    {
+                                        $menuParticipateValue += $arrOrderTaking[$i]["specialPrice"];
+                                        $arrOrderTakingParticipate[] = &$arrOrderTaking[$i];
+                                    }
+                                }
+                            }
+                        }
+                        
 
                         $amount = 0;
                         $sql = "select * from $dbName.discountStepMap where discountStepID = '$discountStepID' and status = 1 order by StepSpend";
@@ -674,11 +699,15 @@
                                 }
                             }
     //                        $discountValueType6 = $menuParticipateValue<$amount?$menuParticipateValue:$amount;
-                            $discountValueType6 = $amount;
-                            if($discountValueType6 > $returnDiscount)
+                            if($amount > 0)
                             {
-                                $returnDiscount = $discountValueType6;
-                                $discountFromDiscountProgram = array("DiscountProgramID" => $discountProgramID, "Title" => $discountTitle, "DiscountValue" => $returnDiscount, "OrderTaking" => $arrOrderTakingParticipate);
+                                $discountValueType6 = $amount;
+                                writeToLog("discountProgramType:$discountType,discountProgramTitle:$discountTitle, discountProgramValue:$discountValueType6");
+                                if($discountValueType6 > $returnDiscount)
+                                {
+                                    $returnDiscount = $discountValueType6;
+                                    $discountFromDiscountProgram = array("DiscountProgramID" => $discountProgramID, "Title" => $discountTitle, "DiscountValue" => $returnDiscount, "OrderTaking" => $arrOrderTakingParticipate);
+                                }
                             }
                         }
                     }
@@ -729,35 +758,63 @@
                     
                     if($unlimitUse || $noOfUseLeft > 0)
                     {
-                        $sql = "select * from $dbName.discountGroupMenuMap where discountGroupMenuID = '$discountGroupMenuID' and status = 1";
-                        $discountGroupMenuMap = getSelectedRow($sql);
-                        for($j=0; $j<sizeof($discountGroupMenuMap); $j++)
+                        if($discountGroupMenuID == 0)
                         {
-                            $menuID = $discountGroupMenuMap[$j]["MenuID"];
                             for($i=0; $i<sizeof($arrOrderTaking); $i++)
                             {
-                                if(($menuID == $arrOrderTaking[$i]["menuID"]) && ($discountOnTop || ($arrOrderTaking[$i]["price"] == $arrOrderTaking[$i]["specialPrice"])))
+                                if($discountOnTop || ($arrOrderTaking[$i]["price"] == $arrOrderTaking[$i]["specialPrice"]))
                                 {
                                     if(unlimitUse)
                                     {
                                         $discountValue += $amount;
-                                        $arrOrderTakingParticipate[] = $arrOrderTaking[$i];
+                                        $arrOrderTakingParticipate[] = &$arrOrderTaking[$i];
                                     }
                                     else
                                     {
                                         if($noOfUse < $noOfUseLeft)
                                         {
                                             $discountValue += $amount;
-                                            $arrOrderTakingParticipate[] = $arrOrderTaking[$i];
+                                            $arrOrderTakingParticipate[] = &$arrOrderTaking[$i];
                                         }
                                         $noOfUse++;
                                     }
                                 }
                             }
                         }
+                        else
+                        {
+                            $sql = "select * from $dbName.discountGroupMenuMap where discountGroupMenuID = '$discountGroupMenuID' and status = 1";
+                            $discountGroupMenuMap = getSelectedRow($sql);
+                            for($j=0; $j<sizeof($discountGroupMenuMap); $j++)
+                            {
+                                $menuID = $discountGroupMenuMap[$j]["MenuID"];
+                                for($i=0; $i<sizeof($arrOrderTaking); $i++)
+                                {
+                                    if(($menuID == $arrOrderTaking[$i]["menuID"]) && ($discountOnTop || ($arrOrderTaking[$i]["price"] == $arrOrderTaking[$i]["specialPrice"])))
+                                    {
+                                        if(unlimitUse)
+                                        {
+                                            $discountValue += $amount;
+                                            $arrOrderTakingParticipate[] = &$arrOrderTaking[$i];
+                                        }
+                                        else
+                                        {
+                                            if($noOfUse < $noOfUseLeft)
+                                            {
+                                                $discountValue += $amount;
+                                                $arrOrderTakingParticipate[] = &$arrOrderTaking[$i];
+                                            }
+                                            $noOfUse++;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        
                         
                         
                         $discountValueType7 = $discountValue;
+                        writeToLog("discountProgramType:$discountType,discountProgramTitle:$discountTitle, discountProgramValue:$discountValueType7");
                         if($discountValueType7 > $returnDiscount)
                         {
                             $returnDiscount = $discountValueType7;
@@ -765,7 +822,7 @@
                         }
                     }
                 }
-                else if($discountType == 8)//get discount % step by day (limt max) 10 baht per item (limit noOfUse)
+                else if($discountType == 8)//get discount % step by day (limit max)
                 {
                     $noOfUseLeftPerUserPerDay  = $noOfLimitUsePerUserPerDay-$currentNoOfUsePerUserPerDay;
                     $noOfUseLeftPerUser = $noOfLimitUsePerUser-$currentNoOfUsePerUser;
@@ -808,20 +865,35 @@
                     
                     if($unlimitUse || $noOfUseLeft > 0)
                     {
-                        $sql = "select * from $dbName.discountGroupMenuMap where discountGroupMenuID = '$discountGroupMenuID' and status = 1";
-                        $discountGroupMenuMap = getSelectedRow($sql);
-                        for($j=0; $j<sizeof($discountGroupMenuMap); $j++)
+                        if($discountGroupMenuID == 0)
                         {
-                            $menuID = $discountGroupMenuMap[$j]["MenuID"];
                             for($i=0; $i<sizeof($arrOrderTaking); $i++)
                             {
-                                if(($menuID == $arrOrderTaking[$i]["menuID"]) && ($discountOnTop || ($arrOrderTaking[$i]["price"] == $arrOrderTaking[$i]["specialPrice"])))
+                                if($discountOnTop || ($arrOrderTaking[$i]["price"] == $arrOrderTaking[$i]["specialPrice"]))
                                 {
                                     $menuParticipateValue += $arrOrderTaking[$i]["specialPrice"];
-                                    $arrOrderTakingParticipate[] = $arrOrderTaking[$i];
+                                    $arrOrderTakingParticipate[] = &$arrOrderTaking[$i];
                                 }
                             }
                         }
+                        else
+                        {
+                            $sql = "select * from $dbName.discountGroupMenuMap where discountGroupMenuID = '$discountGroupMenuID' and status = 1";
+                            $discountGroupMenuMap = getSelectedRow($sql);
+                            for($j=0; $j<sizeof($discountGroupMenuMap); $j++)
+                            {
+                                $menuID = $discountGroupMenuMap[$j]["MenuID"];
+                                for($i=0; $i<sizeof($arrOrderTaking); $i++)
+                                {
+                                    if(($menuID == $arrOrderTaking[$i]["menuID"]) && ($discountOnTop || ($arrOrderTaking[$i]["price"] == $arrOrderTaking[$i]["specialPrice"])))
+                                    {
+                                        $menuParticipateValue += $arrOrderTaking[$i]["specialPrice"];
+                                        $arrOrderTakingParticipate[] = &$arrOrderTaking[$i];
+                                    }
+                                }
+                            }
+                        }
+                        
                         
                         $sql = "select * from $dbName.discountStepMap where discountStepID = '$discountStepID' and status = 1 order by StepSpend";
                         $discountStepMap = getSelectedRow($sql);
@@ -842,6 +914,7 @@
                             }
                             
                             $discountValueType8 = $discountValue;
+                            writeToLog("discountProgramType:$discountType,discountProgramTitle:$discountTitle, discountProgramValue:$discountValueType8");
                             if($discountValueType8 > $returnDiscount)
                             {
                                 $returnDiscount = $discountValueType8;
@@ -1096,7 +1169,7 @@
         {
             if($voucherValid2)
             {
-                $sql = "select RewardRedemptionID ,DiscountType,DiscountAmount, `ShopDiscount`, `JummumDiscount`, `SharedDiscountType`, `SharedDiscountAmountMax`,MainBranchID,DiscountGroupMenuID,DiscountStepID,DiscountOnTop,NoOfLimitUse,NoOfLimitUsePerUser,NoOfLimitUsePerUserPerDay,$promoCodeID PromoCodeID, (select count(*) CurrentNoOfUse from UserRewardRedemptionUsed where UserRewardRedemptionUsed.RewardRedemptionID = RewardRedemption.RewardRedemptionID) CurrentNoOfUse, (select count(*) CurrentNoOfUsePerUser from UserRewardRedemptionUsed where UserRewardRedemptionUsed.RewardRedemptionID = RewardRedemption.RewardRedemptionID and UserRewardRedemptionUsed.UserAccountID = '$userAccountID') CurrentNoOfUsePerUser, (select count(*) CurrentNoOfUsePerUser from UserRewardRedemptionUsed where UserRewardRedemptionUsed.RewardRedemptionID = RewardRedemption.RewardRedemptionID and UserRewardRedemptionUsed.UserAccountID = '$userAccountID' and date_format(UserRewardRedemptionUsed.ModifiedDate,'%Y-%m-%d') = date_format('$currentDateTime','%Y-%m-%d')) CurrentNoOfUsePerUserPerDay from rewardRedemption where rewardRedemptionID = '$rewardRedemptionID';";
+                $sql = "select RewardRedemptionID,Header ,DiscountType,DiscountAmount, `ShopDiscount`, `JummumDiscount`, `SharedDiscountType`, `SharedDiscountAmountMax`,MainBranchID,DiscountGroupMenuID,DiscountStepID,DiscountOnTop,NoOfLimitUse,NoOfLimitUsePerUser,NoOfLimitUsePerUserPerDay,$promoCodeID PromoCodeID, (select count(*) CurrentNoOfUse from UserRewardRedemptionUsed where UserRewardRedemptionUsed.RewardRedemptionID = RewardRedemption.RewardRedemptionID) CurrentNoOfUse, (select count(*) CurrentNoOfUsePerUser from UserRewardRedemptionUsed where UserRewardRedemptionUsed.RewardRedemptionID = RewardRedemption.RewardRedemptionID and UserRewardRedemptionUsed.UserAccountID = '$userAccountID') CurrentNoOfUsePerUser, (select count(*) CurrentNoOfUsePerUser from UserRewardRedemptionUsed where UserRewardRedemptionUsed.RewardRedemptionID = RewardRedemption.RewardRedemptionID and UserRewardRedemptionUsed.UserAccountID = '$userAccountID' and date_format(UserRewardRedemptionUsed.ModifiedDate,'%Y-%m-%d') = date_format('$currentDateTime','%Y-%m-%d')) CurrentNoOfUsePerUserPerDay from rewardRedemption where rewardRedemptionID = '$rewardRedemptionID';";
                 $sql .= "select '' as Text;";
                 $sql .= "select 2 as Text";
             }
@@ -1123,9 +1196,11 @@
         {
             //validate เมนูที่เลือก ร่วมโปรมั๊ย
             $hasDiscountForMenu = 0;
+            $menuParticipateValue = 0;
             $arrOrderTakingParticipate = array();
             $promotion = $promotionList[0];
             $discountType = $promotion["DiscountType"];
+            $promotionHeader = $promotion["Header"];
             $amount = $promotion["DiscountAmount"];
             $minimumSpend = $promotion["MinimumSpending"];
             $noOfLimitUse = $promotion["NoOfLimitUse"];
@@ -1138,26 +1213,28 @@
             $discountStepID = $promotion["DiscountStepID"];
             $discountOnTop = $promotion["DiscountOnTop"];
             
-            
-            $sql = "select * from $dbName.discountGroupMenuMap where discountGroupMenuID = '$discountGroupMenuID' and status = 1";
-            $discountGroupMenuMap = getSelectedRow($sql);
-            for($j=0; $j<sizeof($discountGroupMenuMap); $j++)
+            $hasDiscountForMenu = $discountGroupMenuID == 0?1:0;
+            if($discountGroupMenuID != 0)
             {
-                $menuID = $discountGroupMenuMap[$j]["MenuID"];
-                for($i=0; $i<sizeof($arrOrderTaking); $i++)
+                $sql = "select * from $dbName.discountGroupMenuMap where discountGroupMenuID = '$discountGroupMenuID' and status = 1";
+                $discountGroupMenuMap = getSelectedRow($sql);
+                for($j=0; $j<sizeof($discountGroupMenuMap); $j++)
                 {
-                    if($menuID == $arrOrderTaking[$i]["menuID"])
+                    $menuID = $discountGroupMenuMap[$j]["MenuID"];
+                    for($i=0; $i<sizeof($arrOrderTaking); $i++)
                     {
-                        if($promotion["DiscountOnTop"] || ($otSpecialPrice[$i] == $otPrice[$i]))
+                        if($menuID == $arrOrderTaking[$i]["menuID"])
                         {
-                            $hasDiscountForMenu = 1;
-                            break;
+                            if($promotion["DiscountOnTop"] || ($otSpecialPrice[$i] == $otPrice[$i]))
+                            {
+                                $hasDiscountForMenu = 1;
+                                break;
+                            }
                         }
                     }
                 }
             }
-
-
+            
 
             if(!$hasDiscountForMenu)
             {
@@ -1171,17 +1248,31 @@
                 {
                     if(($noOfLimitUsePerUserPerDay == 0 || $currentNoOfUsePerUserPerDay < $noOfLimitUsePerUserPerDay) && ($noOfLimitUsePerUser == 0 || $currentNoOfUsePerUser < $noOfLimitUsePerUser) && ($noOfLimitUse == 0 || $currentNoOfUse < $noOfLimitUse))
                     {
-                        $sql = "select * from $dbName.discountGroupMenuMap where discountGroupMenuID = '$discountGroupMenuID' and status = 1";
-                        $discountGroupMenuMap = getSelectedRow($sql);
-                        for($j=0; $j<sizeof($discountGroupMenuMap); $j++)
+                        if($discountGroupMenuID == 0)
                         {
-                            $menuID = $discountGroupMenuMap[$j]["MenuID"];
                             for($i=0; $i<sizeof($arrOrderTaking); $i++)
                             {
-                                if(($menuID == $arrOrderTaking[$i]["menuID"]) && ($discountOnTop || (($arrOrderTaking[$i]["price"] == $arrOrderTaking[$i]["specialPrice"]) && ($arrOrderTaking[$i]["discountProgramValue"] == 0))))
+                                if($discountOnTop || (($arrOrderTaking[$i]["price"] == $arrOrderTaking[$i]["specialPrice"]) && ($arrOrderTaking[$i]["discountProgramValue"] == 0)))
                                 {
                                     $menuParticipateValue += $arrOrderTaking[$i]["specialPrice"] - $arrOrderTaking[$i]["discountProgramValue"];
                                     $arrOrderTakingParticipate[] = $arrOrderTaking[$i];
+                                }
+                            }
+                        }
+                        else
+                        {
+                            $sql = "select * from $dbName.discountGroupMenuMap where discountGroupMenuID = '$discountGroupMenuID' and status = 1";
+                            $discountGroupMenuMap = getSelectedRow($sql);
+                            for($j=0; $j<sizeof($discountGroupMenuMap); $j++)
+                            {
+                                $menuID = $discountGroupMenuMap[$j]["MenuID"];
+                                for($i=0; $i<sizeof($arrOrderTaking); $i++)
+                                {
+                                    if(($menuID == $arrOrderTaking[$i]["menuID"]) && ($discountOnTop || (($arrOrderTaking[$i]["price"] == $arrOrderTaking[$i]["specialPrice"]) && ($arrOrderTaking[$i]["discountProgramValue"] == 0))))
+                                    {
+                                        $menuParticipateValue += $arrOrderTaking[$i]["specialPrice"] - $arrOrderTaking[$i]["discountProgramValue"];
+                                        $arrOrderTakingParticipate[] = $arrOrderTaking[$i];
+                                    }
                                 }
                             }
                         }
@@ -1245,14 +1336,11 @@
                 
                     if($unlimitUse || $noOfUseLeft > 0)
                     {
-                        $sql = "select * from $dbName.discountGroupMenuMap where discountGroupMenuID = '$discountGroupMenuID' and status = 1";
-                        $discountGroupMenuMap = getSelectedRow($sql);
-                        for($j=0; $j<sizeof($discountGroupMenuMap); $j++)
+                        if($discountGroupMenuID == 0)
                         {
-                            $menuID = $discountGroupMenuMap[$j]["MenuID"];
                             for($i=0; $i<sizeof($arrOrderTaking); $i++)
                             {
-                                if(($menuID == $arrOrderTaking[$i]["menuID"]) && ($discountOnTop || (($arrOrderTaking[$i]["price"] == $arrOrderTaking[$i]["specialPrice"]) && ($arrOrderTaking[$i]["discountProgramValue"] == 0))))
+                                if($discountOnTop || (($arrOrderTaking[$i]["price"] == $arrOrderTaking[$i]["specialPrice"]) && ($arrOrderTaking[$i]["discountProgramValue"] == 0)))
                                 {
                                     if(unlimitUse)
                                     {
@@ -1271,6 +1359,36 @@
                                 }
                             }
                         }
+                        else
+                        {
+                            $sql = "select * from $dbName.discountGroupMenuMap where discountGroupMenuID = '$discountGroupMenuID' and status = 1";
+                            $discountGroupMenuMap = getSelectedRow($sql);
+                            for($j=0; $j<sizeof($discountGroupMenuMap); $j++)
+                            {
+                                $menuID = $discountGroupMenuMap[$j]["MenuID"];
+                                for($i=0; $i<sizeof($arrOrderTaking); $i++)
+                                {
+                                    if(($menuID == $arrOrderTaking[$i]["menuID"]) && ($discountOnTop || (($arrOrderTaking[$i]["price"] == $arrOrderTaking[$i]["specialPrice"]) && ($arrOrderTaking[$i]["discountProgramValue"] == 0))))
+                                    {
+                                        if(unlimitUse)
+                                        {
+                                            $discountValue += $amount;
+                                            $arrOrderTakingParticipate[] = $arrOrderTaking[$i];
+                                        }
+                                        else
+                                        {
+                                            if($noOfUse < $noOfUseLeft)
+                                            {
+                                                $discountValue += $amount;
+                                                $arrOrderTakingParticipate[] = $arrOrderTaking[$i];
+                                            }
+                                            $noOfUse++;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        
                         
                         $discountPromoCodeValue = $discountValue;
                     }
@@ -1319,17 +1437,31 @@
                     
                     if($unlimitUse || $noOfUseLeft > 0)
                     {
-                        $sql = "select * from $dbName.discountGroupMenuMap where discountGroupMenuID = '$discountGroupMenuID' and status = 1";
-                        $discountGroupMenuMap = getSelectedRow($sql);
-                        for($j=0; $j<sizeof($discountGroupMenuMap); $j++)
+                        if($discountGroupMenuID == 0)
                         {
-                            $menuID = $discountGroupMenuMap[$j]["MenuID"];
                             for($i=0; $i<sizeof($arrOrderTaking); $i++)
                             {
-                                if(($menuID == $arrOrderTaking[$i]["menuID"]) && ($discountOnTop || (($arrOrderTaking[$i]["price"] == $arrOrderTaking[$i]["specialPrice"]) && ($arrOrderTaking[$i]["discountProgramValue"] == 0))))
+                                if($discountOnTop || (($arrOrderTaking[$i]["price"] == $arrOrderTaking[$i]["specialPrice"]) && ($arrOrderTaking[$i]["discountProgramValue"] == 0)))
                                 {
                                     $menuParticipateValue += $arrOrderTaking[$i]["specialPrice"] - $arrOrderTaking[$i]["discountProgramValue"];
                                     $arrOrderTakingParticipate[] = $arrOrderTaking[$i];
+                                }
+                            }
+                        }
+                        else
+                        {
+                            $sql = "select * from $dbName.discountGroupMenuMap where discountGroupMenuID = '$discountGroupMenuID' and status = 1";
+                            $discountGroupMenuMap = getSelectedRow($sql);
+                            for($j=0; $j<sizeof($discountGroupMenuMap); $j++)
+                            {
+                                $menuID = $discountGroupMenuMap[$j]["MenuID"];
+                                for($i=0; $i<sizeof($arrOrderTaking); $i++)
+                                {
+                                    if(($menuID == $arrOrderTaking[$i]["menuID"]) && ($discountOnTop || (($arrOrderTaking[$i]["price"] == $arrOrderTaking[$i]["specialPrice"]) && ($arrOrderTaking[$i]["discountProgramValue"] == 0))))
+                                    {
+                                        $menuParticipateValue += $arrOrderTaking[$i]["specialPrice"] - $arrOrderTaking[$i]["discountProgramValue"];
+                                        $arrOrderTakingParticipate[] = $arrOrderTaking[$i];
+                                    }
                                 }
                             }
                         }
@@ -1356,7 +1488,104 @@
                         }
                     }
                 }
+                else if($discountType == 9)//get discount % step by day (limt max) **use DiscountStep in center(not specific branch)
+                {
+                    $discountValue = 0;
+                    $noOfUseLeftPerUserPerDay  = $noOfLimitUsePerUserPerDay-$currentNoOfUsePerUserPerDay;
+                    $noOfUseLeftPerUser = $noOfLimitUsePerUser-$currentNoOfUsePerUser;
+                    $noOfUseLeft = $noOfLimitUse-$currentNoOfUse;
+                    
+                    $unlimitUse = 0;
+                    if(($noOfLimitUse == 0) && ($noOfLimitUsePerUser == 0) && ($noOfLimitUsePerUserPerDay == 0))
+                    {
+                        $unlimitUse = 1;
+                    }
+                    else if(($noOfLimitUse == 0) && ($noOfLimitUsePerUser == 0) && !($noOfLimitUsePerUserPerDay == 0))
+                    {
+                        $noOfUseLeft = $noOfUseLeftPerUserPerDay;
+                    }
+                    else if(($noOfLimitUse == 0) && !($noOfLimitUsePerUser == 0) && ($noOfLimitUsePerUserPerDay == 0))
+                    {
+                        $noOfUseLeft = $noOfUseLeftPerUser;
+                    }
+                    else if(!($noOfLimitUse == 0) && ($noOfLimitUsePerUser == 0) && ($noOfLimitUsePerUserPerDay == 0))
+                    {
+                        $noOfUseLeft = $noOfUseLeft;
+                    }
+                    else if(($noOfLimitUse == 0) && !($noOfLimitUsePerUser == 0) && !($noOfLimitUsePerUserPerDay == 0))
+                    {
+                        $noOfUseLeft = $noOfUseLeftPerUser < $noOfUseLeftPerUserPerDay?$noOfUseLeftPerUser:$noOfUseLeftPerUserPerDay;
+                    }
+                    else if(!($noOfLimitUse == 0) && ($noOfLimitUsePerUser == 0) && !($noOfLimitUsePerUserPerDay == 0))
+                    {
+                        $noOfUseLeft = $noOfUseLeft < $noOfUseLeftPerUserPerDay?$noOfUseLeft:$noOfUseLeftPerUserPerDay;
+                    }
+                    else if(!($noOfLimitUse == 0) && !($noOfLimitUsePerUser == 0) && ($noOfLimitUsePerUserPerDay == 0))
+                    {
+                        $noOfUseLeft = $noOfUseLeft < $noOfUseLeftPerUser?$noOfUseLeft:$noOfUseLeftPerUser;
+                    }
+                    else
+                    {
+                        $noOfUseLeft = $noOfUseLeft < $noOfUseLeftPerUser?$noOfUseLeft:$noOfUseLeftPerUser;
+                        $noOfUseLeft = $noOfUseLeft < $noOfUseLeftPerUserPerDay?$noOfUseLeft:$noOfUseLeftPerUserPerDay;
+                    }
+                    
+                    if($unlimitUse || $noOfUseLeft > 0)
+                    {
+                        if($discountGroupMenuID == 0)
+                        {
+                            for($i=0; $i<sizeof($arrOrderTaking); $i++)
+                            {
+                                if($discountOnTop || (($arrOrderTaking[$i]["price"] == $arrOrderTaking[$i]["specialPrice"]) && ($arrOrderTaking[$i]["discountProgramValue"] == 0)))
+                                {
+                                    $menuParticipateValue += $arrOrderTaking[$i]["specialPrice"] - $arrOrderTaking[$i]["discountProgramValue"];
+                                    $arrOrderTakingParticipate[] = $arrOrderTaking[$i];
+                                }
+                            }
+                        }
+                        else
+                        {
+                            $sql = "select * from $dbName.discountGroupMenuMap where discountGroupMenuID = '$discountGroupMenuID' and status = 1";
+                            $discountGroupMenuMap = getSelectedRow($sql);
+                            for($j=0; $j<sizeof($discountGroupMenuMap); $j++)
+                            {
+                                $menuID = $discountGroupMenuMap[$j]["MenuID"];
+                                for($i=0; $i<sizeof($arrOrderTaking); $i++)
+                                {
+                                    if(($menuID == $arrOrderTaking[$i]["menuID"]) && ($discountOnTop || (($arrOrderTaking[$i]["price"] == $arrOrderTaking[$i]["specialPrice"]) && ($arrOrderTaking[$i]["discountProgramValue"] == 0))))
+                                    {
+                                        $menuParticipateValue += $arrOrderTaking[$i]["specialPrice"] - $arrOrderTaking[$i]["discountProgramValue"];
+                                        $arrOrderTakingParticipate[] = $arrOrderTaking[$i];
+                                    }
+                                }
+                            }
+                        }
+                        
+                        
+                        $sql = "select * from discountStepMap where discountStepID = '$discountStepID' and status = 1 order by StepSpend";
+                        $discountStepMap = getSelectedRow($sql);
+                        if(sizeof($discountStepMap))
+                        {
+                            for($i=0; $i<sizeof($discountStepMap); $i++)
+                            {
+                                $stepSpend = $discountStepMap[$i]["StepSpend"];
+                                $amountDiscount = $discountStepMap[$i]["Amount"];
+                                $maxDiscount = $discountStepMap[$i]["MaxDiscount"];
+                                if($currentNoOfUsePerUser+1 == $stepSpend)
+                                {
+                                    $discountValue = $menuParticipateValue * $amountDiscount * 0.01;
+                                    $discountValue = round($discountValue * 10000)/10000;
+                                    $discountValue = $discountValue > $maxDiscount?$maxDiscount:$discountValue;
+                                    break;
+                                }
+                            }
+                            
+                            $discountPromoCodeValue = $discountValue;
+                        }
+                    }
+                }
                 $applyVoucherCode = 1;
+                writeToLog("discountType:$discountType,header:$promotionHeader, discountValue:$discountPromoCodeValue");
                 
                 //หาสัดส่วน ส่วนลดของแต่ละ item ***** สำหรับ insert ตอนจ่ายตัง
                 $actualDiscount = $discountPromoCodeValue > $totalAfterDiscountProgram?$totalAfterDiscountProgram:$discountPromoCodeValue;
@@ -1424,6 +1653,16 @@
     //end voucher code validate/////////////
     
     
+    //voucherList (orderSummaryPart || in promotionGetList)
+    {
+        $sql = "select count(*) PromotionCount from promotion left join promotionBranch on promotion.promotionID = promotionBranch.promotionID where promotionBranch.branchID = '$branchID' and '$currentDateTime' between usingStartDate and usingEndDate and type in (0,1) and (promotion.NoOfLimitUsePerUser = 0 or promotion.NoOfLimitUsePerUser > (select count(*) from userPromotionUsed where promotionID = promotion.promotionID and userAccountID = '$memberID')) order by promotion.type, promotion.orderNo;";
+        $sql .= "SELECT count(*) RewardRedemptionCount FROM `rewardpoint` left join promoCode on rewardPoint.promoCodeID = promoCode.promoCodeID left join RewardRedemption on promocode.rewardRedemptionID = RewardRedemption.rewardRedemptionID WHERE MemberID = '$memberID' and rewardpoint.status = -1 and ((TIME_TO_SEC(timediff('$currentDateTime', rewardpoint.ModifiedDate)) < rewardredemption.WithInPeriod) or (rewardredemption.WithInPeriod = 0 and '$currentDateTime'<rewardRedemption.usingEndDate)) and promoCode.status = 1 and rewardRedemption.rewardRedemptionID in (select rewardRedemptionID from rewardRedemptionBranch where branchID = '$branchID');";
+    }
+    $arrPromotionListAndRewardRedemptionList = executeMultiQueryArray($sql);
+    $showVoucherListButton = $arrPromotionListAndRewardRedemptionList[0][0]->PromotionCount+$arrPromotionListAndRewardRedemptionList[1][0]->RewardRedemptionCount;
+    ///***************
+    
+    
     //calculate value
     $sql = "select * from $jummumOM.branch where branchID = '$branchID'";
     $selectedRow = getSelectedRow($sql);
@@ -1448,7 +1687,7 @@
     $discountPromoCodeValue = round($discountPromoCodeValue*100)/100;
 
     //showVoucherListButton
-    $showVoucherListButton = $showVoucherListButton;
+    $showVoucherListButton = $showVoucherListButton>0?1:0;
 
     //price after discount
     $afterDiscount = ($sumSpecialPrice - $discountProgramValue - $discountPromoCodeValue);
@@ -1483,7 +1722,7 @@
     //---------------------------
 
     //show item
-    $showTotalAmount = $totalAmount > 0;
+    $showTotalAmount = 1;
     $showSpecialPriceDiscount = $specialPriceDiscount > 0;
     $showDiscountProgram = $discountProgramValue > 0;
     $showAfterDiscount = $afterDiscount > 0;
@@ -1491,7 +1730,7 @@
     $showServiceCharge = $serviceChargePercent > 0;
     $showVat = $percentVat > 0;
     $showNetTotal = $serviceChargePercent + $percentVat > 0;
-    $showLuckyDrawCount = $luckyDrawCount > 0;
+    $showLuckyDrawCount = 1;//$luckyDrawCount > 0;
     $showBeforeVat = ($showServiceCharge && $showVat) || ($serviceChargePercent == 0 && $percentVat > 0 && $priceIncludeVat);
     //buffetButton
     $showPayBuffetButton = 2;//0=not show,1=pay,2=order obuffet
@@ -1527,6 +1766,34 @@
     $arrMultiResult = executeMultiQueryArray($sql);
     if($orderChanged)
     {
+        //make key capital letter for OrderTaking*****----> ย้ายไปตอน return ไป interface
+        $arrOrderTakingNewCapitalKey = array();
+        for($i=0; $i<sizeof($arrOrderTaking); $i++)
+        {
+            $orderTakingNewCapitalKey = array();
+            $orderTakingNew = $arrOrderTaking[$i];
+            foreach ($orderTakingNew as $key => $value)
+            {
+                $orderTakingNewCapitalKey[makeFirstLetterUpperCase($key)] = $value;
+            }
+            array_push($arrOrderTakingNewCapitalKey,$orderTakingNewCapitalKey);
+        }
+
+
+        //make key capital letter for orderNote
+        $arrOrderNoteNewCapitalKey = array();
+        for($i=0; $i<sizeof($arrOrderNote); $i++)
+        {
+            $orderNoteNewCapitalKey = array();
+            $orderNoteNew = $arrOrderNote[$i];
+            foreach ($orderNoteNew as $key => $value)
+            {
+                $orderNoteNewCapitalKey[makeFirstLetterUpperCase($key)] = $value;
+            }
+            array_push($arrOrderNoteNewCapitalKey,$orderNoteNewCapitalKey);
+        }
+        //*******
+
         $arrMultiResult[] = $arrOrderTakingNewCapitalKey;
         $arrMultiResult[] = $arrOrderNoteNewCapitalKey;
     }
@@ -1550,7 +1817,6 @@
     
     if($orderChanged || ($warningMsgVoucher != ""))
     {
-//        $response = array('success' => true, 'data' => $arrMultiResult, 'error' => null, 'status' => 1);
         $response = array('status' => '1', 'sql' => $sql, 'tableName' => 'OmiseCheckOut', dataJson => $arrMultiResult);
         echo json_encode($response);
     
@@ -1563,7 +1829,8 @@
     
     
     //omise part
-    if($netTotal != 0 )
+    $amount = $netTotal * 100;
+    if(($netTotal != 0) && ($paymentMethod == 2))
     {
         if($netTotal < 20)
         {
@@ -1572,18 +1839,15 @@
             $arrOmiseMsg = executeMultiQueryArray($sql);
             $arrMultiResult[] = $arrOmiseMsg[0];
             
-            
             writeToLog("omise charge fail, file: " . basename(__FILE__) . ", user: " . $data['modifiedUser']);
             $response = array('status' => '1', 'sql' => $sql, 'tableName' => 'OmiseCheckOut', dataJson => $arrMultiResult);
             
-    //        $response = array('status' => '2', 'msg' => 'ตัดบัตรเครดิตไม่สำเร็จ กรุณาตรวจสอบข้อมูลบัตรเครดิตใหม่อีกครั้ง');
             echo json_encode($response);
             exit();
         }
         
         
         require_once  dirname(__FILE__) . '/../../omise-php/lib/Omise.php';
-        
         
         $sql = "select * from Setting where keyName = 'PublicKey'";
         $selectedRow = getSelectedRow($sql);
@@ -1598,11 +1862,10 @@
         try
         {
             $charge = OmiseCharge::create(array(
-                                                'amount'   => $netTotal*100,
+                                                'amount'   => $amount,
                                                 'currency' => 'THB',
                                                 'card'     => "$omiseToken"
                                                 ));
-            
         }
         catch (Exception $e)
         {
@@ -1635,19 +1898,18 @@
         
         
         //query statement
-//        $currentDateTime = date('Y-m-d');
-        $sql = "select * from transactionFee where StartDate <= '$currentDateTime' and EndDate >= '$currentDateTime' and branchID = 0 order by modifiedDate desc";
+        $sql = "select * from transactionFee where StartDate <= '$currentDateTime' and EndDate >= '$currentDateTime' and branchID = 0 and type = '$methodType' order by modifiedDate desc";
         $selectedRow = getSelectedRow($sql);
         $transactionFee = $selectedRow[0]["Rate"];
         $transactionFeeValue = $amount * 0.01 * $transactionFee * 0.01;
         $transactionFeeValue = round($transactionFeeValue * 10000)/10000;
-        $sql = "select * from transactionFee where StartDate <= '$currentDateTime' and EndDate >= '$currentDateTime' and branchID = '$branchID' order by modifiedDate desc";
+        $sql = "select * from transactionFee where StartDate <= '$currentDateTime' and EndDate >= '$currentDateTime' and branchID = '$branchID' and type = '$methodType' order by modifiedDate desc";
         $selectedRow = getSelectedRow($sql);
         $transactionFeeBranch = $selectedRow[0]["Rate"];
         $transactionFeeValueBranch = $amount * 0.01 * $transactionFeeBranch * 0.01;
         $transactionFeeValueBranch = round($transactionFeeValueBranch * 10000)/10000;
         $jummumPayValue = $transactionFeeValue - $transactionFeeValueBranch;
-         $sql = "INSERT INTO Receipt(BranchID, CustomerTableID, MemberID, ServingPerson, CustomerType, OpenTableDate, TotalAmount, CashAmount, CashReceive, CreditCardType, CreditCardNo, CreditCardAmount, TransferDate, TransferAmount, Remark, SpecialPriceDiscount, DiscountProgramType, DiscountProgramTitle, DiscountProgramValue, DiscountType, DiscountValue, DiscountReason, ServiceChargePercent, ServiceChargeValue, PriceIncludeVat, VatPercent, VatValue, NetTotal, LuckyDrawCount, BeforeVat, Status, StatusRoute, ReceiptNoID, ReceiptNoTaxID, ReceiptDate, SendToKitchenDate, DeliveredDate, MergeReceiptID, HasBuffetMenu, TimeToOrder, BuffetEnded, BuffetEndedDate, BuffetReceiptID, VoucherCode, ShopDiscount, JummumDiscount, TransactionFeeValue, JummumPayValue, ModifiedUser, ModifiedDate) VALUES ('$branchID', '$customerTableID', '$memberID', '$servingPerson', '$customerType', '$openTableDate', '$totalAmount', '$cashAmount', '$cashReceive', '$creditCardType', '$creditCardNo', '$creditCardAmount', '$transferDate', '$transferAmount', '$remark', '$specialPriceDiscount', '$discountProgramType', '$discountProgramTitle', '$discountProgramValue', '$discountType', '$discountValue', '$discountReason', '$serviceChargePercent', '$serviceChargeValue', '$priceIncludeVat', '$vatPercent', '$vatValue', '$netTotal', '$luckyDrawCount', '$beforeVat', '$status', '$status', '$receiptNoID', '$receiptNoTaxID', '$receiptDate', '$sendToKitchenDate', '$deliveredDate', '$mergeReceiptID', '$hasBuffetMenu', '$timeToOrder', '$buffetEnded', '$buffetEndedDate', '$buffetReceiptID', '$voucherCode', '$shopDiscount', '$jummumDiscount', '$transactionFeeValue', '$jummumPayValue', '$modifiedUser', '$modifiedDate')";
+        $sql = "INSERT INTO Receipt(BranchID, CustomerTableID, MemberID, ServingPerson, CustomerType, OpenTableDate, PaymentMethod, TotalAmount, CashAmount, CashReceive, CreditCardType, CreditCardNo, CreditCardAmount, TransferDate, TransferAmount, Remark, SpecialPriceDiscount, DiscountProgramType, DiscountProgramTitle, DiscountProgramValue, DiscountType, DiscountValue, DiscountReason, ServiceChargePercent, ServiceChargeValue, PriceIncludeVat, VatPercent, VatValue, NetTotal, LuckyDrawCount, BeforeVat, Status, StatusRoute, ReceiptNoID, ReceiptNoTaxID, ReceiptDate, SendToKitchenDate, DeliveredDate, MergeReceiptID, HasBuffetMenu, TimeToOrder, BuffetEnded, BuffetEndedDate, BuffetReceiptID, VoucherCode, ShopDiscount, JummumDiscount, TransactionFeeValue, JummumPayValue, ModifiedUser, ModifiedDate) VALUES ('$branchID', '$customerTableID', '$memberID', '$servingPerson', '$customerType', '$openTableDate', '$paymentMethod', '$totalAmount', '$cashAmount', '$cashReceive', '$creditCardType', '$creditCardNo', '$creditCardAmount', '$transferDate', '$transferAmount', '$remark', '$specialPriceDiscount', '$discountProgramType', '$discountProgramTitle', '$discountProgramValue', '$discountType', '$discountValue', '$discountReason', '$serviceChargePercent', '$serviceChargeValue', '$priceIncludeVat', '$vatPercent', '$vatValue', '$netTotal', '$luckyDrawCount', '$beforeVat', '$status', '$status', '$receiptNoID', '$receiptNoTaxID', '$receiptDate', '$sendToKitchenDate', '$deliveredDate', '$mergeReceiptID', '$hasBuffetMenu', '$timeToOrder', '$buffetEnded', '$buffetEndedDate', '$buffetReceiptID', '$voucherCode', '$shopDiscount', '$jummumDiscount', '$transactionFeeValue', '$jummumPayValue', '$modifiedUser', '$modifiedDate')";
         $ret = doQueryTask($sql);
         if($ret != "")
         {
@@ -1775,7 +2037,7 @@
         }
         else
         {
-            $sql = "select * from orderNote where 0;";
+            $sql = "select 0 from dual where 0;";
             $sqlAll .= $sql;
         }
         //------
@@ -1817,7 +2079,6 @@
             }
         }
 
-//        $currentDateTime = date('Y-m-d H:i:s');
         $sql = "select * from setting where keyName = 'LuckyDrawTimeLimit';";
         $selectedRow = getSelectedRow($sql);
         $luckyDrawTimeLimit = $selectedRow[0]["Value"];
@@ -1825,10 +2086,8 @@
         $sqlAll .= $sql;
         
         
-        
         /* execute multi query */
         $dataJson = executeMultiQueryArray($sqlAll);
-        
         
         
         if($promotionID)
@@ -1883,8 +2142,6 @@
         }
 
         
-        
-        
         //reward เก็บแต้ม
         $sql = "SELECT * FROM `rewardprogram` WHERE StartDate <= '$currentDateTime' and EndDate >= '$currentDateTime' and type = 1 order by modifiedDate desc";
         $selectedRow = getSelectedRow($sql);
@@ -1894,8 +2151,7 @@
             $receivePoint = $selectedRow[0]["ReceivePoint"];
             $rewardPoint = $amount/100.0/$salesSpent*$receivePoint;
             
-            
-//            $sql = "INSERT INTO `rewardpoint`(`MemberID`, `ReceiptID`, `Point`, `Status`, `ModifiedUser`, `ModifiedDate`) VALUES ('$memberID','$receiptID','$rewardPoint',1,'$modifiedUser','$modifiedDate')";
+
             if($rewardPoint > 0)
             {
                 $sql = "INSERT INTO RewardPoint(MemberID, ReceiptID, Point, Status, PromoCodeID, ModifiedUser, ModifiedDate) VALUES ('$memberID', '$receiptID', '$rewardPoint', '1', '0', '$modifiedUser', '$modifiedDate')";
@@ -1914,44 +2170,43 @@
         //****************send noti to shop (turn on light)
         //alarmShop
         //query statement
-        $ledStatus = 1;
-        $sql = "update $jummumOM.Branch set LedStatus = '$ledStatus', ModifiedUser = '$modifiedUser', ModifiedDate = '$modifiedDate' where branchID = '$branchID';";
-        $ret = doQueryTask($sql);
-        if($ret != "")
+        if($methodType == 2)
         {
-            mysqli_rollback($con);
-            //        putAlertToDevice();
-            echo json_encode($ret);
-            exit();
+            $ledStatus = 1;
+            $sql = "update $jummumOM.Branch set LedStatus = '$ledStatus', ModifiedUser = '$modifiedUser', ModifiedDate = '$modifiedDate' where branchID = '$branchID';";
+            $ret = doQueryTask($sql);
+            if($ret != "")
+            {
+                mysqli_rollback($con);
+                //        putAlertToDevice();
+                echo json_encode($ret);
+                exit();
+            }
+            mysqli_commit($con);
+            //****************
+            
+            
+            //get pushSync Device in JUMMUM OM
+            $pushSyncDeviceTokenReceiveOrder = array();
+            $sql = "select * from $jummumOM.device left join $jummumOM.Branch on $jummumOM.device.DbName = $jummumOM.Branch.DbName where branchID = '$branchID';";
+            $selectedRow = getSelectedRow($sql);
+            for($i=0; $i<sizeof($selectedRow); $i++)
+            {
+                $deviceToken = $selectedRow[$i]["DeviceToken"];
+                array_push($pushSyncDeviceTokenReceiveOrder,$deviceToken);
+            }
+            $msg = 'New order coming!! order no:' . $receiptNoID;
+            $category = "printKitchenBill";
+            $contentAvailable = 1;
+            $data = array("receiptID" => $receiptID);
+            sendPushNotificationJummumOM($pushSyncDeviceTokenReceiveOrder,$title,$msg,$category,$contentAvailable,$data);
+            //-----****************************
         }
-        mysqli_commit($con);
+        else
+        {
+            mysqli_commit($con);
+        }
         //****************
-        
-        
-        
-        
-        
-        
-        //get pushSync Device in JUMMUM OM
-        $pushSyncDeviceTokenReceiveOrder = array();
-        $sql = "select * from $jummumOM.device left join $jummumOM.Branch on $jummumOM.device.DbName = $jummumOM.Branch.DbName where branchID = '$branchID';";
-        $selectedRow = getSelectedRow($sql);
-        for($i=0; $i<sizeof($selectedRow); $i++)
-        {
-            $deviceToken = $selectedRow[$i]["DeviceToken"];
-            array_push($pushSyncDeviceTokenReceiveOrder,$deviceToken);
-        }
-        //-----****************************
-        
-
-
-        $msg = 'New order coming!! order no:' . $receiptNoID;
-        $category = "printKitchenBill";
-        $contentAvailable = 1;
-        $data = array("receiptID" => $receiptID);
-        sendPushNotificationJummumOM($pushSyncDeviceTokenReceiveOrder,$title,$msg,$category,$contentAvailable,$data);
-
-        
         
         
         //return data to app
@@ -1962,16 +2217,13 @@
         //do script successful
         mysqli_close($con);
         
-        
-        
-        
+    
         for($i=0; $i<sizeof($dataJson); $i++)
         {
             $arrMultiResult[] = $dataJson[$i];
         }        
         writeToLog("query commit, file: " . basename(__FILE__) . ", user: " . $data['modifiedUser']);
         $response = array('status' => '1', 'sql' => $sql, 'tableName' => 'OmiseCheckOut', dataJson => $arrMultiResult);
-
         echo json_encode($response);
         
         
@@ -1987,8 +2239,6 @@
         
         writeToLog("omise charge fail, file: " . basename(__FILE__) . ", user: " . $data['modifiedUser']);
         $response = array('status' => '1', 'sql' => $sql, 'tableName' => 'OmiseCheckOut', dataJson => $arrMultiResult);
-        
-//        $response = array('status' => '2', 'msg' => 'ตัดบัตรเครดิตไม่สำเร็จ กรุณาตรวจสอบข้อมูลบัตรเครดิตใหม่อีกครั้ง');
         echo json_encode($response);
         exit();
     }

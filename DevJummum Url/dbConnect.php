@@ -396,11 +396,13 @@
     
     function sendPushNotificationJummum($deviceToken,$title,$text,$category,$contentAvailable,$data)
     {
-        writeToLog("send push to $jummum");
         global $jummumCkPath;
         global $jummumCkPass;
+        writeToLog("send push to ck path: $jummumCkPath");
+        
         foreach($deviceToken as $eachDeviceToken)
         {
+            writeToLog("each device token: " . $eachDeviceToken);
             if(strlen($eachDeviceToken) == 64)
             {
                 $paramBody = array(
@@ -607,6 +609,42 @@
         $filePath = './TransactionLog/';
         if (!file_exists($filePath))
         {        
+            mkdir($filePath, 0777, true);
+        }
+        $filePath = $filePath . $fileName;
+        
+        
+        
+        if ($fp = fopen($filePath, 'at'))
+        {
+            $arrMessage = explode("\\n",$message);
+            if(sizeof($arrMessage) > 1)
+            {
+                foreach($arrMessage as $eachLine)
+                {
+                    $newMessge .= PHP_EOL . $eachLine ;
+                }
+            }
+            else
+            {
+                $newMessge = $message;
+            }
+            
+            fwrite($fp, date('c') . ' ' . $newMessge . PHP_EOL);
+            fclose($fp);
+        }
+    }
+    
+    function writeToGbpLog($message)
+    {
+        $year = date("Y");
+        $month = date("m");
+        $day = date("d");
+        
+        $fileName = 'gbpTransactionLog' . $year . $month . $day . '.log';
+        $filePath = './GbpTransactionLog/';
+        if (!file_exists($filePath))
+        {
             mkdir($filePath, 0777, true);
         }
         $filePath = $filePath . $fileName;

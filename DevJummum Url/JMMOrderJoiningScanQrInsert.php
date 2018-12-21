@@ -12,7 +12,7 @@
         $memberID = $_POST["memberID"];
     }
     $modifiedUser = $_POST["modifiedUser"];
-    $modifiedDate = date("Y-m-d H:i:s");
+    $modifiedDate = $_POST["modifiedDate"];
     
     
     // Check connection
@@ -31,19 +31,28 @@
         $second = time()-strtotime($parts[1]);
         if($second < 5*60)//5min
         {
-            //insert joinOrder
-            $sql = "INSERT INTO OrderJoining(ReceiptID, MemberID, ModifiedUser, ModifiedDate) VALUES ('$receiptID', '$memberID', '$modifiedUser', '$modifiedDate')";
-            $ret = doQueryTask($sql);
-            if($ret != "")
+            $sql = "select * from OrderJoining where memberID = '$memberID' and receiptID = '$receiptID'";
+            $selectedRow = getSelectedRow($sql);
+            if(sizeof($selectedRow)>0)
             {
-                mysqli_rollback($con);
-                echo json_encode($ret);
-                exit();
+                $sql = "select 1 from dual where false";
             }
-            $newID = mysqli_insert_id($con);
-            
-            
-            $sql = "select * from OrderJoining where OrderJoiningID = '$newID'";
+            else
+            {
+                //insert joinOrder
+                $sql = "INSERT INTO OrderJoining(ReceiptID, MemberID, ModifiedUser, ModifiedDate) VALUES ('$receiptID', '$memberID', '$modifiedUser', '$modifiedDate')";
+                $ret = doQueryTask($sql);
+                if($ret != "")
+                {
+                    mysqli_rollback($con);
+                    echo json_encode($ret);
+                    exit();
+                }
+                $newID = mysqli_insert_id($con);
+                
+                
+                $sql = "select * from OrderJoining where OrderJoiningID = '$newID'";
+            }
         }
         else
         {

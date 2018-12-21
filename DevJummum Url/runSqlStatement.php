@@ -24,12 +24,13 @@
     
     $sql = "SHOW DATABASES LIKE '%demo_jummum_om_%'";
     $selectedRow = getSelectedRow($sql);
-    for($i=5; $i<sizeof($selectedRow); $i++)
-//    for($i=0; $i<5; $i++)
+    for($i=1; $i<sizeof($selectedRow); $i++)
+//    for($i=0; $i<1; $i++)
     {
 //        echo $selectedRow[$i][0] . "<br>";
+        
         $dbName = $selectedRow[$i][0];
-        $sql = file_get_contents('./testjummum_om_mamarin7.sql');
+        $sql = file_get_contents('./exec_printer.sql');
         $sql = str_replace("#dbName#",$dbName,$sql);
 
 //        echo $sql . "<br>";

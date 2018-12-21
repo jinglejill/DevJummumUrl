@@ -3,12 +3,11 @@
     setConnectionValueWithoutCheckUpdate("");
     writeToGbpLog("file: " . basename(__FILE__) . ", user: " . $_POST["modifiedUser"]);
     
-    
-    
-
+        
     $json_str = file_get_contents('php://input');
     //fwrite($respFile, $json_str . "\n\n");
     writeToGbpLog("backgroundQR: " . $json_str);
+
 
     $json_obj = json_decode($json_str);
     $resultCode = $json_obj->resultCode;
@@ -100,6 +99,7 @@
         
         
         //push to device
+        $msg = "";
         $category = "gbpQR";
         $contentAvailable = 1;
         $data = array("receiptID" => $receiptID);

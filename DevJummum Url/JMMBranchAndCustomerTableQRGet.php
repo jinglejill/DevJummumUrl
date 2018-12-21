@@ -187,6 +187,16 @@
             $sql .= $sqlSaveOrderNote;
             $sql .= $sqlBuffetReceipt;
         }
+        else
+        {
+            $sql = "select 0 from dual where 0;";
+            $sql .= "select 0 from dual where 0";
+        }
+    }
+    else
+    {
+        $sql = "select 0 from dual where 0;";
+        $sql .= "select 0 from dual where 0";
     }
     
  

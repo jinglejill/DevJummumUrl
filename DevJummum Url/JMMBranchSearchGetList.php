@@ -27,7 +27,6 @@
 
     //select table -> branch, customerTable
     $sql = "select * from (SELECT (@row_number:=@row_number + 1) AS Num, Branch.* FROM $jummumOM.Branch, (SELECT @row_number:=0) AS t where status = 1 and customerApp = 1 and name rlike '$strPattern' order by name) a where Num > $perPage*($page-1) limit $perPage;";
-//    echo $sql;
     
     
     /* execute multi query */

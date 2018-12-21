@@ -1117,8 +1117,18 @@
                     }
                     else
                     {
-                        $voucherValid2 = 0;
-                        $warningMsg2 = "ไม่มี Voucher Code นี้";
+                        $sql = "SELECT rewardRedemption.*,promoCode.PromoCodeID FROM `rewardpoint` left join promoCode on rewardPoint.promoCodeID = promoCode.promoCodeID left join RewardRedemption on promocode.rewardRedemptionID = RewardRedemption.rewardRedemptionID WHERE MemberID = '$userAccountID' and rewardpoint.status = -1 and promoCode.Code = '$voucherCode' and promoCode.status = 1";
+                        $selectedRow = getSelectedRow($sql);
+                        if(sizeof($selectedRow)>0)
+                        {
+                            $voucherValid2 = 0;
+                            $warningMsg2 = "Voucher Code นี้หมดอายุแล้ว";
+                        }
+                        else
+                        {
+                            $voucherValid2 = 0;
+                            $warningMsg2 = "ไม่มี Voucher Code นี้";
+                        }
                     }
                 }
             }
@@ -1255,7 +1265,7 @@
                                 if($discountOnTop || (($arrOrderTaking[$i]["price"] == $arrOrderTaking[$i]["specialPrice"]) && ($arrOrderTaking[$i]["discountProgramValue"] == 0)))
                                 {
                                     $menuParticipateValue += $arrOrderTaking[$i]["specialPrice"] - $arrOrderTaking[$i]["discountProgramValue"];
-                                    $arrOrderTakingParticipate[] = $arrOrderTaking[$i];
+                                    $arrOrderTakingParticipate[] = &$arrOrderTaking[$i];
                                 }
                             }
                         }
@@ -1271,7 +1281,7 @@
                                     if(($menuID == $arrOrderTaking[$i]["menuID"]) && ($discountOnTop || (($arrOrderTaking[$i]["price"] == $arrOrderTaking[$i]["specialPrice"]) && ($arrOrderTaking[$i]["discountProgramValue"] == 0))))
                                     {
                                         $menuParticipateValue += $arrOrderTaking[$i]["specialPrice"] - $arrOrderTaking[$i]["discountProgramValue"];
-                                        $arrOrderTakingParticipate[] = $arrOrderTaking[$i];
+                                        $arrOrderTakingParticipate[] = &$arrOrderTaking[$i];
                                     }
                                 }
                             }
@@ -1287,6 +1297,64 @@
                         else if($discountType == 2)
                         {
                             $discountPromoCodeValue = round($menuParticipateValue*$amount*0.01 * 10000)/10000;
+                        }
+                    }
+                }
+                else if($discountType == 5)//buy 1 get 10%, buy 2 get 20%, buy 3 or more get 30%
+                {
+                    $discountValue = 0;
+                    $noOfItem = 0;
+                    if(($noOfLimitUsePerUserPerDay == 0 || $currentNoOfUsePerUserPerDay < $noOfLimitUsePerUserPerDay) && ($noOfLimitUsePerUser == 0 || $currentNoOfUsePerUser < $noOfLimitUsePerUser) && ($noOfLimitUse == 0 || $currentNoOfUse < $noOfLimitUse))
+                    {
+                        if($discountGroupMenuID == 0)
+                        {
+                            for($i=0; $i<sizeof($arrOrderTaking); $i++)
+                            {
+                                if($discountOnTop || (($arrOrderTaking[$i]["price"] == $arrOrderTaking[$i]["specialPrice"]) && ($arrOrderTaking[$i]["discountProgramValue"] == 0)))
+                                {
+                                    $menuParticipateValue += $arrOrderTaking[$i]["specialPrice"] - $arrOrderTaking[$i]["discountProgramValue"];
+                                    $noOfItem++;
+                                    $arrOrderTakingParticipate[] = &$arrOrderTaking[$i];
+                                }
+                            }
+                        }
+                        else
+                        {
+                            $sql = "select * from $dbName.discountGroupMenuMap where discountGroupMenuID = '$discountGroupMenuID' and status = 1";
+                            $discountGroupMenuMap = getSelectedRow($sql);
+                            for($j=0; $j<sizeof($discountGroupMenuMap); $j++)
+                            {
+                                $menuID = $discountGroupMenuMap[$j]["MenuID"];
+                                for($i=0; $i<sizeof($arrOrderTaking); $i++)
+                                {
+                                    if(($menuID == $arrOrderTaking[$i]["menuID"]) && ($discountOnTop || (($arrOrderTaking[$i]["price"] == $arrOrderTaking[$i]["specialPrice"]) && ($arrOrderTaking[$i]["discountProgramValue"] == 0))))
+                                    {
+                                        $menuParticipateValue += $arrOrderTaking[$i]["specialPrice"] - $arrOrderTaking[$i]["discountProgramValue"];
+                                        $noOfItem++;
+                                        $arrOrderTakingParticipate[] = &$arrOrderTaking[$i];
+                                    }
+                                }
+                            }
+                        }
+
+                        $amount = 0;
+                        $sql = "select * from $dbName.discountStepMap where discountStepID = '$discountStepID' and status = 1 order by StepSpend";
+                        $discountStepMap = getSelectedRow($sql);
+                        if(sizeof($discountStepMap))
+                        {
+                            for($i=0; $i<sizeof($discountStepMap); $i++)
+                            {
+                                $stepSpend = $discountStepMap[$i]["StepSpend"];
+                                $amountDiscount = $discountStepMap[$i]["Amount"];
+                                $maxDiscount = $discountStepMap[$i]["MaxDiscount"];
+                                if($noOfItem >= $stepSpend)
+                                {
+                                    $amount = $amountDiscount;
+                                }
+                            }
+                            $discountValue = round($menuParticipateValue*$amount*0.01 * 10000)/10000;
+                            $discountValue = $discountValue > $maxDiscount?$maxDiscount:$discountValue;
+                            $discountPromoCodeValue = $discountValue;
                         }
                     }
                 }
@@ -1345,14 +1413,14 @@
                                     if(unlimitUse)
                                     {
                                         $discountValue += $amount;
-                                        $arrOrderTakingParticipate[] = $arrOrderTaking[$i];
+                                        $arrOrderTakingParticipate[] = &$arrOrderTaking[$i];
                                     }
                                     else
                                     {
                                         if($noOfUse < $noOfUseLeft)
                                         {
                                             $discountValue += $amount;
-                                            $arrOrderTakingParticipate[] = $arrOrderTaking[$i];
+                                            $arrOrderTakingParticipate[] = &$arrOrderTaking[$i];
                                         }
                                         $noOfUse++;
                                     }
@@ -1373,14 +1441,14 @@
                                         if(unlimitUse)
                                         {
                                             $discountValue += $amount;
-                                            $arrOrderTakingParticipate[] = $arrOrderTaking[$i];
+                                            $arrOrderTakingParticipate[] = &$arrOrderTaking[$i];
                                         }
                                         else
                                         {
                                             if($noOfUse < $noOfUseLeft)
                                             {
                                                 $discountValue += $amount;
-                                                $arrOrderTakingParticipate[] = $arrOrderTaking[$i];
+                                                $arrOrderTakingParticipate[] = &$arrOrderTaking[$i];
                                             }
                                             $noOfUse++;
                                         }
@@ -1444,7 +1512,7 @@
                                 if($discountOnTop || (($arrOrderTaking[$i]["price"] == $arrOrderTaking[$i]["specialPrice"]) && ($arrOrderTaking[$i]["discountProgramValue"] == 0)))
                                 {
                                     $menuParticipateValue += $arrOrderTaking[$i]["specialPrice"] - $arrOrderTaking[$i]["discountProgramValue"];
-                                    $arrOrderTakingParticipate[] = $arrOrderTaking[$i];
+                                    $arrOrderTakingParticipate[] = &$arrOrderTaking[$i];
                                 }
                             }
                         }
@@ -1460,7 +1528,7 @@
                                     if(($menuID == $arrOrderTaking[$i]["menuID"]) && ($discountOnTop || (($arrOrderTaking[$i]["price"] == $arrOrderTaking[$i]["specialPrice"]) && ($arrOrderTaking[$i]["discountProgramValue"] == 0))))
                                     {
                                         $menuParticipateValue += $arrOrderTaking[$i]["specialPrice"] - $arrOrderTaking[$i]["discountProgramValue"];
-                                        $arrOrderTakingParticipate[] = $arrOrderTaking[$i];
+                                        $arrOrderTakingParticipate[] = &$arrOrderTaking[$i];
                                     }
                                 }
                             }
@@ -1539,7 +1607,7 @@
                                 if($discountOnTop || (($arrOrderTaking[$i]["price"] == $arrOrderTaking[$i]["specialPrice"]) && ($arrOrderTaking[$i]["discountProgramValue"] == 0)))
                                 {
                                     $menuParticipateValue += $arrOrderTaking[$i]["specialPrice"] - $arrOrderTaking[$i]["discountProgramValue"];
-                                    $arrOrderTakingParticipate[] = $arrOrderTaking[$i];
+                                    $arrOrderTakingParticipate[] = &$arrOrderTaking[$i];
                                 }
                             }
                         }
@@ -1555,7 +1623,7 @@
                                     if(($menuID == $arrOrderTaking[$i]["menuID"]) && ($discountOnTop || (($arrOrderTaking[$i]["price"] == $arrOrderTaking[$i]["specialPrice"]) && ($arrOrderTaking[$i]["discountProgramValue"] == 0))))
                                     {
                                         $menuParticipateValue += $arrOrderTaking[$i]["specialPrice"] - $arrOrderTaking[$i]["discountProgramValue"];
-                                        $arrOrderTakingParticipate[] = $arrOrderTaking[$i];
+                                        $arrOrderTakingParticipate[] = &$arrOrderTaking[$i];
                                     }
                                 }
                             }
@@ -1898,12 +1966,12 @@
         
         
         //query statement
-        $sql = "select * from transactionFee where StartDate <= '$currentDateTime' and EndDate >= '$currentDateTime' and branchID = 0 and type = '$methodType' order by modifiedDate desc";
+        $sql = "select * from transactionFee where StartDate <= '$currentDateTime' and EndDate >= '$currentDateTime' and branchID = 0 and type = '$paymentMethod' order by modifiedDate desc";
         $selectedRow = getSelectedRow($sql);
         $transactionFee = $selectedRow[0]["Rate"];
         $transactionFeeValue = $amount * 0.01 * $transactionFee * 0.01;
         $transactionFeeValue = round($transactionFeeValue * 10000)/10000;
-        $sql = "select * from transactionFee where StartDate <= '$currentDateTime' and EndDate >= '$currentDateTime' and branchID = '$branchID' and type = '$methodType' order by modifiedDate desc";
+        $sql = "select * from transactionFee where StartDate <= '$currentDateTime' and EndDate >= '$currentDateTime' and branchID = '$branchID' and type = '$paymentMethod' order by modifiedDate desc";
         $selectedRow = getSelectedRow($sql);
         $transactionFeeBranch = $selectedRow[0]["Rate"];
         $transactionFeeValueBranch = $amount * 0.01 * $transactionFeeBranch * 0.01;
@@ -2090,7 +2158,7 @@
         $dataJson = executeMultiQueryArray($sqlAll);
         
         
-        if($promotionID)
+        if($promotionID && $discountPromoCodeValue > 0)
         {
             $sql = "INSERT INTO UserPromotionUsed(UserAccountID, PromotionID, ReceiptID, ModifiedUser, ModifiedDate) VALUES ('$userAccountID', '$promotionID', '$receiptID', '$modifiedUser', '$modifiedDate')";
             $ret = doQueryTask($sql);
@@ -2102,7 +2170,7 @@
                 exit();
             }
         }
-        if($rewardRedemptionID)
+        if($rewardRedemptionID && $discountPromoCodeValue > 0)
         {
             //query statement
             $sql = "INSERT INTO UserRewardRedemptionUsed(UserAccountID, RewardRedemptionID, ReceiptID, ModifiedUser, ModifiedDate) VALUES ('$userAccountID', '$rewardRedemptionID', '$receiptID', '$modifiedUser', '$modifiedDate')";
@@ -2170,7 +2238,7 @@
         //****************send noti to shop (turn on light)
         //alarmShop
         //query statement
-        if($methodType == 2)
+        if($paymentMethod == 2)
         {
             $ledStatus = 1;
             $sql = "update $jummumOM.Branch set LedStatus = '$ledStatus', ModifiedUser = '$modifiedUser', ModifiedDate = '$modifiedDate' where branchID = '$branchID';";

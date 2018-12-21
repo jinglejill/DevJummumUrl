@@ -224,6 +224,8 @@
         {
             writeToLog($paramAndValue);
         }
+        
+        $_POST["modifiedDate"] = date("Y-m-d H:i:s");
     }
     
     function getToPost()
